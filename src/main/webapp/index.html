@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <title>Bibliography</title>
+
+    <!-- 1. Загрузите библиотеки -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app/css/style.css">
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+
+    <!-- 2. Настройте SystemJS -->
+    <script>
+        System.config({
+            packages: {
+                app: {
+                    format: 'register',
+                    defaultExtension: 'js'
+                }
+            }
+        });
+        System.import('app/boot')
+                .then(null, console.error.bind(console));
+    </script>
+
+</head>
+
+<!-- 3. Отобразите приложение -->
+<body>
+<my-app>Loading...</my-app>
+</body>
+
+</html>
