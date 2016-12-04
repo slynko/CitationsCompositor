@@ -8,8 +8,6 @@ import java.io.IOException;
 public class XmlController {
 
     public void test() throws ParserConfigurationException, IOException, SAXException {
-        Standard standard = Standard.getInstance();
-
 
     }
 
