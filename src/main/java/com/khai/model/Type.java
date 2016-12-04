@@ -1,15 +1,13 @@
 package com.khai.model;
 
-import org.simpleframework.xml.Element;
-import org.simpleframework.xml.Root;
+import org.simpleframework.xml.Attribute;
 
-@Root(name = "type")
 public class Type {
 
-    @Element(name="name")
+    @Attribute(name="name")
     private String name;
 
-    @Element(name="title")
+    @Attribute(name="title")
     private String title;
 
 
