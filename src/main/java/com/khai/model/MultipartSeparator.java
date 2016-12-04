@@ -5,7 +5,7 @@ import org.simpleframework.xml.ElementList;
 
 import java.util.List;
 
-public class MultiSeparator {
+public class MultipartSeparator {
 
     @Attribute(name = "name", required = false)
     private String name;
