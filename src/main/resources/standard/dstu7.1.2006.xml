@@ -245,127 +245,612 @@
                      greater than or equal to - ">=" - "gq";
                      less than or equal to    - "<=" - "lq" !-->
 
-        <names name="first-author" no="lt 4" type="default"> <!-- "<" lt" !-->
-            <author no="1" field="surname" unique="true" len="-1" separator-after1="comma" separator-after2="space"/>
-            <author no="1" field="name1" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="name2" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-        </names>
-
-        <names name="first-author" no="gq 4" type="default"/>
-        <!-- ">=" - "gq" !-->
-
-        <names name="authors-after" no="lq 4" type="default"> <!-- "<=" - "lq" !-->
-            <author no="1" field="name1" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="name2" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="surname" unique="true" len="-1" separator-after1="comma" separator-after2="space"/>
-            <author no="2" field="name1" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="2" field="name2" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="2" field="surname" len="-1" separator-after1="comma" separator-after2="space"/>
-            <author no="3" field="name1" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="3" field="name2" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="3" field="surname" len="-1" separator-after1="comma" separator-after2="space"/>
-            <author no="4" field="name1" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="4" field="name2" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="4" field="surname" len="-1"/>
-        </names>
-
-        <names name="authors-after" no="gt 4" type="default"> <!-- ">" - "gt" !-->
-            <author no="1" field="name1" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="name2" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="surname" unique="true" len="-1"/>
-            <separator s1="space" s2="begin-bracket" s3="others" s4="end-bracket" s5="space"/>
-        </names>
-
-        <names name="authors-after" no="gt 4" type="article"> <!-- ">" - "gt" !-->
-            <author no="1" field="name1" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="name2" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="surname" unique="true" len="-1" separator-after1="comma" separator-after2="space"/>
-            <author no="2" field="name1" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="2" field="name2" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="2" field="surname" len="-1" separator-after1="comma" separator-after2="space"/>
-            <author no="3" field="name1" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="3" field="name2" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="3" field="surname" len="-1" separator-after1="comma" separator-after2="space"/>
-            <separator s1="comma" s2="space" s3="others" s4="space"/>
-        </names>
-
-        <names name="authors-after" type="art-source"> <!-- ">" - "gt" !-->
-            <author no="1" field="name1" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="name2" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="surname" unique="true" len="-1" separator-after1="comma" separator-after2="space"/>
-        </names>
-
-        <names name="editors" no="lq 4" type="default"> <!-- "<=" - "lq" !-->
-            <editor-type separator-before1="space" separator-before2="semicolon" separator-before3="space"
-                         separator-after1="space"/>
-            <editor no="1" field="name1" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <editor no="1" field="name2" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <editor no="1" field="surname" unique="true" len="-1" separator-after1="comma" separator-after2="space"/>
-            <editor no="2" field="name1" len="1" separator-after1="dot" separator-after2="space"/>
-            <editor no="2" field="name2" len="1" separator-after1="dot" separator-after2="space"/>
-            <editor no="2" field="surname" len="-1" separator-after1="comma" separator-after2="space"/>
-            <editor no="3" field="name1" len="1" separator-after1="dot" separator-after2="space"/>
-            <editor no="3" field="name2" len="1" separator-after1="dot" separator-after2="space"/>
-            <editor no="3" field="surname" len="-1" separator-after1="comma" separator-after2="space"/>
-            <editor no="4" field="name1" len="1" separator-after1="dot" separator-after2="space"/>
-            <editor no="4" field="name2" len="1" separator-after1="dot" separator-after2="space"/>
-            <editor no="4" field="surname" len="-1"/>
-        </names>
-
-        <names name="editors" no="gt 4" type="default"> <!-- ">"  - "gt" !-->
-            <editor-type separator-before1="space" separator-before2="semicolon" separator-after1="space"
-                         separator-after2="space"/>
-<!--            <editor no="all-before-last" field="name1" len="1" separator-after1="dot" separator-after2="space"/>-->
-
-            <author no="1" field="name1" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="name2" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="surname" unique="true" len="-1"/>
-            <separator s1="space" s2="begin-bracket" s3="others" s4="end-bracket" s5="space"/>
-        </names>
-
-
-        <names name="executors" no="lq 4" type="report"> <!-- "<=" - "lq" !-->
-            <author no="1" field="name1" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="name2" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="surname" unique="true" len="-1" separator-after1="comma" separator-after2="space"/>
-            <author no="2" field="name1" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="2" field="name2" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="2" field="surname" len="-1" separator-after1="comma" separator-after2="space"/>
-            <author no="3" field="name1" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="3" field="name2" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="3" field="surname" len="-1" separator-after1="comma" separator-after2="space"/>
-            <author no="4" field="name1" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="4" field="name2" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="4" field="surname" len="-1"/>
-        </names>
-
-        <names name="executors" no="gt 4" type="report"> <!-- ">" - "gt" !-->
-            <author no="1" field="name1" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="name2" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="surname" unique="true" len="-1"/>
-            <separator s1="space" s2="begin-bracket" s3="others" s4="end-bracket" s5="space"/>
-        </names>
-
-        <names name="directors" no="lq 4" type="report"> <!-- "<=" - "lq" !-->
-            <author no="1" field="name1" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="name2" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="surname" unique="true" len="-1" separator-after1="comma" separator-after2="space"/>
-            <author no="2" field="name1" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="2" field="name2" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="2" field="surname" len="-1" separator-after1="comma" separator-after2="space"/>
-            <author no="3" field="name1" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="3" field="name2" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="3" field="surname" len="-1" separator-after1="comma" separator-after2="space"/>
-            <author no="4" field="name1" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="4" field="name2" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="4" field="surname" len="-1"/>
-        </names>
-
-        <names name="directors" no="gt 4" type="report"> <!-- ">" - "gt" !-->
-            <author no="1" field="name1" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="name2" unique="true" len="1" separator-after1="dot" separator-after2="space"/>
-            <author no="1" field="surname" unique="true" len="-1"/>
-            <separator s1="space" s2="begin-bracket" s3="others" s4="end-bracket" s5="space"/>
+        <names>
+            <authors name="first-author" no="lt 4" type="default">
+                <author>
+                    <name>
+                        <field>surname</field>
+                        <unique>true</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name1</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+            </authors>
+            <authors name="first-author" no="gq 4" type="default"/>
+            <authors name="authors-after" no="lq 4" type="default"> <!-- "<=" - "lq" !-->>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>true</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>false</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>false</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>false</unique>
+                        <len>-1</len>
+                    </name>
+                </author>
+            </authors>
+            <authors name="authors-after" no="gt 4" type="default"> <!-- ">" - "gt" !-->>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>true</unique>
+                        <len>-1</len>
+                    </name>
+                </author>
+                <!-- NEED TO BE CHANGE -->
+                <separator s1="space" s2="begin-bracket" s3="others" s4="end-bracket" s5="space"/>
+            </authors>
+            <authors name="authors-after" no="gt 4" type="article"> <!-- ">" - "gt" !-->
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>true</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>false</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>false</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <separator s1="comma" s2="space" s3="others" s4="space"/>
+            </authors>
+            <authors name="authors-after" type="art-source"> <!-- ">" - "gt" !-->
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>true</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <!-- NEED TO BE CHANGE -->
+                <separator s1="space" s2="begin-bracket" s3="others" s4="end-bracket" s5="space"/>
+            </authors>
+            <authors name="editors" no="lq 4" type="default"> <!-- "<=" - "lq" !-->
+                <editor-type>
+                    <separator-before1>space</separator-before1>
+                    <separator-before2>semicolon</separator-before2>
+                    <separator-before3>space</separator-before3>
+                    <separator-after1>space</separator-after1>
+                </editor-type>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>true</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>false</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>false</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>false</unique>
+                        <len>-1</len>
+                    </name>
+                </author>
+            </authors>
+            <authors name="editors" no="gt 4" type="default"> <!-- ">"  - "gt" !-->
+                <editor-type>
+                    <separator-before1>space</separator-before1>
+                    <separator-before2>semicolon</separator-before2>
+                    <separator-after1>space</separator-after1>
+                    <separator-after2>space</separator-after2>
+                </editor-type>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>true</unique>
+                        <len>-1</len>
+                    </name>
+                </author>
+                <!-- NEED TO BE CHANGE -->
+                <separator s1="space" s2="begin-bracket" s3="others" s4="end-bracket" s5="space"/>
+            </authors>
+            <authors name="executors" no="lq 4" type="report"> <!-- "<=" - "lq" !-->
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>true</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>false</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>false</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>false</unique>
+                        <len>-1</len>
+                    </name>
+                </author>
+            </authors>
+            <authors name="executors" no="gt 4" type="report"> <!-- ">" - "gt" !-->
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>true</unique>
+                        <len>-1</len>
+                    </name>
+                </author>
+                <!-- NEED TO BE CHANGED -->
+                <separator s1="space" s2="begin-bracket" s3="others" s4="end-bracket" s5="space"/>
+            </authors>
+            <authors name="directors" no="lq 4" type="report"> <!-- "<=" - "lq" !-->
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>true</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>false</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>false</unique>
+                        <len>-1</len>
+                        <separator-after1>comma</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                </author>
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>false</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>false</unique>
+                        <len>-1</len>
+                    </name>
+                </author>
+            </authors>
+            <authors name="directors" no="gt 4" type="report"> <!-- ">" - "gt" !-->
+                <author>
+                    <name>
+                        <field>name1</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>name2</field>
+                        <unique>true</unique>
+                        <len>1</len>
+                        <separator-after1>dot</separator-after1>
+                        <separator-after2>space</separator-after2>
+                    </name>
+                    <name>
+                        <field>surname</field>
+                        <unique>true</unique>
+                        <len>-1</len>
+                    </name>
+                </author>
+                <!-- NEED TO BE CHANGED -->
+                <separator s1="space" s2="begin-bracket" s3="others" s4="end-bracket" s5="space"/>
+            </authors>
         </names>
 
         <page-info type="default">
