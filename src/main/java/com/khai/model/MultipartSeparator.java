@@ -14,7 +14,7 @@ public class MultipartSeparator {
     private String type;
 
     @ElementList(inline = true)
-    List<SeparatorItem> itemList;
+    private List<SeparatorItem> itemList;
 
     public String getName() {
         return name;
