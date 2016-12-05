@@ -1,8 +1,6 @@
 package com.khai.model;
 
-
 import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
@@ -22,5 +20,9 @@ public class Standard {
 
     @ElementList(name = "separators")
     private List<Separator> separatorList;
+
+    // TODO: 12/5/2016 might don't exist
+    @ElementList(name = "multipart-separators")
+    private List<MultipartSeparator> multiSeparatorList;
 
 }

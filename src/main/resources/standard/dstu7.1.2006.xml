@@ -67,7 +67,7 @@
             <ua>Текст</ua>
             <en>Text</en>
         </separator>
-        <separator name="state-com.khai.xml.standard">
+        <separator name="state-standard">
             <ru>ГОСТ</ru>
             <ua>ДСТУ</ua>
             <en>ANSI</en>
@@ -139,106 +139,186 @@
         </separator>
     </separators>
 
+
+    <multipart-separators>
+
+        <multipart-separator name="sectionalizer">
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+            <separator-item name="dash"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+
+        <multipart-separator name="sectionalizer-years" type="magazine-article">
+            <separator-item name="comma"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+
+        <multipart-separator name="deposition" type="shared-science-works">
+            <separator-item name="dot"/>
+        </multipart-separator>
+
+        <multipart-separator name="sectionalizer-years" type="default">
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+            <separator-item name="dash"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+
+        <multipart-separator name="pages" type="default">
+            <separator-item name="dot"/>
+        </multipart-separator>
+
+        <multipart-separator name="work-type" type="default">
+            <separator-item name="space"/>
+            <separator-item name="slash"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+
+        <multipart-separator name="work-type" type="book-title">
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+            <separator-item name="dash"/>
+        </multipart-separator>
+
+        <multipart-separator name="work-type" type="official-documents">
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+            <separator-item name="dash"/>
+        </multipart-separator>
+
+        <multipart-separator name="work-type" type="instructional-regulatory-documents">
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+            <separator-item name="dash"/>
+        </multipart-separator>
+
+        <multipart-separator name="work-type" type="state-standardstandards">
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+            <separator-item name="dash"/>
+        </multipart-separator>
+
+        <multipart-separator name="title" type="default">
+            <separator-item name="space"/>
+        </multipart-separator>
+
+        <multipart-separator name="additional-info" type="default">
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+            <separator-item name="dash"/>
+        </multipart-separator>
+
+        <multipart-separator name="additional-info" type="collection">
+            <separator-item name="space"/>
+            <separator-item name="semicolon"/>
+        </multipart-separator>
+
+        <multipart-separator name="additional-info" type="cartographic-publications">
+            <separator-item name="space"/>
+            <separator-item name="semicolon"/>
+        </multipart-separator>
+
+        <multipart-separator name="additional-info" type="report">
+            <separator-item name="space"/>
+            <separator-item name="semicolon"/>
+        </multipart-separator>
+
+        <multipart-separator name="additional-info" type="helper">
+            <separator-item name="space"/>
+            <separator-item name="semicolon"/>
+        </multipart-separator>
+
+        <multipart-separator name="publisher_name" type="default">
+            <separator-item name="comma"/>
+        </multipart-separator>
+
+        <multipart-separator name="publisher" type="default">
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+            <separator-item name="dash"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+
+        <multipart-separator name="publisher" type="articles-from-the-collected-works">
+            <separator-item name="space"/>
+            <separator-item name="slash"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+
+        <multipart-separator name="publisher" type="component-part-of-the-book ">
+            <separator-item name="space"/>
+            <separator-item name="slash"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+
+        <multipart-separator name="publisher" type="electronic-resources">
+            <separator-item name="space"/>
+            <separator-item name="slash"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+
+        <multipart-separator name="year-date" type="default">
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+            <separator-item name="slash"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+
+        <multipart-separator name="volume" type="default">
+            <separator-item name="comma"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+
+        <multipart-separator name="volume" type="articles-from-the-collected-works">
+            <separator-item name="space"/>
+            <separator-item name="colon"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+
+        <multipart-separator name="no" type="default">
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+            <separator-item name="dash"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+
+        <multipart-separator name="pages" type="default">
+            <separator-item name="dot"/>
+        </multipart-separator>
+
+        <multipart-separator name="official_date" type="default">
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+            <separator-item name="dash"/>
+        </multipart-separator>
+
+        <multipart-separator name="authors-after" type="electronic-resources">
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+            <separator-item name="dash"/>
+        </multipart-separator>
+
+        <multipart-separator name="number-of-standard" type="state-standardstandards">
+            <separator-item name="space"/>
+        </multipart-separator>
+
+        <multipart-separator name="number-of-standard" type="state-standardstandards">
+            <separator-item name="space"/>
+            <separator-item name="semicolon"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+
+    </multipart-separators>
+
     <parts>
         <!-- equal to                 - "==" - "eq"; not equal to - "!=" - "ne";
              greater than             - ">"  - "gt"; less than    - "<"  - "lt";
              greater than or equal to - ">=" - "gq";
              less than or equal to    - "<=" - "lq" !-->
-        <multipart-separator name="sectionalizer">
-            <separator s1="dot" s2="space" s3="dash" s4="space"/>
-        </multipart-separator>
 
-        <multipart-separator name="sectionalizer-years" type="magazine-article">
-            <separator s1="comma" s2="space"/>
-        </multipart-separator>
 
-        <multipart-separator name="deposition" type="shared-science-works">
-            <separator s2="dot"/>
-        </multipart-separator>
-        <multipart-separator name="sectionalizer-years" type="default">
-            <separator s1="dot" s2="space" s3="dash" s4="space"/>
-        </multipart-separator>
 
-        <multipart-separator name="pages" type="default">
-            <separator s1="dot"/>
-        </multipart-separator>
-
-        <multipart-separator name="work-type" type="default">
-            <separator s1="space" s3="slash" s4="space"/>
-        </multipart-separator>
-
-        <multipart-separator name="work-type" type="book-title">
-            <separator s1="dot" s2="space" s3="dash"/>
-        </multipart-separator>
-        <multipart-separator name="work-type" type="official-documents">
-            <separator s1="dot" s2="space" s3="dash"/>
-        </multipart-separator>
-        <multipart-separator name="work-type" type="instructional-regulatory-documents">
-            <separator s1="dot" s2="space" s3="dash"/>
-        </multipart-separator>
-        <multipart-separator name="work-type" type="state-standardstandards">
-            <separator s1="dot" s2="space" s3="dash"/>
-        </multipart-separator>
-        <multipart-separator name="title" type="default">
-            <separator s1="space"/>
-        </multipart-separator>
-        <multipart-separator name="additional-info" type="default">
-            <separator s1="dot" s2="space" s3="dash"/>
-        </multipart-separator>
-        <multipart-separator name="additional-info" type="collection">
-            <separator s1="space" s2="semicolon"/>
-        </multipart-separator>
-        <multipart-separator name="additional-info" type="cartographic-publications">
-            <separator s1="space" s2="semicolon"/>
-        </multipart-separator>
-        <multipart-separator name="additional-info" type="report">
-            <separator s1="space" s2="semicolon"/>
-        </multipart-separator>
-        <multipart-separator name="additional-info" type="helper">
-            <separator s1="space" s2="semicolon"/>
-        </multipart-separator>
-        <multipart-separator name="publisher_name" type="default">
-            <separator s1="comma"/>
-        </multipart-separator>
-        <multipart-separator name="publisher" type="default">
-            <separator s1="dot" s2="space" s3="dash" s4="space"/>
-        </multipart-separator>
-        <multipart-separator name="publisher" type="articles-from-the-collected-works">
-            <separator s1="space" s2="slash" s3="space"/>
-        </multipart-separator>
-        <multipart-separator name="publisher" type="component-part-of-the-book ">
-            <separator s1="space" s2="slash" s3="space"/>
-        </multipart-separator>
-        <multipart-separator name="publisher" type="electronic-resources">
-            <separator s1="space" s2="slash" s3="space"/>
-        </multipart-separator>
-        <multipart-separator name="year-date" type="default">
-            <separator s1="dot" s2="space" s3="slash" s4="space"/>
-        </multipart-separator>
-        <multipart-separator name="volume" type="default">
-            <separator s1="comma" s2="space"/>
-        </multipart-separator>
-        <multipart-separator name="volume" type="articles-from-the-collected-works">
-            <separator s1="space" s2="colon" s3="space"/>
-        </multipart-separator>
-        <multipart-separator name="no" type="default">
-            <separator s1="dot" s2="space" s3="dash" s4="space"/>
-        </multipart-separator>
-        <multipart-separator name="pages" type="default">
-            <separator s1="dot"/>
-        </multipart-separator>
-        <multipart-separator name="official_date" type="default">
-            <separator s1="dot" s2="space" s3="dash"/>
-        </multipart-separator>
-        <multipart-separator name="authors-after" type="electronic-resources">
-            <separator s1="dot" s2="space" s3="dash"/>
-        </multipart-separator>
-        <multipart-separator name="number-of-com.khai.xml.standard" type="state-standardstandards">
-            <separator s1="space"/>
-        </multipart-separator>
-        <multipart-separator name="number-of-com.khai.xml.standard" type="state-standardstandards">
-            <separator s1="space" s2="semicolon" s3="space"/>
-        </multipart-separator>
 
         <!-- equal to                 - "==" - "eq"; not equal to - "==" - "ne";
                      greater than             - ">"  - "gt"; less than    - "<"  - "lt";
@@ -914,9 +994,9 @@
         <separator s1="space" s2="slash" s3="space"/>
         <authors part="authors-after" separator-after1="space"/>
         <additional-info separator-before1="semicolon" separator-before2="space" separator-after1="dot"/>
-		<!-- <publisher-info separator-before1="space" separator-before2="dash" separator-before3="space" separator-after1="comma" separator-after2="space"/>
+        <!-- <publisher-info separator-before1="space" separator-before2="dash" separator-before3="space" separator-after1="comma" separator-after2="space"/>
         <authors part="editors" separator-before1="semicolon" separator-before2="space" separator-after1="dot" separator-before2="space" />
-		<publisher-info separator-before1="dash" separator-before2="space" separator-after1="comma" /> -->
+        <publisher-info separator-before1="dash" separator-before2="space" separator-after1="comma" /> -->
         <year multipart-separator-before1="sectionalizer-years"/>
         <date/>
         <separator s1="dot" s2="space" s3="dash" s4="space"/>
