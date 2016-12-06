@@ -25,4 +25,11 @@ public class Standard {
     @ElementList(name = "multipart-separators")
     private List<MultipartSeparator> multiSeparatorList;
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
