@@ -9,8 +9,7 @@
   },
   "license": "ISC",
   "dependencies": {
-    "@angular/core": "~2.1.1",
-    "@angular/http": "~2.1.1",
+    "angular2/http": "~2.1.1",
     "angular2": "2.0.0-beta.0",
     "bootstrap": "^3.3.7",
     "systemjs": "0.19.6",
