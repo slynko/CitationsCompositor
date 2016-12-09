@@ -1,5 +1,5 @@
-import {Component} from 'angular2/core';
-import {BibliographyService} from './service/bibliography.service'
+import { Component } from 'angular2/core';
+import { BibliographyService } from './service/bibliography.service'
 
 @Component({
     selector: 'my-app',
@@ -11,13 +11,13 @@ export class AppComponent {
          this._bibliographyService = _bibliographyService;
      }
 
-    getAllBibliographies (){
+    getAll() {
           this.error = "";
           this.bibliographies = [];
-          this._bibliographyService.getAllBibliographies()
+          this._bibliographyService.getAll()
               .subscribe(
                   data => this.bibliographies = data,
-                  error => this.error = "Region " + this.region + " is invalid."
+                  error => this.error = "Bibliography is invalid."
               );
     }
 }

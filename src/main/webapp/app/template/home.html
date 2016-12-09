@@ -1,10 +1,6 @@
 <div class="main-container">
     <h1 class="page-title">Welcome to bibliography app!</h1>
 
-    <form (ngSubmit)="getAllBibliographies()">
-        <button type="submit">Get all bibliographies</button>
-    </form>
-
     <table class = "table table-bordered">
         <thead>
         <tr>
@@ -14,10 +10,11 @@
         </thead>
         <tbody>
         <tr *ngFor="#bibliography of bibliographies">
-            <td>{{bibliography}}</td>
-            <td></td>
+            <td>{{ bibliography }}</td>
+            <td>-</td>
         </tr>
         </tbody>
     </table>
-    <p style="color:red">{{error}}</p>
+    <button type="submit" (click)="getAll()">Get all bibliographies</button>
+    <p style="color:red">{{ error }}</p>
 </div>
