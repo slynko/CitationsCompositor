@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { MainComponent } from './main.component';
 import { BibliographyService } from './service/bibliography.service';
 
 @NgModule({
@@ -29,11 +30,12 @@ import { BibliographyService } from './service/bibliography.service';
         ])
     ],
     declarations: [
+        MainComponent,
         AppComponent
     ],
     providers: [
         BibliographyService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [MainComponent]
 })
 export class AppModule { }
