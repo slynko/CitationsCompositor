@@ -7,16 +7,21 @@ import { BibliographyService } from './service/bibliography.service'
     providers: [BibliographyService]
 })
 export class AppComponent {
-     constructor(private _bibliographyService: BibliographyService){
-         this._bibliographyService = _bibliographyService;
-     }
+    constructor(private _bibliographyService: BibliographyService){
+        this._bibliographyService = _bibliographyService;
+    }
+
     getAll() {
-          this.error = "";
-          this.bibliographies = [];
-          this._bibliographyService.getAll()
-              .subscribe(
-                  data => this.bibliographies = data,
-                  error => this.error = "Bibliography is invalid."
-              );
+        this.error = "";
+        this.bibliographies = [];
+        this._bibliographyService.getAll()
+            .subscribe(
+                data => this.bibliographies = data,
+                error => this.error = "Bibliography is invalid."
+            );
+    }
+
+    clearAll() {
+        this.bibliographies = [];
     }
 }
