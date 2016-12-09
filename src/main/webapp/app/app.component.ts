@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { Component } from '@angular/core';
 import { BibliographyService } from './service/bibliography.service'
 
 @Component({
@@ -10,7 +10,6 @@ export class AppComponent {
      constructor(private _bibliographyService: BibliographyService){
          this._bibliographyService = _bibliographyService;
      }
-
     getAll() {
           this.error = "";
           this.bibliographies = [];
