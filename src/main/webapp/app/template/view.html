@@ -1,19 +1,17 @@
-<div class="main-container">
-    <table class = "table table-bordered">
-        <thead>
-        <tr>
-            <th>Bibliography</th>
-            <th>Empty column</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let bibliography of bibliographies">
-            <td>{{ bibliography }}</td>
-            <td>-</td>
-        </tr>
-        </tbody>
-    </table>
-    <button type="button" (click)="getAll()">Get all bibliographies</button>
-    <button type="button" (click)="clearAll()">Clear</button>
-    <p style="color:red">{{ error }}</p>
-</div>
+<table class = "table table-bordered">
+    <thead>
+    <tr>
+        <th>Bibliography</th>
+        <th>Empty column</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let bibliography of bibliographies">
+        <td>{{ bibliography }}</td>
+        <td>-</td>
+    </tr>
+    </tbody>
+</table>
+<button type="button" (click)="getAll()" class="btn btn-default">Get all bibliographies</button>
+<button type="button" (click)="clearAll()" class="btn btn-default">Clear</button>
+<p style="color:red">{{ error }}</p>
