@@ -9,8 +9,6 @@ import { BibliographyService } from '../service/bibliography.service'
 export class ViewComponent {
     constructor(@Inject(BibliographyService) private _bibliographyService: BibliographyService){
         this._bibliographyService = _bibliographyService;
-        this.error = "";
-        this.bibliographies = [];
     }
 
     private error: string;

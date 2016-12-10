@@ -11,6 +11,7 @@ export class BibliographyService {
     constructor(@Inject(Http) private http: Http) {  }
 
     getAll() {
+        //noinspection TypeScriptUnresolvedFunction
         return this.http.get(this.endpoint_url)
             .map(res => res.json());
     }
