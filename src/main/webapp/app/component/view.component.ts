@@ -17,7 +17,7 @@ export class ViewComponent {
         this._bibliographyService.getAll()
             .subscribe(
                 data => this.bibliographies = data,
-                error => this.error = "Bibliography is invalid."
+                error => this.error = "Something went wrong."
             );
     }
 
