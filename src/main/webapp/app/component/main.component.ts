@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class MainComponent {
     constructor(
-        private router: Router
+        @Inject(Router) private router: Router
     ) {  }
 
     edit(): boolean {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject} from '@angular/core';
 import { BibliographyService } from '../service/bibliography.service'
 
 @Component({
@@ -7,9 +7,14 @@ import { BibliographyService } from '../service/bibliography.service'
     providers: [BibliographyService]
 })
 export class ViewComponent {
-    constructor(private _bibliographyService: BibliographyService){
+    constructor(@Inject(BibliographyService) private _bibliographyService: BibliographyService){
         this._bibliographyService = _bibliographyService;
+        this.error = "";
+        this.bibliographies = [];
     }
+
+    private error: string;
+    private bibliographies: string[];
 
     getAll() {
         this.error = "";

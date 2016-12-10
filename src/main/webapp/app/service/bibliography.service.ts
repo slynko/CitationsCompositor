@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 
 import 'rxjs/add/operator/map';
@@ -8,7 +8,7 @@ export class BibliographyService {
 
     private endpoint_url = "rest/bibliographies";
 
-    constructor(private http: Http) {  }
+    constructor(@Inject(Http) private http: Http) {  }
 
     getAll() {
         return this.http.get(this.endpoint_url)
