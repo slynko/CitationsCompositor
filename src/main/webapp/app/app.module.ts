@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import { ViewComponent } from './view.component';
+import { EditComponent } from './edit.component';
 import { MainComponent } from './main.component';
 import { BibliographyService } from './service/bibliography.service';
 
@@ -13,25 +14,30 @@ import { BibliographyService } from './service/bibliography.service';
         RouterModule.forRoot([
             {
                 path: '',
-                component: AppComponent
+                component: ViewComponent
             },
             {
-                path: 'add',
-                component: AppComponent
+                path: 'view',
+                component: ViewComponent
+            },
+            {
+                path: 'edit',
+                component: EditComponent
             },
             {
                 path: 'edit/:id',
-                component: AppComponent
+                component: EditComponent
             },
             {
                 path: '**',
-                component: AppComponent
+                component: ViewComponent
             }
         ])
     ],
     declarations: [
         MainComponent,
-        AppComponent
+        ViewComponent,
+        EditComponent
     ],
     providers: [
         BibliographyService

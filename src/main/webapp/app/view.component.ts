@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { BibliographyService } from './service/bibliography.service'
 
 @Component({
-    selector: 'my-app',
-    templateUrl: 'app/template/home.html',
+    selector: 'view-component',
+    templateUrl: 'app/template/view.html',
     providers: [BibliographyService]
 })
-export class AppComponent {
+export class ViewComponent {
     constructor(private _bibliographyService: BibliographyService){
         this._bibliographyService = _bibliographyService;
     }
