@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { BibliographyService } from './service/bibliography.service'
+import { BibliographyService } from '../service/bibliography.service'
 
 @Component({
     selector: 'view-component',
-    templateUrl: 'app/template/view.html',
+    templateUrl: 'app/static/template/view.html',
     providers: [BibliographyService]
 })
 export class ViewComponent {

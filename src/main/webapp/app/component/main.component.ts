@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'main-component',
-    templateUrl: 'app/template/main.html'
+    templateUrl: 'app/static/template/main.html'
 })
 export class MainComponent {
     constructor(
