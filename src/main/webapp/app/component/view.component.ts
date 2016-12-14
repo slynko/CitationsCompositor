@@ -46,8 +46,9 @@ export class ViewComponent {
         this.optionsMap[bibliography] = event.target.checked;
     }
 
-    compose() {
+    compose($event) {
         this.selectedBibliographies = this.getSelectedBibliographies();
+        $event.preventDefault();
     }
 
     getSelectedBibliographies(): string[] {
