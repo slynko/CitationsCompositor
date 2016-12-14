@@ -38,11 +38,11 @@ public class BibliographyService {
     private  List<String> getMockBibliographies() {
         List<String> bibliographies = new ArrayList<>();
 
-        bibliographies.add("1 Author L.L. 1990");
-        bibliographies.add("2 Author D.D. 1991");
-        bibliographies.add("3 Author S.S. 1992");
-        bibliographies.add("4 Author Z.Z. 1993");
-        bibliographies.add("5 Author K.K. 1993");
+        bibliographies.add("Author L.L. 1990");
+        bibliographies.add("Author D.D. 1991");
+        bibliographies.add("Author S.S. 1992");
+        bibliographies.add("Author Z.Z. 1993");
+        bibliographies.add("Author K.K. 1993");
 
         return bibliographies;
     }

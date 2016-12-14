@@ -9,10 +9,13 @@ import { BibliographyService } from '../service/bibliography.service'
 export class ViewComponent {
     constructor(@Inject(BibliographyService) private _bibliographyService: BibliographyService){
         this._bibliographyService = _bibliographyService;
+        this.optionsMap = [];
     }
 
     private error: string;
     private bibliographies: string[];
+    private optionsMap: string[];
+    private selectedBibliographies: string[];
 
     getAll() {
         this.error = "";
@@ -26,5 +29,26 @@ export class ViewComponent {
 
     clearAll() {
         this.bibliographies = [];
+        this.selectedBibliographies = [];
+        this.optionsMap = [];
+    }
+
+    updateCheckedOptions(bibliography, event) {
+        this.optionsMap[bibliography] = event.target.checked;
+    }
+
+    compose() {
+        this.selectedBibliographies = this.getSelectedBibliographies();
+    }
+
+    getSelectedBibliographies(): string[] {
+        var selectedBibliographies = [];
+        for (var key in this.optionsMap) {
+            if (this.optionsMap.hasOwnProperty(key) && this.optionsMap[key]) {
+                selectedBibliographies.push(key);
+            }
+        }
+
+        return selectedBibliographies;
     }
 }
