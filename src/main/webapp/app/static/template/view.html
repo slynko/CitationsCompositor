@@ -21,11 +21,22 @@
 <button type="button" (click)="clearAll()" class="btn btn-default">Clear</button>
 <p class="bg-danger">{{ error }}</p>
 
-<p class="bg-success" >
-    <span *ngFor="let bibliography of selectedBibliographies; let i = index;">
-        <span>
-            {{i + 1}}) {{ bibliography }}
-        </span>
-        <br/>
-    </span>
-</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Composed bibliography</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="success">
+            <td>
+                <span *ngFor="let bibliography of selectedBibliographies; let i = index;">
+                    <span>
+                        {{i + 1}}) {{ bibliography }}
+                    </span>
+                    <br/>
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>

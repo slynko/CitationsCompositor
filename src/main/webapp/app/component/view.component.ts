@@ -48,7 +48,6 @@ export class ViewComponent {
                 selectedBibliographies.push(key);
             }
         }
-
         return selectedBibliographies;
     }
 }
