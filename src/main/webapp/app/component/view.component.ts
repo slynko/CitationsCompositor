@@ -14,6 +14,7 @@ export class ViewComponent {
 
     ngOnInit() {
         this.getAll();
+        this.getAllDstuFiles();
         this.clearAll();
     }
 
@@ -23,6 +24,15 @@ export class ViewComponent {
     private optionsMap: string[];
     private selectedBibliographies: string[];
     public composed = false;
+    private dstuFiles: string[];
+
+    getAllDstuFiles() {
+        this._bibliographyService.getAllDstuFiles()
+            .subscribe(
+                data => this.dstuFiles = data,
+                error => this.error = "Something went wrong."
+            );
+    }
 
     getAll() {
         this.error = "";
@@ -48,6 +58,7 @@ export class ViewComponent {
 
     compose($event) {
         this.selectedBibliographies = this.getSelectedBibliographies();
+        this.composed = this.selectedBibliographies.length > 0;
         $event.preventDefault();
     }
 
@@ -58,9 +69,6 @@ export class ViewComponent {
                 selectedBibliographies.push(key);
             }
         }
-
-        this.composed = selectedBibliographies.length > 0;
-
         return selectedBibliographies;
     }
 }

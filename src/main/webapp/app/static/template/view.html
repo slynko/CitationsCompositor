@@ -1,6 +1,9 @@
 <label class="control-label">Select File</label>
 <form name="fileForm" (submit)="compose($event)">
-    <input id="input-1" type="file" class="file" required>
+    <select name="cars" required class="form-control">
+        <option disabled selected value>Select a file from the list</option>
+        <option *ngFor="let file of dstuFiles" value="{{file}}" >{{file}}</option>
+    </select>
     <br/>
     <table class = "table table-bordered">
         <thead>

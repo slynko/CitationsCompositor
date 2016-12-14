@@ -16,7 +16,12 @@ export class BibliographyService {
         return this.http.get(this.endpoint_url)
             .map(res => res.json());
     }
-    
+
+    getAllDstuFiles(): Observable<string[]> {
+        return this.http.get(this.endpoint_url + "/dstu/files")
+            .map(res => res.json());
+    }
+
     addAll(bibliographies: string[]): Observable<string[]> {
         //noinspection TypeScriptUnresolvedFunction
         return this.http.post(this.endpoint_url, bibliographies)
