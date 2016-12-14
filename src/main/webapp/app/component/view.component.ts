@@ -12,10 +12,17 @@ export class ViewComponent {
         this.optionsMap = [];
     }
 
+    ngOnInit() {
+        this.getAll();
+        this.clearAll();
+    }
+
+
     private error: string;
     private bibliographies: string[];
     private optionsMap: string[];
     private selectedBibliographies: string[];
+    public composed = false;
 
     getAll() {
         this.error = "";
@@ -31,6 +38,8 @@ export class ViewComponent {
         this.bibliographies = [];
         this.selectedBibliographies = [];
         this.optionsMap = [];
+        this.composed = false;
+        this.getAll();
     }
 
     updateCheckedOptions(bibliography, event) {
@@ -48,6 +57,9 @@ export class ViewComponent {
                 selectedBibliographies.push(key);
             }
         }
+
+        this.composed = selectedBibliographies.length > 0;
+
         return selectedBibliographies;
     }
 }

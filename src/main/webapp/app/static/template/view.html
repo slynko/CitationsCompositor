@@ -1,27 +1,28 @@
 <label class="control-label">Select File</label>
-<input id="input-1" type="file" class="file">
-<br/>
-<table class = "table table-bordered">
-    <thead>
-    <tr>
-        <th class="col-md-5">Bibliography</th>
-        <th class="col-md-1">Select to compose</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let bibliography of bibliographies">
-        <td class="col-md-5">{{ bibliography }}</td>
-        <td class="col-md-1"><input type="checkbox" value="{{bibliography}}"
-                                    (change)="updateCheckedOptions(bibliography, $event)"/></td>
-    </tr>
-    </tbody>
-</table>
-<button type="button" (click)="getAll()" class="btn btn-default">Get all bibliographies</button>
-<button type="button" (click)="compose(composedBibliographys)" class="btn btn-default">Compose</button>
-<button type="button" (click)="clearAll()" class="btn btn-default">Clear</button>
-<p class="bg-danger">{{ error }}</p>
+<form name="fileForm">
+    <input id="input-1" type="file" class="file" required>
 
-<table class="table">
+    <br/>
+    <table class = "table table-bordered">
+        <thead>
+        <tr>
+            <th class="col-md-5">Bibliography</th>
+            <th class="col-md-1">Select to compose</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let bibliography of bibliographies">
+            <td class="col-md-5">{{ bibliography }}</td>
+            <td class="col-md-1"><input type="checkbox" value="{{bibliography}}"
+                                        (change)="updateCheckedOptions(bibliography, $event)"/></td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="button" (click)="compose(composedBibliographys)" class="btn btn-default">Compose</button>
+    <button type="button" (click)="clearAll()" class="btn btn-default">Clear</button>
+    <p class="bg-danger">{{ error }}</p>
+</form>
+<table class="table" *ngIf="composed">
     <thead>
         <tr>
             <th>Composed bibliography</th>
