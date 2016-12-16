@@ -63,11 +63,11 @@ public class BibliographyService {
 
     @PostMapping
     @RequestMapping("/composed")
-    public List<String> getComposedBibliographies(@RequestBody List<String> bibliographyNames) {
+    public List<String> getComposedBibliographies(@RequestBody List<String> bibliographyKeys) {
 
         // some logic with bibliographies will be implemented here
 
-        return bibliographyNames
+        return bibliographyKeys
                 .stream()
                 .map(bibliography -> bibliography = bibliography.concat("."))
                 .collect(Collectors.toList());
