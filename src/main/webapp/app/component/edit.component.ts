@@ -16,12 +16,18 @@ export class EditComponent {
 
     addAll(bibliographies: string[]) {
         this._bibliographyService.addAll(bibliographies)
-            .subscribe();
+            .subscribe(
+                res => {},
+                err => {}
+            );
     }
 
     add(bibliography: string) {
         this._bibliographyService.add(bibliography)
-            .subscribe();
+            .subscribe(
+                res => {},
+                err => {}
+            );
         this.router.navigate(['/']);
     }
 }
