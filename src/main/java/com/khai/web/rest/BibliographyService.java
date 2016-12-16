@@ -13,6 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RestController
@@ -22,10 +23,10 @@ public class BibliographyService {
     @Value("${dstu.files.folder.path}")
     private String dstuFolderPath;
 
-    private static List<String> bibliographies;
+    private static List<String> bibliographyKeys;
 
     public BibliographyService() {
-        BibliographyService.bibliographies = getMockBibliographies();
+        BibliographyService.bibliographyKeys = getMockBibliographyKeys();
     }
 
     @GetMapping
@@ -46,29 +47,41 @@ public class BibliographyService {
 
     @GetMapping
     public List<String> getAll() {
-        return BibliographyService.bibliographies;
+        return BibliographyService.bibliographyKeys;
     }
 
     @PostMapping
-    public void setAll(List<String> bibliographies) {
-        BibliographyService.bibliographies = bibliographies;
+    public void setAll(@RequestBody List<String> bibliographies) {
+        BibliographyService.bibliographyKeys = bibliographies;
     }
 
     @PostMapping
     @RequestMapping("/add")
     public void addBibliography(@RequestBody String bibliography) {
-        BibliographyService.bibliographies.add(bibliography);
+        BibliographyService.bibliographyKeys.add(bibliography);
     }
 
-    private  List<String> getMockBibliographies() {
-        List<String> bibliographies = new ArrayList<>();
+    @PostMapping
+    @RequestMapping("/composed")
+    public List<String> getComposedBibliographies(@RequestBody List<String> bibliographyNames) {
 
-        bibliographies.add("Author L.L. 1990");
-        bibliographies.add("Author D.D. 1991");
-        bibliographies.add("Author S.S. 1992");
-        bibliographies.add("Author Z.Z. 1993");
-        bibliographies.add("Author K.K. 1993");
+        // some logic with bibliographies will be implemented here
 
-        return bibliographies;
+        return bibliographyNames
+                .stream()
+                .map(bibliography -> bibliography = bibliography.concat("."))
+                .collect(Collectors.toList());
+    }
+
+    private  List<String> getMockBibliographyKeys() {
+        List<String> keys = new ArrayList<>();
+
+        keys.add("Author L.L. 1990");
+        keys.add("Author D.D. 1991");
+        keys.add("Author S.S. 1992");
+        keys.add("Author Z.Z. 1993");
+        keys.add("Author K.K. 1993");
+
+        return keys;
     }
 }

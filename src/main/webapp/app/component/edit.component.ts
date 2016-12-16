@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class EditComponent {
     constructor(
         @Inject(BibliographyService) private _bibliographyService: BibliographyService,
-        @Inject(Router) private router: Router){
+        @Inject(Router) private router: Router) {
         this._bibliographyService = _bibliographyService;
     }
 

@@ -13,7 +13,7 @@ export class ViewComponent {
     }
 
     ngOnInit() {
-        this.getAll();
+        this.getAllBibliographies();
         this.getAllDstuFiles();
         this.clearAll();
     }
@@ -23,9 +23,9 @@ export class ViewComponent {
     private bibliographies: string[];
     private optionsMap: string[];
     private selectedBibliographies: string[];
-    public composed = false;
     private dstuFiles: string[];
-
+    public composed = false;
+    
     getAllDstuFiles() {
         this._bibliographyService.getAllDstuFiles()
             .subscribe(
@@ -34,22 +34,33 @@ export class ViewComponent {
             );
     }
 
-    getAll() {
+    getAllBibliographies() {
         this.error = "";
         this.bibliographies = [];
-        this._bibliographyService.getAll()
+        this._bibliographyService.getAllBibliographies()
             .subscribe(
                 data => this.bibliographies = data,
                 error => this.error = "Something went wrong."
             );
     }
 
+    getComposedBibliographies($event) {
+        this.selectedBibliographies = this.getSelectedBibliographies();
+        this._bibliographyService.getComposedBibliographies(this.selectedBibliographies)
+            .subscribe(
+                data => this.selectedBibliographies = data,
+                error => this.error = "Something went wrong."
+            );
+        this.composed = this.selectedBibliographies.length > 0;
+        $event.preventDefault();
+    }
+    
     clearAll() {
         this.bibliographies = [];
         this.selectedBibliographies = [];
         this.optionsMap = [];
         this.composed = false;
-        this.getAll();
+        this.getAllBibliographies();
     }
 
     updateCheckedOptions(bibliography, event) {
