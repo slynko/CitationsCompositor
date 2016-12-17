@@ -294,20 +294,26 @@
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
             </authors>
@@ -317,74 +323,96 @@
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
@@ -397,190 +425,258 @@
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
                     </surname>
                 </author>
-                <!-- NEED TO BE CHANGE -->
-                <separator s1="space" s2="begin-bracket" s3="others" s4="end-bracket" s5="space"/>
+                <separator-after>
+                    <separator-item name="space"/>
+                    <separator-item name="begin-bracket"/>
+                    <separator-item name="others"/>
+                    <separator-item name="end-bracket"/>
+                    <separator-item name="space"/>
+                </separator-after>
             </authors>
             <authors name="authors-after" no="gt 4" type="article"> <!-- ">" - "gt" !-->
                 <author>
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
-                <separator s1="comma" s2="space" s3="others" s4="space"/>
+                <separator-after>
+                    <separator-item name="comma"/>
+                    <separator-item name="space"/>
+                    <separator-item name="others"/>
+                    <separator-item name="space"/>
+                </separator-after>
             </authors>
             <authors name="authors-after" type="art-source"> <!-- ">" - "gt" !-->
                 <author>
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
-                <!-- NEED TO BE CHANGE -->
-                <separator s1="space" s2="begin-bracket" s3="others" s4="end-bracket" s5="space"/>
+                <separator-after>
+                    <separator-item name="space"/>
+                    <separator-item name="begin-bracket"/>
+                    <separator-item name="others"/>
+                    <separator-item name="end-bracket"/>
+                    <separator-item name="space"/>
+                </separator-after>
             </authors>
             <authors name="editors" no="lq 4" type="default"> <!-- "<=" - "lq" !-->
-                <!-- TODO WHAT TO DO WITH THIS?! -->
                 <editor-type>
-                    <separator-before1>space</separator-before1>
-                    <separator-before2>semicolon</separator-before2>
-                    <separator-before3>space</separator-before3>
-                    <separator-after1>space</separator-after1>
+                    <separator-before>
+                        <separator-item name="space" />
+                        <separator-item name="semicolon" />
+                        <separator-item name="space" />
+                    </separator-before>
+                    <separator-after>
+                        <separator-item name="space" />
+                    </separator-after>
                 </editor-type>
                 <author>
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
@@ -589,107 +685,141 @@
                 </author>
             </authors>
             <authors name="editors" no="gt 4" type="default"> <!-- ">"  - "gt" !-->
-                <!-- TODO WHAT TO DO WITH THIS?! -->
                 <editor-type>
-                    <separator-before1>space</separator-before1>
-                    <separator-before2>semicolon</separator-before2>
-                    <separator-after1>space</separator-after1>
-                    <separator-after2>space</separator-after2>
+                    <separator-before>
+                        <separator-item name="space" />
+                        <separator-item name="semicolon" />
+                    </separator-before>
+                    <separator-after>
+                        <separator-item name="space" />
+                        <separator-item name="space" />
+                    </separator-after>
                 </editor-type>
                 <author>
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
                     </surname>
                 </author>
-                <!-- NEED TO BE CHANGE -->
-                <separator s1="space" s2="begin-bracket" s3="others" s4="end-bracket" s5="space"/>
+                <separator-after>
+                    <separator-item name="space"/>
+                    <separator-item name="begin-bracket"/>
+                    <separator-item name="others"/>
+                    <separator-item name="end-bracket"/>
+                    <separator-item name="space"/>
+                </separator-after>
             </authors>
             <authors name="executors" no="lq 4" type="report"> <!-- "<=" - "lq" !-->
                 <author>
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
@@ -702,96 +832,127 @@
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
                     </surname>
                 </author>
-                <!-- NEED TO BE CHANGED -->
-                <separator s1="space" s2="begin-bracket" s3="others" s4="end-bracket" s5="space"/>
+                <separator-after>
+                    <separator-item name="space"/>
+                    <separator-item name="begin-bracket"/>
+                    <separator-item name="others"/>
+                    <separator-item name="end-bracket"/>
+                    <separator-item name="space"/>
+                </separator-after>
             </authors>
             <authors name="directors" no="lq 4" type="report"> <!-- "<=" - "lq" !-->
                 <author>
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after1>comma</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="comma"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
@@ -804,22 +965,31 @@
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after1>dot</separator-after1>
-                        <separator-after2>space</separator-after2>
+                        <separator-after>
+                            <separator-item name="dot"/>
+                            <separator-item name="space"/>
+                        </separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
                     </surname>
                 </author>
-                <!-- NEED TO BE CHANGED -->
-                <separator s1="space" s2="begin-bracket" s3="others" s4="end-bracket" s5="space"/>
+                <separator-after>
+                    <separator-item name="space"/>
+                    <separator-item name="begin-bracket"/>
+                    <separator-item name="others"/>
+                    <separator-item name="end-bracket"/>
+                    <separator-item name="space"/>
+                </separator-after>
             </authors>
         </names>
 
