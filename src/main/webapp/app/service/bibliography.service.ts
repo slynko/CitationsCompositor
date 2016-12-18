@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
 
 import 'rxjs/add/operator/map';
+import {Bibliography} from "../model/Bibliography";
 
 @Injectable()
 export class BibliographyService {
@@ -37,7 +38,7 @@ export class BibliographyService {
             .map(res => res.json());
     }
 
-    add(bibliography: string): Observable<string> {
+    add(bibliography: Bibliography): Observable<string> {
         //noinspection TypeScriptUnresolvedFunction
         return this.http.post(this.endpoint_url + "/add", bibliography)
             .map(res => res.json());

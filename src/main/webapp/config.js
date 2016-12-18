@@ -8,6 +8,7 @@ System.config({
         '@angular/common': 'node_modules/@angular/common/bundles/common.umd.js',
         '@angular/compiler': 'node_modules/@angular/compiler/bundles/compiler.umd.js',
         'typescript': 'node_modules/typescript/lib/typescript.js',
+        '@angular/forms': 'node_modules/@angular/forms/bundles/forms.umd.js',
         'rxjs': 'node_modules/rxjs'
     },
     transpiler: 'typescript',

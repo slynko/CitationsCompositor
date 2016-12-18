@@ -6,11 +6,13 @@ import { ViewComponent } from '../component/view.component';
 import { EditComponent } from '../component/edit.component';
 import { MainComponent } from '../component/main.component';
 import { BibliographyService } from '../service/bibliography.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
+        FormsModule,
         RouterModule.forRoot([
             {
                 path: '',
