@@ -1,7 +1,7 @@
 package com.khai.db.service;
 
 import com.google.common.collect.Lists;
-import com.khai.database.CitationModel;
+import com.khai.db.model.CitationModel;
 import com.khai.db.repository.BibliographyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

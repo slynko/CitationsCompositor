@@ -1,4 +1,4 @@
-package com.khai.database;
+package com.khai.db.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "publisher")
-public class Publisher {
+public class Person {
 
     @Id
     @GeneratedValue(generator = "increment")

@@ -1,6 +1,6 @@
 package com.khai.web.rest;
 
-import com.khai.database.CitationModel;
+import com.khai.db.model.CitationModel;
 import com.khai.model.ComposeBibliographiesBody;
 import com.khai.db.service.BibliographyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

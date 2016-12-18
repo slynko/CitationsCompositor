@@ -1,6 +1,6 @@
 package com.khai.web.listener;
 
-import com.khai.database.CitationModel;
+import com.khai.db.model.CitationModel;
 import com.khai.db.service.BibliographyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

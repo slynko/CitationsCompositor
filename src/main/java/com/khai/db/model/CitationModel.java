@@ -1,4 +1,4 @@
-package com.khai.database;
+package com.khai.db.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -20,14 +20,14 @@ public class CitationModel {
     private String type;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "authors", nullable = false)
-    private Set<Publisher> authors;
+    private Set<Person> authors;
     @Column(name = "publisher")
     private String publisher;
     @Column(name = "editor_type")
     private String editorType;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "editors", nullable = false)
-    private Set<Publisher> editors;
+    private Set<Person> editors;
     @Column(name = "publisher_info")
     private String publisherInfo;
     @Column(name = "year")
@@ -65,11 +65,11 @@ public class CitationModel {
         this.type = type;
     }
 
-    public Set<Publisher> getAuthors() {
+    public Set<Person> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(Set<Publisher> authors) {
+    public void setAuthors(Set<Person> authors) {
         this.authors = authors;
     }
 
@@ -137,11 +137,11 @@ public class CitationModel {
         this.page = page;
     }
 
-    public Set<Publisher> getEditors() {
+    public Set<Person> getEditors() {
         return editors;
     }
 
-    public void setEditors(Set<Publisher> editors) {
+    public void setEditors(Set<Person> editors) {
         this.editors = editors;
     }
 

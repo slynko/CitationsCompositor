@@ -1,6 +1,6 @@
 package com.khai.db.service;
 
-import com.khai.database.CitationModel;
+import com.khai.db.model.CitationModel;
 
 import java.util.List;
 
