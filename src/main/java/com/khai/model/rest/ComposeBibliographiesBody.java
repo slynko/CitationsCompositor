@@ -1,4 +1,4 @@
-package com.khai.model;
+package com.khai.model.rest;
 
 import java.util.List;
 

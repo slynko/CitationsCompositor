@@ -1,7 +1,7 @@
 package com.khai.web.rest;
 
 import com.khai.db.model.CitationModel;
-import com.khai.model.ComposeBibliographiesBody;
+import com.khai.model.rest.ComposeBibliographiesBody;
 import com.khai.db.service.BibliographyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
