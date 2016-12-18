@@ -1,6 +1,6 @@
 <label class="control-label">Select File</label>
 <form name="fileForm" (submit)="getComposedBibliographies($event)">
-    <select name="cars" required class="form-control">
+    <select name="cars" required class="form-control" #t (change)="callType(t.value)">
         <option disabled selected value>Select a file from the list</option>
         <option *ngFor="let file of dstuFiles" value="{{file}}" >{{file}}</option>
     </select>

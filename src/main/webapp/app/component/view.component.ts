@@ -18,7 +18,7 @@ export class ViewComponent {
         this.clearAll();
     }
 
-
+    private fileName: string;
     private error: string;
     private bibliographies: string[];
     private optionsMap: string[];
@@ -46,7 +46,7 @@ export class ViewComponent {
 
     getComposedBibliographies($event) {
         this.selectedBibliographies = this.getSelectedBibliographies();
-        this._bibliographyService.getComposedBibliographies(this.selectedBibliographies)
+        this._bibliographyService.getComposedBibliographies(this.selectedBibliographies, this.fileName)
             .subscribe(
                 data => this.selectedBibliographies = data,
                 error => this.error = "Something went wrong."
@@ -81,5 +81,10 @@ export class ViewComponent {
             }
         }
         return selectedBibliographies;
+    }
+
+    callType(value){
+        console.log(value);
+        this.fileName = value;
     }
 }

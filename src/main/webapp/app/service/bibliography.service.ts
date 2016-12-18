@@ -23,9 +23,11 @@ export class BibliographyService {
             .map(res => res.json());
     }
 
-    getComposedBibliographies(composedBibliograhiesNames: string[]): Observable<string[]> {
+    getComposedBibliographies(bibliographyKeys: string[],
+                              fileName: string): Observable<string[]> {
         //noinspection TypeScriptUnresolvedFunction
-        return this.http.post(this.endpoint_url + "/composed", composedBibliograhiesNames)
+        return this.http.post(this.endpoint_url + "/composed",
+            {bibliographyKeys, fileName})
             .map(res => res.json());
     }
     

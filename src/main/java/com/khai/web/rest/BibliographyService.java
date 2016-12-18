@@ -1,11 +1,8 @@
 package com.khai.web.rest;
 
+import com.khai.model.ComposeBibliographiesBody;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -63,11 +60,11 @@ public class BibliographyService {
 
     @PostMapping
     @RequestMapping("/composed")
-    public List<String> getComposedBibliographies(@RequestBody List<String> bibliographyKeys) {
+    public List<String> getComposedBibliographies(@RequestBody ComposeBibliographiesBody composeBibliographiesBody) {
 
         // some logic with bibliographies will be implemented here
 
-        return bibliographyKeys
+        return composeBibliographiesBody.getBibliographyKeys()
                 .stream()
                 .map(bibliography -> bibliography = bibliography.concat("."))
                 .collect(Collectors.toList());
