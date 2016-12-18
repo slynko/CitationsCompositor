@@ -1,7 +1,35 @@
-<form action="/">
+<form action="/" (submit)="add($event)" #f="ngForm">
     <div class="form-group">
-        <label for="bibliography">Bibliography:</label>
-        <input type="text" class="form-control" id="bibliography" #bibliography>
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" id="title"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.title" required>
+        <label for="type">Type:</label>
+        <input type="text" class="form-control" id="type"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.type"  >
+        <label for="publisher">Publisher:</label>
+        <input type="text" class="form-control" id="publisher"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.publisher"  >
+        <label for="editorType">Editor type:</label>
+        <input type="text" class="form-control" id="editorType"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.editorType" >
+        <label for="publisherInfo">Publisher info:</label>
+        <input type="text" class="form-control" id="publisherInfo"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.publisherInfo"  >
+        <label for="year">Year:</label>
+        <input type="text" class="form-control" id="year"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.year"  >
+        <label for="date">Date:</label>
+        <input type="date" class="form-control" id="date"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.date"  >
+        <label for="volume">Volume:</label>
+        <input type="text" class="form-control" id="volume"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.volume"  >
+        <label for="no">No:</label>
+        <input type="text" class="form-control" id="no"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.no"  >
+        <label for="page">Page:</label>
+        <input type="text" class="form-control" id="page"
+               [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.page"  >
     </div>
-    <button type="button" class="btn btn-default" (click)="add(bibliography.value)">Submit</button>
+    <button type="submit" class="btn btn-default">Submit</button>
 </form>

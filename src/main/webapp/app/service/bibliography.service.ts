@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
 
 import 'rxjs/add/operator/map';
+import {Bibliography} from "../model/Bibliography";
 
 @Injectable()
 export class BibliographyService {
@@ -23,9 +24,11 @@ export class BibliographyService {
             .map(res => res.json());
     }
 
-    getComposedBibliographies(composedBibliograhiesNames: string[]): Observable<string[]> {
+    getComposedBibliographies(bibliographyKeys: string[],
+                              fileName: string): Observable<string[]> {
         //noinspection TypeScriptUnresolvedFunction
-        return this.http.post(this.endpoint_url + "/composed", composedBibliograhiesNames)
+        return this.http.post(this.endpoint_url + "/composed",
+            {bibliographyKeys, fileName})
             .map(res => res.json());
     }
     
@@ -35,7 +38,7 @@ export class BibliographyService {
             .map(res => res.json());
     }
 
-    add(bibliography: string): Observable<string> {
+    add(bibliography: Bibliography): Observable<string> {
         //noinspection TypeScriptUnresolvedFunction
         return this.http.post(this.endpoint_url + "/add", bibliography)
             .map(res => res.json());
