@@ -1,21 +1,44 @@
 package com.khai.database;
 
-import java.util.List;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+@Table(name = "citation")
 public class CitationModel {
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id", length = 6, nullable = false)
     private long id;
+    @Column(name = "title")
     private String title;
+    @Column(name = "type")
     private String type;
-    private List<AuthorModel> authors;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "authors", nullable = false)
+    private Set<Publisher> authors;
+    @Column(name = "publisher")
     private String publisher;
+    @Column(name = "editor_type")
     private String editorType;
-    private List<EditorModel> editors;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "editors", nullable = false)
+    private Set<Publisher> editors;
+    @Column(name = "publisher_info")
     private String publisherInfo;
+    @Column(name = "year")
     private String year;
+    @Column(name = "date")
     private String date;
+    @Column(name = "volume")
     private String volume;
+    @Column(name = "no")
     private String no;
+    @Column(name = "page")
     private String page;
 
     public long getId() {
@@ -42,11 +65,11 @@ public class CitationModel {
         this.type = type;
     }
 
-    public List<AuthorModel> getAuthors() {
+    public Set<Publisher> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(List<AuthorModel> authors) {
+    public void setAuthors(Set<Publisher> authors) {
         this.authors = authors;
     }
 
@@ -64,14 +87,6 @@ public class CitationModel {
 
     public void setEditorType(String editorType) {
         this.editorType = editorType;
-    }
-
-    public List<EditorModel> getEditors() {
-        return editors;
-    }
-
-    public void setEditors(List<EditorModel> editors) {
-        this.editors = editors;
     }
 
     public String getPublisherInfo() {
@@ -120,5 +135,18 @@ public class CitationModel {
 
     public void setPage(String page) {
         this.page = page;
+    }
+
+    public Set<Publisher> getEditors() {
+        return editors;
+    }
+
+    public void setEditors(Set<Publisher> editors) {
+        this.editors = editors;
+    }
+
+    @Override
+    public String toString() {
+        return title;
     }
 }

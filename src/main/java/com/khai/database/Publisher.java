@@ -1,9 +1,23 @@
 package com.khai.database;
 
-public class EditorModel {
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "publisher")
+public class Publisher {
+
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id", length = 6, nullable = false)
+    private Long id;
+    @Column(name = "name1")
     private String name1;
+    @Column(name = "name2")
     private String name2;
+    @Column(name = "surname")
     private String surname;
 
     public String getName1() {

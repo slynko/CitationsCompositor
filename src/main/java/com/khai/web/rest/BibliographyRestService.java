@@ -1,6 +1,9 @@
 package com.khai.web.rest;
 
+import com.khai.database.CitationModel;
 import com.khai.model.ComposeBibliographiesBody;
+import com.khai.db.service.BibliographyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,21 +12,21 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("rest/bibliographies")
-public class BibliographyService {
+public class BibliographyRestService {
 
     @Value("${dstu.files.folder.path}")
     private String dstuFolderPath;
+    @Autowired
+    private BibliographyService bibliographyService;
 
-    private static List<String> bibliographyKeys;
-
-    public BibliographyService() {
-        BibliographyService.bibliographyKeys = getMockBibliographyKeys();
+    public BibliographyRestService() {
     }
 
     @GetMapping
@@ -44,18 +47,21 @@ public class BibliographyService {
 
     @GetMapping
     public List<String> getAll() {
-        return BibliographyService.bibliographyKeys;
+        return bibliographyService.findAll()
+                .stream()
+                .map(Object::toString)
+                .collect(Collectors.toList());
     }
 
     @PostMapping
-    public void setAll(@RequestBody List<String> bibliographies) {
-        BibliographyService.bibliographyKeys = bibliographies;
+    public void saveAll(@RequestBody List<CitationModel> bibliographies) {
+        bibliographyService.saveAll(bibliographies);
     }
 
     @PostMapping
     @RequestMapping("/add")
-    public void addBibliography(@RequestBody String bibliography) {
-        BibliographyService.bibliographyKeys.add(bibliography);
+    public void addBibliography(@RequestBody CitationModel model) {
+        bibliographyService.add(model);
     }
 
     @PostMapping
@@ -68,17 +74,5 @@ public class BibliographyService {
                 .stream()
                 .map(bibliography -> bibliography = bibliography.concat("."))
                 .collect(Collectors.toList());
-    }
-
-    private  List<String> getMockBibliographyKeys() {
-        List<String> keys = new ArrayList<>();
-
-        keys.add("Author L.L. 1990");
-        keys.add("Author D.D. 1991");
-        keys.add("Author S.S. 1992");
-        keys.add("Author Z.Z. 1993");
-        keys.add("Author K.K. 1993");
-
-        return keys;
     }
 }
