@@ -136,146 +136,93 @@
             <en>polyconic</en>
         </separator>
     </separators>
-    <multipart-separators>
-        <multipart-separator name="sectionalizer">
-            <separator-item name="dot"/>
-            <separator-item name="space"/>
-            <separator-item name="dash"/>
-            <separator-item name="space"/>
+    <multipart-separators-before>
+        <multipart-separator name="edition-type" type="default">
+            <separator-item name="begin-bracket"/>
         </multipart-separator>
-        <multipart-separator name="sectionalizer-years" type="magazine-article">
-            <separator-item name="comma"/>
-            <separator-item name="space"/>
-        </multipart-separator>
-        <multipart-separator name="deposition" type="shared-science-works">
-            <separator-item name="dot"/>
-        </multipart-separator>
-        <multipart-separator name="sectionalizer-years" type="default">
-            <separator-item name="dot"/>
-            <separator-item name="space"/>
-            <separator-item name="dash"/>
-            <separator-item name="space"/>
-        </multipart-separator>
-        <multipart-separator name="pages" type="default">
-            <separator-item name="dot"/>
-        </multipart-separator>
-        <multipart-separator name="work-type" type="default">
-            <separator-item name="space"/>
-            <separator-item name="slash"/>
-            <separator-item name="space"/>
-        </multipart-separator>
-        <multipart-separator name="work-type" type="book-title">
-            <separator-item name="dot"/>
-            <separator-item name="space"/>
-            <separator-item name="dash"/>
-        </multipart-separator>
-        <multipart-separator name="work-type" type="official-documents">
-            <separator-item name="dot"/>
-            <separator-item name="space"/>
-            <separator-item name="dash"/>
-        </multipart-separator>
-        <multipart-separator name="work-type" type="instructional-regulatory-documents">
-            <separator-item name="dot"/>
-            <separator-item name="space"/>
-            <separator-item name="dash"/>
-        </multipart-separator>
-        <multipart-separator name="work-type" type="state-standardstandards">
-            <separator-item name="dot"/>
-            <separator-item name="space"/>
-            <separator-item name="dash"/>
-        </multipart-separator>
-        <multipart-separator name="title" type="default">
-            <separator-item name="space"/>
-        </multipart-separator>
-        <multipart-separator name="additional-info" type="default">
-            <separator-item name="dot"/>
-            <separator-item name="space"/>
-            <separator-item name="dash"/>
-        </multipart-separator>
-        <multipart-separator name="additional-info" type="collection">
-            <separator-item name="space"/>
-            <separator-item name="semicolon"/>
-        </multipart-separator>
-        <multipart-separator name="additional-info" type="cartographic-publications">
-            <separator-item name="space"/>
-            <separator-item name="semicolon"/>
-        </multipart-separator>
-        <multipart-separator name="additional-info" type="report">
-            <separator-item name="space"/>
-            <separator-item name="semicolon"/>
-        </multipart-separator>
-        <multipart-separator name="additional-info" type="helper">
-            <separator-item name="space"/>
-            <separator-item name="semicolon"/>
-        </multipart-separator>
-        <multipart-separator name="publisher_name" type="default">
-            <separator-item name="comma"/>
-        </multipart-separator>
-        <multipart-separator name="publisher" type="default">
-            <separator-item name="dot"/>
-            <separator-item name="space"/>
-            <separator-item name="dash"/>
-            <separator-item name="space"/>
-        </multipart-separator>
-        <multipart-separator name="publisher" type="articles-from-the-collected-works">
-            <separator-item name="space"/>
-            <separator-item name="slash"/>
-            <separator-item name="space"/>
-        </multipart-separator>
-        <multipart-separator name="publisher" type="component-part-of-the-book ">
-            <separator-item name="space"/>
-            <separator-item name="slash"/>
-            <separator-item name="space"/>
-        </multipart-separator>
-        <multipart-separator name="publisher" type="electronic-resources">
-            <separator-item name="space"/>
-            <separator-item name="slash"/>
-            <separator-item name="space"/>
-        </multipart-separator>
-        <multipart-separator name="year-date" type="default">
-            <separator-item name="dot"/>
-            <separator-item name="space"/>
-            <separator-item name="slash"/>
-            <separator-item name="space"/>
-        </multipart-separator>
-        <multipart-separator name="volume" type="default">
-            <separator-item name="comma"/>
-            <separator-item name="space"/>
-        </multipart-separator>
-        <multipart-separator name="volume" type="articles-from-the-collected-works">
+        <multipart-separator name="type" type="default">
             <separator-item name="space"/>
             <separator-item name="colon"/>
             <separator-item name="space"/>
         </multipart-separator>
-        <multipart-separator name="no" type="default">
+        <multipart-separator name="additional-info" type="default">
+            <separator-item name="space"/>
+            <separator-item name="slash"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+        <multipart-separator name="publisher-city" type="default">
+            <separator-item name="space"/>
+            <separator-item name="dash"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+        <multipart-separator name="publisher" type="default">
+            <separator-item name="slash"/>
+            <separator-item name="slash"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+        <multipart-separator name="year-date" type="default">
+            <separator-item name="comma"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+        <multipart-separator name="sectionalizer" type="default">
             <separator-item name="dot"/>
             <separator-item name="space"/>
             <separator-item name="dash"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+        <multipart-separator name="pages" type="article">
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+            <separator-item name="dash"/>
+            <separator-item name="space"/>
+            <separator-item name="pages"/>
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+    </multipart-separators-before>
+    <multipart-separators-after>
+        <multipart-separator name="name" type="default">
+            <separator-item name="dot"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+        <multipart-separator name="surname" type="default">
+            <separator-item name="comma"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+        <multipart-separator name="title" type="default">
+            <separator-item name="space"/>
+        </multipart-separator>
+        <multipart-separator name="edition-type" type="default">
+            <separator-item name="end-bracket"/>
+        </multipart-separator>
+        <multipart-separator name="others" type="default">
+            <separator-item name="space"/>
+            <separator-item name="begin-bracket"/>
+            <separator-item name="others"/>
+            <separator-item name="end-bracket"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+        <multipart-separator name="others" type="article">
+            <separator-item name="comma"/>
+            <separator-item name="space"/>
+            <separator-item name="others"/>
+            <separator-item name="space"/>
+        </multipart-separator>
+        <multipart-separator name="publisher" type="default">
+            <separator-item name="dot"/>
             <separator-item name="space"/>
         </multipart-separator>
         <multipart-separator name="pages" type="default">
+            <separator-item name="space"/>
+            <separator-item name="page"/>
             <separator-item name="dot"/>
         </multipart-separator>
-        <multipart-separator name="official_date" type="default">
+        <multipart-separator name="pages" type="article">
+            <!--<separator-item name="hyphen"/>-->
             <separator-item name="dot"/>
-            <separator-item name="space"/>
-            <separator-item name="dash"/>
         </multipart-separator>
-        <multipart-separator name="authors-after" type="electronic-resources">
-            <separator-item name="dot"/>
-            <separator-item name="space"/>
-            <separator-item name="dash"/>
-        </multipart-separator>
-        <multipart-separator name="number-of-standard" type="state-standardstandards">
-            <separator-item name="space"/>
-        </multipart-separator>
-        <multipart-separator name="number-of-standard" type="state-standardstandards">
-            <separator-item name="space"/>
-            <separator-item name="semicolon"/>
-            <separator-item name="space"/>
-        </multipart-separator>
-    </multipart-separators>
-    <!-- TODO: separator-after + separator-before need to be converted to one multipart-separator -->
+    </multipart-separators-after>
+    <!-- TODO: think about editor-type inside authors :/ -->
     <citation-parts>
         <!-- equal to                 - "==" - "eq"; not equal to - "!=" - "ne";
          greater than             - ">"  - "gt"; less than    - "<"  - "lt";
@@ -287,26 +234,17 @@
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
             </authors>
@@ -315,48 +253,30 @@
         <title>
             <field type="default">
                 <info/>
-                <separator-after>
-                    <separator-item name="space"/>
-                </separator-after>
+                <multipart-separator-after>title</multipart-separator-after>
             </field>
         </title>
         <edition-type>
             <field type="default">
-                <separator-before>
-                    <separator-item name="begin-bracket"/>
-                </separator-before>
+                <multipart-separator-before>edition-type</multipart-separator-before>
                 <info/>
-                <separator-after>
-                    <separator-item name="end-bracket"/>
-                </separator-after>
+                <multipart-separator-after>edition-type</multipart-separator-after>
             </field>
             <field type="electronic-resources">
-                <separator-before>
-                    <separator-item name="begin-bracket"/>
-                </separator-before>
+                <multipart-separator-before>edition-type</multipart-separator-before>
                 <info/>
-                <separator-after>
-                    <separator-item name="end-bracket"/>
-                </separator-after>
+                <multipart-separator-after>edition-type</multipart-separator-after>
             </field>
         </edition-type>
         <type>
             <field type="default">
-                <separator-before>
-                    <separator-item name="space"/>
-                    <separator-item name="colon"/>
-                    <separator-item name="space"/>
-                </separator-before>
+                <multipart-separator-before>type</multipart-separator-before>
                 <info/>
             </field>
         </type>
         <additional-info>
             <field type="default">
-                <separator-before>
-                    <separator-item name="space"/>
-                    <separator-item name="slash"/>
-                    <separator-item name="space"/>
-                </separator-before>
+                <multipart-separator-before>additional-info</multipart-separator-before>
                 <info/>
             </field>
         </additional-info>
@@ -376,96 +296,63 @@
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
@@ -488,31 +375,19 @@
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
                     </surname>
                 </author>
-                <separator-after>
-                    <separator-item name="space"/>
-                    <separator-item name="begin-bracket"/>
-                    <separator-item name="others"/>
-                    <separator-item name="end-bracket"/>
-                    <separator-item name="space"/>
-                </separator-after>
+                <multipart-separator-after>others</multipart-separator-after>
             </authors>
         </editors>
         <authors-after>
@@ -521,96 +396,63 @@
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
@@ -623,152 +465,93 @@
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
                     </surname>
                 </author>
-                <separator-after>
-                    <separator-item name="space"/>
-                    <separator-item name="begin-bracket"/>
-                    <separator-item name="others"/>
-                    <separator-item name="end-bracket"/>
-                    <separator-item name="space"/>
-                </separator-after>
+                <multipart-separator-after>others</multipart-separator-after>
             </authors>
             <authors no="gt 4" type="article"> <!-- ">" - "gt" !-->
                 <author>
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
-                <separator-after>
-                    <separator-item name="comma"/>
-                    <separator-item name="space"/>
-                    <separator-item name="others"/>
-                    <separator-item name="space"/>
-                </separator-after>
+                <multipart-separator-after>others</multipart-separator-after>
             </authors>
             <authors type="art-source"> <!-- ">" - "gt" !-->
                 <author>
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
-                <separator-after>
-                    <separator-item name="space"/>
-                    <separator-item name="begin-bracket"/>
-                    <separator-item name="others"/>
-                    <separator-item name="end-bracket"/>
-                    <separator-item name="space"/>
-                </separator-after>
+                <multipart-separator-after>others</multipart-separator-after>
             </authors>
         </authors-after>
         <directors>
@@ -777,96 +560,63 @@
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
@@ -879,31 +629,19 @@
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
                     </surname>
                 </author>
-                <separator-after>
-                    <separator-item name="space"/>
-                    <separator-item name="begin-bracket"/>
-                    <separator-item name="others"/>
-                    <separator-item name="end-bracket"/>
-                    <separator-item name="space"/>
-                </separator-after>
+                <multipart-separator-after>others</multipart-separator-after>
             </authors>
         </directors>
         <executors>
@@ -912,96 +650,63 @@
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
                         <len>-1</len>
-                        <separator-after>
-                            <separator-item name="comma"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>surname</multipart-separator-after>
                     </surname>
                 </author>
                 <author>
                     <name1>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>false</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>false</unique>
@@ -1014,138 +719,73 @@
                     <name1>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name1>
                     <name2>
                         <unique>true</unique>
                         <len>1</len>
-                        <separator-after>
-                            <separator-item name="dot"/>
-                            <separator-item name="space"/>
-                        </separator-after>
+                        <multipart-separator-after>name</multipart-separator-after>
                     </name2>
                     <surname>
                         <unique>true</unique>
                         <len>-1</len>
                     </surname>
                 </author>
-                <separator-after>
-                    <separator-item name="space"/>
-                    <separator-item name="begin-bracket"/>
-                    <separator-item name="others"/>
-                    <separator-item name="end-bracket"/>
-                    <separator-item name="space"/>
-                </separator-after>
+                <multipart-separator-after>others</multipart-separator-after>
             </authors>
         </executors>
         <publisher-city>
             <field type="default">
-                <separator-before>
-                    <separator-item name="space"/>
-                    <separator-item name="dash"/>
-                    <separator-item name="space"/>
-                </separator-before>
+                <multipart-separator-before>publisher-city</multipart-separator-before>
                 <info/>
             </field>
         </publisher-city>
         <publisher-name>
             <field type="default">
-                <separator-before>
-                    <separator-item name="space"/>
-                    <separator-item name="colon"/>
-                    <separator-item name="space"/>
-                </separator-before>
+                <multipart-separator-before>type</multipart-separator-before>
                 <info/>
             </field>
         </publisher-name>
         <publisher>
             <field type="default">
-                <separator-before>
-                    <separator-item name="slash"/>
-                    <separator-item name="slash"/>
-                    <separator-item name="space"/>
-                </separator-before>
+                <multipart-separator-before>publisher</multipart-separator-before>
                 <info/>
-                <separator-after>
-                    <separator-item name="dot"/>
-                    <separator-item name="space"/>
-                </separator-after>
+                <multipart-separator-after>publisher</multipart-separator-after>
             </field>
         </publisher>
         <year-date>
             <field type="default">
-                <separator-before>
-                    <separator-item name="comma"/>
-                    <separator-item name="space"/>
-                </separator-before>
+                <multipart-separator-before>year-date</multipart-separator-before>
                 <info/>
             </field>
         </year-date>
         <volume>
             <field type="default">
-                <separator-before>
-                    <separator-item name="dot"/>
-                    <separator-item name="space"/>
-                    <separator-item name="dash"/>
-                    <separator-item name="space"/>
-                </separator-before>
+                <multipart-separator-before>sectionalizer</multipart-separator-before>
                 <info/>
             </field>
         </volume>
         <no>
             <field type="default">
-                <separator-before>
-                    <separator-item name="dot"/>
-                    <separator-item name="space"/>
-                    <separator-item name="dash"/>
-                    <separator-item name="space"/>
-                </separator-before>
+                <multipart-separator-before>sectionalizer</multipart-separator-before>
                 <info/>
             </field>
         </no>
         <pages>
             <field type="default">
-                <separator-before>
-                    <separator-item name="dot"/>
-                    <separator-item name="space"/>
-                    <separator-item name="dash"/>
-                    <separator-item name="space"/>
-                </separator-before>
+                <multipart-separator-before>sectionalizer</multipart-separator-before>
                 <info/>
-                <separator-after>
-                    <separator-item name="space"/>
-                    <separator-item name="page"/>
-                    <separator-item name="dot"/>
-                </separator-after>
+                <multipart-separator-after>pages</multipart-separator-after>
             </field>
             <field type="article">
-                <separator-before>
-                    <separator-item name="dot"/>
-                    <separator-item name="space"/>
-                    <separator-item name="dash"/>
-                    <separator-item name="space"/>
-                    <separator-item name="pages"/>
-                    <separator-item name="dot"/>
-                    <separator-item name="space"/>
-                </separator-before>
+                <multipart-separator-before>pages</multipart-separator-before>
                 <info/>
-                <separator-after>
-                    <!--<separator-item name="hyphen"/>-->
-                    <separator-item name="dot"/>
-                </separator-after>
+                <multipart-separator-after>pages</multipart-separator-after>
             </field>
         </pages>
         <official-date>
             <field type="default">
-                <separator-before>
-                    <separator-item name="dot"/>
-                    <separator-item name="space"/>
-                    <separator-item name="dash"/>
-                    <separator-item name="space"/>
-                </separator-before>
+                <multipart-separator-before>sectionalizer</multipart-separator-before>
                 <info/>
             </field>
         </official-date>
@@ -1153,18 +793,20 @@
     <!-- The example how to create citations of different types -->
     <citations>
         <citation type="default">
-            <part>first-author</part>
-            <part>title</part>
-            <part>type</part>
-            <part>authors-after</part>
-            <part>publisher</part>
-            <part>editors</part>
-            <part>publisher-city</part>
-            <part>publisher-name</part>
-            <part>year-date</part>
-            <part>volume</part>
-            <part>no</part>
-            <part>pages</part>
+            <parts length="12">
+                <string>first-author</string>
+                <string>title</string>
+                <string>type</string>
+                <string>authors-after</string>
+                <string>publisher</string>
+                <string>editors</string>
+                <string>publisher-city</string>
+                <string>publisher-name</string>
+                <string>year-date</string>
+                <string>volume</string>
+                <string>no</string>
+                <string>pages</string>
+            </parts>
         </citation>
     </citations>
 </standard>
