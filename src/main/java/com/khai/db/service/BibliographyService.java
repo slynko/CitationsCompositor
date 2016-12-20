@@ -4,6 +4,9 @@ import com.khai.db.model.CitationModel;
 
 import java.util.List;
 
+/**
+ * Bibliography crud service.
+ */
 public interface BibliographyService {
     List<CitationModel> findAll();
     void saveAll(Iterable<CitationModel> bibliographies);

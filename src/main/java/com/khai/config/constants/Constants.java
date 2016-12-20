@@ -1,5 +1,8 @@
 package com.khai.config.constants;
 
+/**
+ * Project constants
+ */
 public abstract class Constants {
 
     public static final String PROP_DATABASE_DRIVER = "db.driver";

@@ -11,12 +11,19 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
+/**
+ * Listener for application context change.
+ */
 @Component
 public class Listener implements ApplicationListener {
 
     @Autowired
     BibliographyService bibliographyService;
 
+    /**
+     * Initialise db on context init.
+     * @param event
+     */
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
         if (event instanceof ContextRefreshedEvent) {

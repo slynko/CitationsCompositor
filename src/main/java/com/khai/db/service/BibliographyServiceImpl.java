@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Implementation of bibliography crud service.
+ */
 @Service
 public class BibliographyServiceImpl implements BibliographyService {
     @Autowired

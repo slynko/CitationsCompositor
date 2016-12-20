@@ -16,6 +16,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Bibliography rest service.
+ */
 @RestController
 @RequestMapping("rest/bibliographies")
 public class BibliographyRestService {
@@ -25,9 +28,10 @@ public class BibliographyRestService {
     @Autowired
     private BibliographyService bibliographyService;
 
-    public BibliographyRestService() {
-    }
-
+    /**
+     * Get dstu file names.
+     * @return list of dstur file names
+     */
     @GetMapping
     @RequestMapping("/dstu/files")
     public List<String> getFileNames() {
@@ -44,6 +48,10 @@ public class BibliographyRestService {
         return files;
     }
 
+    /**
+     * Get all bibliographies from db.
+     * @return list of bibliographies
+     */
     @GetMapping
     public List<String> getAll() {
         return bibliographyService.findAll()
@@ -52,17 +60,31 @@ public class BibliographyRestService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Save all bibliographies
+     * @param bibliographies to save
+     */
     @PostMapping
     public void saveAll(@RequestBody List<CitationModel> bibliographies) {
         bibliographyService.saveAll(bibliographies);
     }
 
+
+    /**
+     * Add a bibliography to db
+     * @param model to add
+     */
     @PostMapping
     @RequestMapping("/add")
     public void addBibliography(@RequestBody CitationModel model) {
         bibliographyService.add(model);
     }
 
+    /**
+     * Compose bibliographies using dstu file business logic.
+     * @param composeBibliographiesBody to compose
+     * @return
+     */
     @PostMapping
     @RequestMapping("/composed")
     public List<String> getComposedBibliographies(@RequestBody ComposeBibliographiesBody composeBibliographiesBody) {
