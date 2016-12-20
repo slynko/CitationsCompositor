@@ -16,16 +16,29 @@ public class BibliographyServiceImpl implements BibliographyService {
     @Autowired
     private BibliographyRepository bibliographyRepository;
 
+    /**
+     * Find all citations.
+     * @return all citations
+     */
     @Override
     public List<CitationModel> findAll() {
         return Lists.newArrayList(bibliographyRepository.findAll());
     }
 
+    /**
+     * Save all bibliographies.
+     * @param bibliographies to save
+     */
     @Override
     public void saveAll(Iterable<CitationModel> bibliographies) {
         bibliographyRepository.save(bibliographies);
     }
 
+    /**
+     * Add a bibliography.
+     * @param model to add
+     * @return added model
+     */
     @Override
     public CitationModel add(CitationModel model) {
         return bibliographyRepository.save(model);
