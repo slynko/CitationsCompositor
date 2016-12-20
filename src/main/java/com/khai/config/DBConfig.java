@@ -16,24 +16,24 @@ import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+import static com.khai.config.constants.Constants.PROP_DATABASE_DRIVER;
+import static com.khai.config.constants.Constants.PROP_DATABASE_PASSWORD;
+import static com.khai.config.constants.Constants.PROP_DATABASE_URL;
+import static com.khai.config.constants.Constants.PROP_DATABASE_USERNAME;
+import static com.khai.config.constants.Constants.PROP_ENTITYMANAGER_PACKAGES_TO_SCAN;
+import static com.khai.config.constants.Constants.PROP_HIBERNATE_DIALECT;
+import static com.khai.config.constants.Constants.PROP_HIBERNATE_HBM2DDL_AUTO;
+import static com.khai.config.constants.Constants.PROP_HIBERNATE_SHOW_SQL;
+
 /**
  * Spring beans containing app configuration.
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"com.khai.database", "com.khai.db"})
+@ComponentScan("com.khai.db")
 @PropertySource("classpath:application.properties")
-@EnableJpaRepositories(basePackages = {"com.khai.database", "com.khai.db"})
+@EnableJpaRepositories("com.khai.db.repository")
 public class DBConfig {
-
-    private static final String PROP_DATABASE_DRIVER = "db.driver";
-    private static final String PROP_DATABASE_PASSWORD = "db.password";
-    private static final String PROP_DATABASE_URL = "db.url";
-    private static final String PROP_DATABASE_USERNAME = "db.username";
-    private static final String PROP_HIBERNATE_DIALECT = "hibernate.dialect";
-    private static final String PROP_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
-    private static final String PROP_ENTITYMANAGER_PACKAGES_TO_SCAN = "hibernate.packagesToScan";
-    private static final String PROP_HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
 
     @Resource
     private Environment env;

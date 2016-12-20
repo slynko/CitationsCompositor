@@ -84,7 +84,6 @@ export class ViewComponent {
     }
 
     callType(value){
-        console.log(value);
         this.fileName = value;
     }
 }
