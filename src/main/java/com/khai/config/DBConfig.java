@@ -40,6 +40,7 @@ public class DBConfig {
 
     /**
      * Data source bean. Contains DB configuration.
+     * @return data source
      */
     @Bean
     public DataSource dataSource() {
@@ -53,6 +54,7 @@ public class DBConfig {
 
     /**
      * Entity manager factory bean. Contains entity manager factory configuration.
+     * @return entity manager factory
      */
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -66,6 +68,7 @@ public class DBConfig {
 
     /**
      * Transaction manager bean. Contains transaction manager configuration.
+     * @return jpa transaction manager
      */
     @Bean
     public JpaTransactionManager transactionManager() {

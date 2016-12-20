@@ -83,7 +83,7 @@ public class BibliographyRestService {
     /**
      * Compose bibliographies using dstu file business logic.
      * @param composeBibliographiesBody to compose
-     * @return
+     * @return composed bibliographies
      */
     @PostMapping
     @RequestMapping("/composed")

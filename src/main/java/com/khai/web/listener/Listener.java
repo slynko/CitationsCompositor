@@ -22,7 +22,7 @@ public class Listener implements ApplicationListener {
 
     /**
      * Initialise db on context init.
-     * @param event
+     * @param event app event
      */
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
