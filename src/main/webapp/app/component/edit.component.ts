@@ -13,10 +13,9 @@ export class EditComponent {
         @Inject(BibliographyService) private _bibliographyService: BibliographyService,
         @Inject(Router) private router: Router) {
         this._bibliographyService = _bibliographyService;
-        this.bibliography = new Bibliography();
     }
 
-    public bibliography: Bibliography;
+    public bibliography: Bibliography = new Bibliography();
 
     addAll(bibliographies: string[]) {
         this._bibliographyService.addAll(bibliographies)

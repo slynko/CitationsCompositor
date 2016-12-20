@@ -3,6 +3,6 @@
 **/*.js.map
 
 ######### Else #######
-.idea/**
-**/node_modules/**
+.idea/*
+/node_modules/*
 **/*.log
