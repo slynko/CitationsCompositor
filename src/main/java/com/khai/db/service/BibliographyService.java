@@ -26,4 +26,6 @@ public interface BibliographyService {
      * @return added model
      */
     CitationModel add(CitationModel model);
+
+    List<CitationModel> findByTitle(List<String> titles);
 }

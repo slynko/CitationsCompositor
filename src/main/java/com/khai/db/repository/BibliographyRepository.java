@@ -7,4 +7,5 @@ import org.springframework.data.repository.CrudRepository;
  * Bibliography crud repository.
  */
 public interface BibliographyRepository extends CrudRepository<CitationModel, Long> {
+    CitationModel findByTitle(String title);
 }

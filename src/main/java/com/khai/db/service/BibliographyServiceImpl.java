@@ -6,6 +6,7 @@ import com.khai.db.repository.BibliographyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,4 +44,18 @@ public class BibliographyServiceImpl implements BibliographyService {
     public CitationModel add(CitationModel model) {
         return bibliographyRepository.save(model);
     }
+
+    @Override
+    public List<CitationModel> findByTitle(List<String> titles) {
+        List<CitationModel> citations = new ArrayList<>();
+        for (String title : titles) {
+            CitationModel citation = bibliographyRepository.findByTitle(title);
+            if (citation != null) {
+                citations.add(citation);
+            }
+        }
+        return citations;
+    }
+
+
 }

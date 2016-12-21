@@ -1,6 +1,7 @@
 package com.khai.web.rest;
 
 import com.khai.db.model.CitationModel;
+import com.khai.model.proposed.Citation;
 import com.khai.model.rest.ComposeBibliographiesBody;
 import com.khai.db.service.BibliographyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,9 +92,13 @@ public class BibliographyRestService {
 
         // some logic with bibliographies will be implemented here
 
+        List<CitationModel> citations = bibliographyService
+                .findByTitle(composeBibliographiesBody.getBibliographyKeys());
+
         return composeBibliographiesBody.getBibliographyKeys()
                 .stream()
                 .map(bibliography -> bibliography = bibliography.concat("."))
                 .collect(Collectors.toList());
     }
+
 }
