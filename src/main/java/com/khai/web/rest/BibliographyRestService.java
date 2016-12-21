@@ -1,8 +1,9 @@
 package com.khai.web.rest;
 
 import com.khai.db.model.CitationModel;
-import com.khai.model.rest.ComposeBibliographiesBody;
 import com.khai.db.service.BibliographyService;
+import com.khai.model.rest.ComposeBibliographiesBody;
+import com.khai.xml.XmlController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -82,22 +83,16 @@ public class BibliographyRestService {
 
     /**
      * Compose bibliographies using dstu file business logic.
-     * @param composeBibliographiesBody to compose
+     * @param bibliographies to compose
      * @return composed bibliographies
      */
     @PostMapping
     @RequestMapping("/composed")
-    public List<String> getComposedBibliographies(@RequestBody ComposeBibliographiesBody composeBibliographiesBody) {
-
-        // some logic with bibliographies will be implemented here
-
-        List<CitationModel> citations = bibliographyService
-                .findByTitles(composeBibliographiesBody.getBibliographyKeys());
-
-        return composeBibliographiesBody.getBibliographyKeys()
-                .stream()
-                .map(bibliography -> bibliography = bibliography.concat("."))
-                .collect(Collectors.toList());
+    public List<String> getComposedBibliographies(@RequestBody ComposeBibliographiesBody bibliographies) {
+        final List<CitationModel> citations = bibliographyService
+                .findByTitles(bibliographies.getBibliographyKeys());
+        return XmlController.getInstance()
+                .makeBibliographies(bibliographies.getFileName(), citations);
     }
 
 }

@@ -11,7 +11,7 @@ import org.simpleframework.xml.Root;
 import java.util.List;
 
 @Root(name = "standard")
-public class StandardProposed {
+public class Standard {
 
     @Attribute(name = "name")
     private String name;
