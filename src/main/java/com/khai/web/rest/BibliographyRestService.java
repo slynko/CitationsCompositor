@@ -92,7 +92,7 @@ public class BibliographyRestService {
         // some logic with bibliographies will be implemented here
 
         List<CitationModel> citations = bibliographyService
-                .findByTitle(composeBibliographiesBody.getBibliographyKeys());
+                .findByTitles(composeBibliographiesBody.getBibliographyKeys());
 
         return composeBibliographiesBody.getBibliographyKeys()
                 .stream()
