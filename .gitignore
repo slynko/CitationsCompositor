@@ -4,5 +4,4 @@
 
 ######### Else #######
 .idea/*
-/node_modules/*
 **/*.log

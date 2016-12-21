@@ -46,7 +46,7 @@ public class BibliographyServiceImpl implements BibliographyService {
     }
 
     @Override
-    public List<CitationModel> findByTitle(List<String> titles) {
+    public List<CitationModel> findByTitles(List<String> titles) {
         List<CitationModel> citations = new ArrayList<>();
         for (String title : titles) {
             CitationModel citation = bibliographyRepository.findByTitle(title);
