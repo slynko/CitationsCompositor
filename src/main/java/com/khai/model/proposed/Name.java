@@ -1,5 +1,6 @@
 package com.khai.model.proposed;
 
+import com.khai.model.MultipartSeparator;
 import org.simpleframework.xml.Element;
 
 public class Name {
@@ -9,7 +10,7 @@ public class Name {
     @Element(name = "len")
     private int len;
     @Element(name = "multipart-separator-after", required = false)
-    private String separator;
+    private MultipartSeparator separator;
 
     public boolean isUnique() {
         return unique;
@@ -27,11 +28,11 @@ public class Name {
         this.len = len;
     }
 
-    public String getSeparator() {
+    public MultipartSeparator getSeparator() {
         return separator;
     }
 
-    public void setSeparator(String separator) {
+    public void setSeparator(MultipartSeparator separator) {
         this.separator = separator;
     }
 }

@@ -1,5 +1,6 @@
 package com.khai.model.proposed;
 
+import com.khai.model.MultipartSeparator;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
@@ -8,11 +9,11 @@ public class Field {
     @Attribute(name = "type")
     private String type;
     @Element(name = "multipart-separator-before", required = false)
-    private String multipartSeparatorBefore;
+    private MultipartSeparator multipartSeparatorBefore;
     @Element(name = "info", required = false)
     private String info;
     @Element(name = "multipart-separator-after", required = false)
-    private String multipartSeparatorAfter;
+    private MultipartSeparator multipartSeparatorAfter;
 
     public String getType() {
         return type;
@@ -22,11 +23,11 @@ public class Field {
         this.type = type;
     }
 
-    public String getMultipartSeparatorBefore() {
+    public MultipartSeparator getMultipartSeparatorBefore() {
         return multipartSeparatorBefore;
     }
 
-    public void setMultipartSeparatorBefore(String multipartSeparatorBefore) {
+    public void setMultipartSeparatorBefore(MultipartSeparator multipartSeparatorBefore) {
         this.multipartSeparatorBefore = multipartSeparatorBefore;
     }
 
@@ -38,11 +39,11 @@ public class Field {
         this.info = info;
     }
 
-    public String getMultipartSeparatorAfter() {
+    public MultipartSeparator getMultipartSeparatorAfter() {
         return multipartSeparatorAfter;
     }
 
-    public void setMultipartSeparatorAfter(String multipartSeparatorAfter) {
+    public void setMultipartSeparatorAfter(MultipartSeparator multipartSeparatorAfter) {
         this.multipartSeparatorAfter = multipartSeparatorAfter;
     }
 }

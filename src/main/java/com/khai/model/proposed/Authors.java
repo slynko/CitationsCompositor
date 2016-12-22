@@ -1,6 +1,7 @@
 package com.khai.model.proposed;
 
 import com.khai.model.EditorType;
+import com.khai.model.MultipartSeparator;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
@@ -18,7 +19,7 @@ public class Authors {
     @Element(name = "editor-type", required = false)
     private EditorType editorType;
     @Element(name = "multipart-separator-after", required = false)
-    private String multipartSeparatorAfter;
+    private MultipartSeparator multipartSeparatorAfter;
 
     public String getNo() {
         return no;
@@ -52,11 +53,11 @@ public class Authors {
         this.editorType = editorType;
     }
 
-    public String getMultipartSeparatorAfter() {
+    public MultipartSeparator getMultipartSeparatorAfter() {
         return multipartSeparatorAfter;
     }
 
-    public void setMultipartSeparatorAfter(String multipartSeparatorAfter) {
+    public void setMultipartSeparatorAfter(MultipartSeparator multipartSeparatorAfter) {
         this.multipartSeparatorAfter = multipartSeparatorAfter;
     }
 }
