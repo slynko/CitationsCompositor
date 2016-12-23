@@ -2,62 +2,40 @@ package com.khai.xml;
 
 import com.khai.db.model.CitationModel;
 import com.khai.model.xml.*;
-import com.khai.utils.StandardUtils;
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
 
-import java.io.File;
-import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-/**
- * Controller for making bibliographies
- */
-public class XmlController {
+public class StandardManager {
 
-    private static XmlController controller;
-    private Standard standard;
+    private static StandardManager manager;
 
-    private XmlController() {
+    private Map<String, Standard> standardMap;
+
+    private StandardManager() {
+        standardMap = new HashMap<>();
     }
 
-    public static synchronized XmlController getInstance() {
-        if (controller == null) {
-            controller = new XmlController();
+    public static synchronized StandardManager getInstance() {
+        if (manager == null) {
+            manager = new StandardManager();
         }
-        return controller;
+        return manager;
     }
 
     public List<String> makeBibliographies(String standardName, List<CitationModel> citations) {
-        chooseStandard(standardName);
-        return getBibliographies(citations);
-    }
-
-    private void chooseStandard(String standardName) {
-        switch (standardName) {
-            case StandardUtils.DSTU_7_1_2006:
-                if (standard == null) {
-                    final URL path = getClass().getClassLoader().getResource(StandardUtils.DSTU_7_1_2006_PATH);
-                    if (path == null) {
-                        throw new IllegalArgumentException("Something is wrong with standard's file path");
-                    }
-                    final Serializer serializer = new Persister();
-                    final File source = new File(path.getFile());
-                    try {
-                        standard = serializer.read(Standard.class, source);
-                        makeStandard();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                break;
-            default:
-                throw new IllegalArgumentException("There is no such standard");
+        Standard chosenStandard = null;
+        if (!standardMap.containsKey(standardName)) {
+            chosenStandard = XmlParser.getInstance().parseStandard(standardName);
+            standardMap.put(standardName, chosenStandard);
+            makeStandard(chosenStandard);
         }
+        return getBibliographies(chosenStandard, citations);
     }
 
-    private void makeStandard() {
+    private void makeStandard(Standard standard) {
         final List<Separator> separators = standard.getSeparatorList();
         final List<MultipartSeparator> multipartSeparatorsAfter = standard.getMultiSeparatorsAfter();
         final List<MultipartSeparator> multipartSeparatorsBefore = standard.getMultiSeparatorsBefore();
@@ -152,12 +130,12 @@ public class XmlController {
         }
     }
 
-    private List<String> getBibliographies(List<CitationModel> citations) {
+    private List<String> getBibliographies(Standard standard, List<CitationModel> citations) {
         List<String> bibliographies = new ArrayList<>();
         final String[] parts = standard.getCitations().get(0).getParts();
         for (CitationModel citation : citations) {
             final List<String> citationParts = getInfoForBibliography(parts, citation);
-            final String bibliographiedString = makeBibliographiedString(citationParts, "default", citation);
+            final String bibliographiedString = makeBibliographiedString(standard, citationParts, "default", citation);
             bibliographies.add(bibliographiedString);
         }
         return bibliographies;
@@ -166,78 +144,78 @@ public class XmlController {
     private List<String> getInfoForBibliography(String[] parts, CitationModel model) {
         final List<String> infoForBibliography = new ArrayList<>();
         for (String part : parts) {
-            switch (part) {
-                case "first-author":
+            switch (Citations.fromString(part)) {
+                case FIRST_AUTHOR:
                     //todo need to be implemented
                     break;
-                case "title":
+                case TITLE:
                     if (model.getTitle() != null) {
                         infoForBibliography.add(part);
                     }
                     break;
-                case "edition-type":
+                case EDITION_TYPE:
                     if (model.getEditorType() != null) {
                         infoForBibliography.add(part);
                     }
                     break;
-                case "type":
+                case TYPE:
                     if (model.getType() != null) {
                         infoForBibliography.add(part);
                     }
                     break;
-                case "additional-info":
+                case ADDITIONAL_INFO:
                     //todo need to be implemented
                     break;
-                case "editors":
+                case EDITORS:
                     if (model.getEditors() != null) {
                         infoForBibliography.add(part);
                     }
                     break;
-                case "authors-after":
+                case AUTHORS_AFTER:
                     //todo need to be implemented
                     break;
-                case "directors":
+                case DIRECTORS:
                     //todo need to be implemented
                     break;
-                case "executors":
+                case EXECUTORS:
                     //todo need to be implemented
                     break;
-                case "publisher-city":
+                case PUBLISHER_CITY:
                     if (model.getPublisherInfo() != null) {
                         infoForBibliography.add(part);
                     }
                     break;
-                case "publisher-name":
+                case PUBLISHER_NAME:
                     if (model.getPublisherInfo() != null) {
                         infoForBibliography.add(part);
                     }
                     break;
-                case "publisher":
+                case PUBLISHER:
                     if (model.getPublisher() != null) {
                         infoForBibliography.add(part);
                     }
                     break;
-                case "year-date":
+                case YEAR_DATE:
                     if (model.getYear() != null) {
                         infoForBibliography.add(part);
                     }
                     break;
-                case "volume":
+                case VOLUME:
                     if (model.getVolume() != null) {
                         infoForBibliography.add(part);
                     }
                     break;
-                case "no":
+                case NO:
                     if (model.getNo() != null) {
                         infoForBibliography.add(part);
                     }
                     break;
-                case "pages":
+                case PAGES:
                     if (model.getPage() != null) {
                         infoForBibliography.add(part);
                     }
                     break;
-                case "official-date":
+                case OFFICIAL_DATE:
                     //todo need to be implemented
                     break;
                 default:
@@ -247,71 +225,72 @@ public class XmlController {
         return infoForBibliography;
     }
 
-    private String makeBibliographiedString(List<String> citationParts, String type, CitationModel model) {
+    private String makeBibliographiedString(Standard standard, List<String> citationParts,
+                                            String type, CitationModel model) {
         final StringBuilder builder = new StringBuilder();
         for (String citationPart : citationParts) {
-            switch (citationPart) {
-                case "first-author":
+            switch (Citations.fromString(citationPart)) {
+                case FIRST_AUTHOR:
                     //todo need to be implemented
                     break;
-                case "title":
+                case TITLE:
                     addCitationPartFields(builder, standard.getCitationParts().getTitles(),
                             type, model.getTitle());
                     break;
-                case "edition-type":
+                case EDITION_TYPE:
                     addCitationPartFields(builder, standard.getCitationParts().getEditionTypes(),
                             type, model.getEditorType());
                     break;
-                case "type":
+                case TYPE:
                     addCitationPartFields(builder, standard.getCitationParts().getTypes(),
                             type, model.getType());
                     break;
-                case "additional-info":
+                case ADDITIONAL_INFO:
                     //todo need to be implemented
                     break;
-                case "editors":
+                case EDITORS:
                     //todo need to be implemented
                     break;
-                case "authors-after":
+                case AUTHORS_AFTER:
                     //todo need to be implemented
                     break;
-                case "directors":
+                case DIRECTORS:
                     //todo need to be implemented
                     break;
-                case "executors":
+                case EXECUTORS:
                     //todo need to be implemented
                     break;
-                case "publisher-city":
+                case PUBLISHER_CITY:
                     //todo will be divided
                     addCitationPartFields(builder, standard.getCitationParts().getPublisherCities(),
                             type, model.getPublisherInfo());
                     break;
-                case "publisher-name":
+                case PUBLISHER_NAME:
                     //todo will be divided
                     addCitationPartFields(builder, standard.getCitationParts().getPublisherNames(),
                             type, model.getPublisherInfo());
                     break;
-                case "publisher":
+                case PUBLISHER:
                     addCitationPartFields(builder, standard.getCitationParts().getPublishers(),
                             type, model.getPublisher());
                     break;
-                case "year-date":
+                case YEAR_DATE:
                     addCitationPartFields(builder, standard.getCitationParts().getYearDates(),
                             type, model.getYear());
                     break;
-                case "volume":
+                case VOLUME:
                     addCitationPartFields(builder, standard.getCitationParts().getVolume(),
                             type, model.getVolume());
                     break;
-                case "no":
+                case NO:
                     addCitationPartFields(builder, standard.getCitationParts().getNo(),
                             type, model.getNo());
                     break;
-                case "pages":
+                case PAGES:
                     addCitationPartFields(builder, standard.getCitationParts().getPages(),
                             type, model.getPage());
                     break;
-                case "official-date":
+                case OFFICIAL_DATE:
                     //todo need to be implemented
                     break;
                 default:
@@ -351,5 +330,6 @@ public class XmlController {
                     }
                 });
     }
+
 
 }

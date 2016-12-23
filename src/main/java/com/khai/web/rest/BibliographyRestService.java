@@ -3,7 +3,8 @@ package com.khai.web.rest;
 import com.khai.db.model.CitationModel;
 import com.khai.db.service.BibliographyService;
 import com.khai.model.rest.ComposeBibliographiesBody;
-import com.khai.xml.XmlController;
+import com.khai.xml.StandardManager;
+import com.khai.xml.XmlParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -91,7 +92,7 @@ public class BibliographyRestService {
     public List<String> getComposedBibliographies(@RequestBody ComposeBibliographiesBody bibliographies) {
         final List<CitationModel> citations = bibliographyService
                 .findByTitles(bibliographies.getBibliographyKeys());
-        return XmlController.getInstance()
+        return StandardManager.getInstance()
                 .makeBibliographies(bibliographies.getFileName(), citations);
     }
 
