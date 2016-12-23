@@ -1,7 +1,5 @@
-package com.khai.model.proposed;
+package com.khai.model.xml;
 
-import com.khai.model.EditorType;
-import com.khai.model.MultipartSeparator;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;

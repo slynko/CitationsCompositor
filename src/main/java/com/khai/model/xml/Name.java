@@ -1,9 +1,6 @@
-package com.khai.model;
+package com.khai.model.xml;
 
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementList;
-
-import java.util.List;
 
 public class Name {
 
@@ -11,8 +8,8 @@ public class Name {
     private boolean unique;
     @Element(name = "len")
     private int len;
-    @ElementList(name = "separator-after", required = false)
-    private List<SeparatorItem> separatorItems;
+    @Element(name = "multipart-separator-after", required = false)
+    private MultipartSeparator separator;
 
     public boolean isUnique() {
         return unique;
@@ -30,12 +27,11 @@ public class Name {
         this.len = len;
     }
 
-    public List<SeparatorItem> getSeparatorItems() {
-        return separatorItems;
+    public MultipartSeparator getSeparator() {
+        return separator;
     }
 
-    public void setSeparatorItems(List<SeparatorItem> separatorItems) {
-        this.separatorItems = separatorItems;
+    public void setSeparator(MultipartSeparator separator) {
+        this.separator = separator;
     }
-
 }

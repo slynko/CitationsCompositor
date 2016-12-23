@@ -1,4 +1,4 @@
-package com.khai.model.proposed;
+package com.khai.model.xml;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementArray;

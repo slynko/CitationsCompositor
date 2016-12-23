@@ -1,9 +1,7 @@
 package com.khai.xml;
 
 import com.khai.db.model.CitationModel;
-import com.khai.model.MultipartSeparator;
-import com.khai.model.Separator;
-import com.khai.model.proposed.*;
+import com.khai.model.xml.*;
 import com.khai.utils.StandardUtils;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
