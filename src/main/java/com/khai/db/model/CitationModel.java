@@ -19,14 +19,14 @@ public class CitationModel {
     @Column(name = "type")
     private String type;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "authors", nullable = false)
+    @JoinColumn(name = "authors")
     private Set<Person> authors;
     @Column(name = "publisher")
     private String publisher;
     @Column(name = "editor_type")
     private String editorType;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "editors", nullable = false)
+    @JoinColumn(name = "editors")
     private Set<Person> editors;
     @Column(name = "publisher_info")
     private String publisherInfo;
