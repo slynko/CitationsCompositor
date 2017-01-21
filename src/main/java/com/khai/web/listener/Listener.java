@@ -114,6 +114,6 @@ public class Listener implements ApplicationListener {
         citation2.setPage("542");
         citation2.setYear("2002");
 
-        bibliographyService.saveAll(Arrays.asList(citation1, citation2));
+        //bibliographyService.saveAll(Arrays.asList(citation1, citation2));
     }
 }

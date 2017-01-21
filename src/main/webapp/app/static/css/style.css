@@ -6,3 +6,8 @@
     margin-bottom: 20px;
     text-align: center;
 }
+
+.form-group {
+    padding-left: 0;
+    padding-right: 0;
+}
