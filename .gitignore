@@ -5,3 +5,4 @@
 ######### Else #######
 .idea/*
 **/*.log
+node_modules/

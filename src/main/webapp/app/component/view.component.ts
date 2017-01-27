@@ -1,5 +1,5 @@
-import { Component, Inject} from '@angular/core';
-import { BibliographyService } from '../service/bibliography.service'
+import {Component, Inject} from '@angular/core';
+import {BibliographyService} from '../service/bibliography.service'
 
 @Component({
     selector: 'view-component',
@@ -7,7 +7,7 @@ import { BibliographyService } from '../service/bibliography.service'
     providers: [BibliographyService]
 })
 export class ViewComponent {
-    constructor(@Inject(BibliographyService) private _bibliographyService: BibliographyService){
+    constructor(@Inject(BibliographyService) private _bibliographyService:BibliographyService) {
         this._bibliographyService = _bibliographyService;
         this.optionsMap = [];
     }
@@ -18,14 +18,14 @@ export class ViewComponent {
         this.clearAll();
     }
 
-    private fileName: string;
-    private error: string;
-    private bibliographies: string[];
-    private optionsMap: string[];
-    private selectedBibliographies: string[];
-    private dstuFiles: string[];
+    private fileName:string;
+    private error:string;
+    private bibliographies:string[];
+    private optionsMap:string[];
+    private selectedBibliographies:string[];
+    private dstuFiles:string[];
     public composed = false;
-    
+
     getAllDstuFiles() {
         this._bibliographyService.getAllDstuFiles()
             .subscribe(
@@ -54,7 +54,7 @@ export class ViewComponent {
         this.composed = this.selectedBibliographies.length > 0;
         $event.preventDefault();
     }
-    
+
     clearAll() {
         this.bibliographies = [];
         this.selectedBibliographies = [];
@@ -73,7 +73,7 @@ export class ViewComponent {
         $event.preventDefault();
     }
 
-    getSelectedBibliographies(): string[] {
+    getSelectedBibliographies():string[] {
         var selectedBibliographies = [];
         for (var key in this.optionsMap) {
             if (this.optionsMap.hasOwnProperty(key) && this.optionsMap[key]) {
@@ -83,7 +83,7 @@ export class ViewComponent {
         return selectedBibliographies;
     }
 
-    callType(value){
+    callType(value) {
         this.fileName = value;
     }
 }

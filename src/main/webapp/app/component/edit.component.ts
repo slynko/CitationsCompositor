@@ -1,6 +1,6 @@
-import { Component, Inject } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {BibliographyService} from "../service/bibliography.service";
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 import {Bibliography} from "../model/Bibliography";
 import {Person} from "../model/Person";
 
@@ -10,53 +10,55 @@ import {Person} from "../model/Person";
     providers: [BibliographyService]
 })
 export class EditComponent {
-    constructor(
-        @Inject(BibliographyService) private _bibliographyService: BibliographyService,
-        @Inject(Router) private router: Router) {
+    constructor(@Inject(BibliographyService) private _bibliographyService:BibliographyService,
+                @Inject(Router) private router:Router) {
         this._bibliographyService = _bibliographyService;
-
-        var authors : Person[] = [];
-        this.bibliography.authors = authors;
-        this.bibliography.authors[0] = new Person();
-
-        var editors: Person[] = [];
-        this.bibliography.editors = editors;
-        this.bibliography.editors[0] = new Person();
     }
 
-    public bibliography: Bibliography = new Bibliography();
+    public bibliography:Bibliography = new Bibliography();
 
-    addAll(bibliographies: string[]) {
+    addAll(bibliographies:string[]) {
         this._bibliographyService.addAll(bibliographies)
             .subscribe(
-                res => {},
-                err => {}
+                res => {
+                },
+                err => {
+                }
             );
     }
 
     add($event) {
         this._bibliographyService.add(this.bibliography)
             .subscribe(
-                res => {},
-                err => {}
+                res => {
+                    this.router.navigate(['/']);
+                },
+                err => {
+                    this.router.navigate(['/']);
+                }
             );
         $event.preventDefault();
-        this.router.navigate(['/']);
     }
 
     addAuthor() {
+        if (!this.bibliography.authors) {
+            this.bibliography.authors = [];
+        }
         this.bibliography.authors[this.bibliography.authors.length] = new Person();
     }
 
     addEditor() {
+        if (!this.bibliography.editors) {
+            this.bibliography.editors = [];
+        }
         this.bibliography.editors[this.bibliography.editors.length] = new Person();
     }
 
-    removeAuthor(author: Person) {
+    removeAuthor(author:Person) {
         this.bibliography.authors.splice(this.bibliography.authors.indexOf(author), 1);
     }
 
-    removeEditor(editor: Person) {
+    removeEditor(editor:Person) {
         this.bibliography.editors.splice(this.bibliography.editors.indexOf(editor), 1);
     }
 }

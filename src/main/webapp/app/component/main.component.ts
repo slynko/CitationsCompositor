@@ -1,21 +1,20 @@
-import { Component, Inject } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, Inject} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'main-component',
     templateUrl: 'app/static/template/main.html'
 })
 export class MainComponent {
-    constructor(
-        @Inject(Router) private router: Router
-    ) {  }
+    constructor(@Inject(Router) private router:Router) {
+    }
 
-    edit(): boolean {
+    edit():boolean {
         this.router.navigate(['/edit']);
         return false;
     }
 
-    view(): boolean {
+    view():boolean {
         this.router.navigate(['/view']);
         return false;
     }

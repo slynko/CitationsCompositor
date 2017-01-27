@@ -2,7 +2,6 @@ package com.khai.xml;
 
 import com.khai.model.xml.Standard;
 import com.khai.utils.StandardUtils;
-import com.sun.istack.internal.Nullable;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
@@ -26,7 +25,7 @@ public class XmlParser {
         return controller;
     }
 
-    @Nullable
+    //@Nullable
     public Standard parseStandard(String standardName) {
         switch (standardName) {
             case StandardUtils.DSTU_7_1_2006:
