@@ -2,10 +2,10 @@
 <form name="fileForm" (submit)="getComposedBibliographies($event)">
     <select name="cars" required class="form-control" #t (change)="callType(t.value)">
         <option disabled selected value>Select a file from the list</option>
-        <option *ngFor="let file of dstuFiles" value="{{file}}" >{{file}}</option>
+        <option *ngFor="let file of dstuFiles" value="{{file}}">{{file}}</option>
     </select>
     <br/>
-    <table class = "table table-bordered">
+    <table class="table table-bordered">
         <thead>
         <tr>
             <th class="col-md-5">Bibliography</th>
@@ -29,20 +29,20 @@
 </form>
 <table class="table" *ngIf="composed">
     <thead>
-        <tr>
-            <th>Composed bibliography</th>
-        </tr>
+    <tr>
+        <th>Composed bibliography</th>
+    </tr>
     </thead>
     <tbody>
-        <tr class="success">
-            <td>
+    <tr class="success">
+        <td>
                 <span *ngFor="let bibliography of selectedBibliographies; let i = index;">
                     <span>
                         {{i + 1}}) {{ bibliography }}
                     </span>
                     <br/>
                 </span>
-            </td>
-        </tr>
+        </td>
+    </tr>
     </tbody>
 </table>
