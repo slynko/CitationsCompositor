@@ -237,570 +237,212 @@
             <separator name="dot"/>
         </multipart-separator>
     </multipart-separators-after>
-    <!-- TODO: think about editor-type inside authors :/ -->
+    <!--TODO think about duplicate authors for the last author's unique separator of surname-->
     <citation-parts>
-        <!-- equal to                 - "==" - "eq"; not equal to - "!=" - "ne";
-         greater than             - ">"  - "gt"; less than    - "<"  - "lt";
-         greater than or equal to - ">=" - "gq";
-         less than or equal to    - "<=" - "lq" !-->
+        <!-- equal to            - "==" - "eq";
+        not equal to             - "!=" - "ne";
+        greater than             - ">"  - "gt";
+        less than                - "<"  - "lt";
+        greater than or equal to - ">=" - "gq";
+        less than or equal to    - "<=" - "lq" !-->
         <first-author>
-            <authors no="lt 4" type="default">
-                <author>
-                    <name1>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>true</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
+            <authors condition="lq4" type="default">
+                <name1>
+                    <multipart-separator-after name="name" type="default"/>
+                </name1>
+                <name2>
+                    <multipart-separator-after name="name" type="default"/>
+                </name2>
+                <surname>
+                    <multipart-separator-after name="surname" type="default"/>
+                </surname>
             </authors>
         </first-author>
         <title>
             <field type="default">
-                <info/>
                 <multipart-separator-after name="title" type="default"/>
             </field>
         </title>
         <edition-type>
             <field type="default">
                 <multipart-separator-before name="edition-type" type="default"/>
-                <info/>
                 <multipart-separator-after name="edition-type" type="default"/>
             </field>
             <field type="electronic-resources">
                 <multipart-separator-before name="edition-type" type="electronic-resources"/>
-                <info/>
                 <multipart-separator-after name="edition-type" type="electronic-resources"/>
             </field>
         </edition-type>
         <type>
             <field type="default">
                 <multipart-separator-before name="type" type="default"/>
-                <info/>
             </field>
         </type>
         <additional-info>
             <field type="default">
                 <multipart-separator-before name="additional-info" type="default"/>
-                <info/>
             </field>
         </additional-info>
         <editors>
-            <authors no="lq 4" type="default"> <!-- "<=" - "lq" !-->
-                <editor-type>
-                    <separator-before>
-                        <separator name="space"/>
-                        <separator name="semicolon"/>
-                        <separator name="space"/>
-                    </separator-before>
-                    <separator-after>
-                        <separator name="space"/>
-                    </separator-after>
-                </editor-type>
-                <author>
-                    <name1>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>true</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
-                <author>
-                    <name1>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>false</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
-                <author>
-                    <name1>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>false</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
-                <author>
-                    <name1>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>false</unique>
-                        <len>-1</len>
-                    </surname>
-                </author>
+            <authors condition="lq4" type="default"> <!-- "<=" - "lq" !-->
+                <name1 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name1>
+                <name2 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name2>
+                <surname type="default">
+                    <multipart-separator-after name="surname" type="default"/>
+                </surname>
             </authors>
-            <authors no="gt 4" type="default"> <!-- ">"  - "gt" !-->
-                <editor-type>
-                    <separator-before>
-                        <separator name="space"/>
-                        <separator name="semicolon"/>
-                    </separator-before>
-                    <separator-after>
-                        <separator name="space"/>
-                        <separator name="space"/>
-                    </separator-after>
-                </editor-type>
-                <author>
-                    <name1>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>true</unique>
-                        <len>-1</len>
-                    </surname>
-                </author>
+            <authors condition="gt4" type="default"> <!-- ">"  - "gt" !-->
+                <name1 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name1>
+                <name2 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name2>
+                <surname type="default"/>
                 <multipart-separator-after name="others" type="default"/>
             </authors>
         </editors>
         <authors-after>
-            <authors no="lq 4" type="default"> <!-- "<=" - "lq" !-->>
-                <author>
-                    <name1>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>true</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
-                <author>
-                    <name1>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>false</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
-                <author>
-                    <name1>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>false</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
-                <author>
-                    <name1>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>false</unique>
-                        <len>-1</len>
-                    </surname>
-                </author>
+            <authors condition="lq4" type="default"> <!-- "<=" - "lq" !-->>
+                <name1 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name1>
+                <name2 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name2>
+                <surname type="default">
+                    <multipart-separator-after name="surname" type="default"/>
+                </surname>
             </authors>
-            <authors no="gt 4" type="default"> <!-- ">" - "gt" !-->>
-                <author>
-                    <name1>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>true</unique>
-                        <len>-1</len>
-                    </surname>
-                </author>
+            <authors condition="gt4" type="default"> <!-- ">" - "gt" !-->>
+                <name1 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name1>
+                <name2 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name2>
+                <surname type="default"/>
                 <multipart-separator-after name="others" type="default"/>
             </authors>
-            <authors no="gt 4" type="article"> <!-- ">" - "gt" !-->
-                <author>
-                    <name1>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>true</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
-                <author>
-                    <name1>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>false</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
-                <author>
-                    <name1>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>false</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
+            <authors condition="gt4" type="article"> <!-- ">" - "gt" !-->
+                <name1 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name1>
+                <name2 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name2>
+                <surname type="default">
+                    <multipart-separator-after name="surname" type="default"/>
+                </surname>
                 <multipart-separator-after name="others" type="article"/>
             </authors>
-            <authors type="art-source"> <!-- ">" - "gt" !-->
-                <author>
-                    <name1>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>true</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
+            <authors condition="gt4" type="art-source"> <!-- ">" - "gt" !-->
+                <name1 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name1>
+                <name2 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name2>
+                <surname type="default">
+                    <multipart-separator-after name="surname" type="default"/>
+                </surname>
                 <multipart-separator-after name="others" type="default"/>
             </authors>
         </authors-after>
         <directors>
-            <authors no="lq 4" type="report"> <!-- "<=" - "lq" !-->
-                <author>
-                    <name1>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>true</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
-                <author>
-                    <name1>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>false</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
-                <author>
-                    <name1>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>false</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
-                <author>
-                    <name1>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>false</unique>
-                        <len>-1</len>
-                    </surname>
-                </author>
+            <authors condition="lq4" type="report"> <!-- "<=" - "lq" !-->
+                <name1 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name1>
+                <name2 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name2>
+                <surname type="default">
+                    <multipart-separator-after name="surname" type="default"/>
+                </surname>
             </authors>
-            <authors no="gt 4" type="report"> <!-- ">" - "gt" !-->
-                <author>
-                    <name1>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>true</unique>
-                        <len>-1</len>
-                    </surname>
-                </author>
+            <authors condition="gt4" type="report"> <!-- ">" - "gt" !-->
+                <name1 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name1>
+                <name2 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name2>
+                <surname type="default"/>
                 <multipart-separator-after name="others" type="default"/>
             </authors>
         </directors>
         <executors>
-            <authors no="lq 4" type="report"> <!-- "<=" - "lq" !-->
-                <author>
-                    <name1>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>true</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
-                <author>
-                    <name1>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>false</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
-                <author>
-                    <name1>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>false</unique>
-                        <len>-1</len>
-                        <multipart-separator-after name="surname" type="default"/>
-                    </surname>
-                </author>
-                <author>
-                    <name1>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>false</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>false</unique>
-                        <len>-1</len>
-                    </surname>
-                </author>
+            <authors condition="lq4" type="report"> <!-- "<=" - "lq" !-->
+                <name1 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name1>
+                <name2 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name2>
+                <surname type="default">
+                    <multipart-separator-after name="surname" type="default"/>
+                </surname>
             </authors>
-            <authors no="gt 4" type="report"> <!-- ">" - "gt" !-->
-                <author>
-                    <name1>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name1>
-                    <name2>
-                        <unique>true</unique>
-                        <len>1</len>
-                        <multipart-separator-after name="name" type="default"/>
-                    </name2>
-                    <surname>
-                        <unique>true</unique>
-                        <len>-1</len>
-                    </surname>
-                </author>
+            <authors condition="gt4" type="report"> <!-- ">" - "gt" !-->
+                <name1 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name1>
+                <name2 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name2>
+                <surname type="default"/>
                 <multipart-separator-after name="others" type="default"/>
             </authors>
         </executors>
         <publisher-city>
             <field type="default">
                 <multipart-separator-before name="publisher-city" type="default"/>
-                <info/>
             </field>
         </publisher-city>
         <publisher-name>
             <field type="default">
                 <multipart-separator-before name="type" type="default"/>
-                <info/>
             </field>
         </publisher-name>
         <publisher>
             <field type="default">
                 <multipart-separator-before name="publisher" type="default"/>
-                <info/>
                 <multipart-separator-after name="publisher" type="default"/>
             </field>
         </publisher>
         <year-date>
             <field type="default">
                 <multipart-separator-before name="year-date" type="default"/>
-                <info/>
             </field>
         </year-date>
         <volume>
             <field type="default">
                 <multipart-separator-before name="sectionalizer" type="default"/>
-                <info/>
             </field>
         </volume>
         <no>
             <field type="default">
                 <multipart-separator-before name="sectionalizer" type="default"/>
-                <info/>
             </field>
         </no>
         <pages>
             <field type="default">
                 <multipart-separator-before name="sectionalizer" type="default"/>
-                <info/>
                 <multipart-separator-after name="pages" type="default"/>
             </field>
             <field type="article">
                 <multipart-separator-before name="pages" type="article"/>
-                <info/>
                 <multipart-separator-after name="pages" type="article"/>
             </field>
         </pages>
         <official-date>
             <field type="default">
                 <multipart-separator-before name="sectionalizer" type="default"/>
-                <info/>
             </field>
         </official-date>
     </citation-parts>
