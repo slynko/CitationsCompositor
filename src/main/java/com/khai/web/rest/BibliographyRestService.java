@@ -3,6 +3,7 @@ package com.khai.web.rest;
 import com.khai.db.model.CitationModel;
 import com.khai.db.service.BibliographyService;
 import com.khai.model.rest.ComposeBibliographiesBody;
+import com.khai.web.model.File;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -49,6 +50,16 @@ public class BibliographyRestService {
             throw new RuntimeException(e);
         }
         return files;
+    }
+
+    @PostMapping
+    @RequestMapping("/dstu/types")
+    @ResponseStatus(HttpStatus.OK)
+    public List<String> getDstuTypes(@RequestBody File file) {
+        // TODO: replace test list with real one
+        List<String> types = new ArrayList<>();
+        types.add("some type");
+        return types;
     }
 
     /**

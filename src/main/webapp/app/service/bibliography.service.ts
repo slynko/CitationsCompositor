@@ -25,11 +25,17 @@ export class BibliographyService {
             .map(res => res.json());
     }
 
+    getDstuTypes(name:string):Observable<string[]> {
+        //noinspection TypeScriptUnresolvedFunction
+        return this.http.post(this.endpoint_url + "/dstu/types", {name})
+            .map(res => res.json());
+    }
+
     getComposedBibliographies(bibliographyKeys:string[],
-                              fileName:string):Observable<string[]> {
+                              fileName:string, dstuType:string):Observable<string[]> {
         //noinspection TypeScriptUnresolvedFunction
         return this.http.post(this.endpoint_url + "/composed",
-            {bibliographyKeys, fileName})
+            {bibliographyKeys, fileName, dstuType})
             .map(res => res.json());
     }
 

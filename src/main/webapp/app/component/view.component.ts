@@ -46,7 +46,7 @@ export class ViewComponent {
 
     getComposedBibliographies($event) {
         this.selectedBibliographies = this.getSelectedBibliographies();
-        this._bibliographyService.getComposedBibliographies(this.selectedBibliographies, this.fileName)
+        this._bibliographyService.getComposedBibliographies(this.selectedBibliographies, this.fileName, this.dstuType)
             .subscribe(
                 data => this.selectedBibliographies = data,
                 error => this.error = "Something went wrong."
@@ -83,7 +83,16 @@ export class ViewComponent {
         return selectedBibliographies;
     }
 
-    callType(value) {
+    callFile(value) {
         this.fileName = value;
+        this._bibliographyService.getDstuTypes(this.fileName)
+            .subscribe(
+                data => this.dstuTypes = data,
+                error => this.error = "Something went wrong."
+            );
+    }
+    
+    callType(value) {
+        this.dstuType = value;
     }
 }

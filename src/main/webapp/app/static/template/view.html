@@ -1,8 +1,14 @@
-<label class="control-label">Select File</label>
 <form name="fileForm" (submit)="getComposedBibliographies($event)">
-    <select name="cars" required class="form-control" #t (change)="callType(t.value)">
+    <label class="control-label">Select File</label>
+    <select name="file" required class="form-control" #t (change)="callFile(t.value)">
         <option disabled selected value>Select a file from the list</option>
         <option *ngFor="let file of dstuFiles" value="{{file}}">{{file}}</option>
+    </select>
+    <br/>
+    <label *ngIf="dstuTypes" class="control-label">Select dstu type</label>
+    <select *ngIf="dstuTypes" name="bibliographyType" required class="form-control" #t (change)="callType(t.value)">
+        <option disabled selected value>Select a dstu type</option>
+        <option *ngFor="let type of dstuTypes" value="{{type}}">{{type}}</option>
     </select>
     <br/>
     <table class="table table-bordered">
