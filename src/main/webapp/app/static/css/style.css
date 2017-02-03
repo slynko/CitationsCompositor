@@ -11,3 +11,8 @@
     padding-left: 0;
     padding-right: 0;
 }
+
+.btn-plus-minus {
+    padding: 6px 9px !important;
+    line-height: 1 !important;
+}

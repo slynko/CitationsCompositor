@@ -1,15 +1,15 @@
 <form name="fileForm" (submit)="getComposedBibliographies($event)">
-    <label class="control-label">Select File</label>
-    <select name="file" required class="form-control" #t (change)="callFile(t.value)">
-        <option disabled selected value>Select a file from the list</option>
+    <label class="control-label">Dstu file:</label>
+    <select name="file" class="form-control" (change)="getDstuTypes()" [(ngModel)]="fileName" required>
         <option *ngFor="let file of dstuFiles" value="{{file}}">{{file}}</option>
     </select>
     <br/>
-    <label *ngIf="dstuTypes" class="control-label">Select dstu type</label>
-    <select *ngIf="dstuTypes" name="bibliographyType" required class="form-control" #t (change)="callType(t.value)">
-        <option disabled selected value>Select a dstu type</option>
-        <option *ngFor="let type of dstuTypes" value="{{type}}">{{type}}</option>
-    </select>
+    <div *ngIf="dstuTypes">
+        <label class="control-label">Dstu type:</label>
+        <select name="dstuType" class="form-control" [(ngModel)]="dstuType" required>
+            <option *ngFor="let type of dstuTypes" value="{{type}}">{{type}}</option>
+        </select>
+    </div>
     <br/>
     <table class="table table-bordered">
         <thead>
@@ -27,7 +27,7 @@
         </tbody>
     </table>
     <button type="submit"
-            class="btn btn-default">
+            class="btn btn-primary">
         Compose
     </button>
     <button type="button" (click)="clearAll()" class="btn btn-default">Clear</button>

@@ -1,143 +1,143 @@
-<form action="/" (submit)="add($event)" #f="ngForm">
+<form (submit)="add($event)" #f="ngForm">
     <div class="form-group">
         <div class="form-group col-md-12">
             <div class="form-group col-md-2">
-                <label for="type">Type:</label>
+                <label>Type:</label>
             </div>
             <div class="form-group col-md-10">
-                <input type="text" class="form-control" id="type"
-                       [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.type">
+                <input type="text" class="form-control" name="type"
+                       [(ngModel)]="bibliography.type">
             </div>
         </div>
         <div class="form-group col-md-12">
             <div class="form-group col-md-2">
-                <label for="title">Title:</label>
+                <label>Title:</label>
             </div>
             <div class="form-group col-md-10">
-                <input type="text" class="form-control" id="title"
-                       [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.title" required>
+                <input type="text" class="form-control" name="title"
+                       [(ngModel)]="bibliography.title" required>
             </div>
         </div>
         <div class="form-group col-md-12">
             <label>Authors:</label>
-            <button (click)="addAuthor()" type="button">Add author</button>
+            <button (click)="addAuthor()" type="button" class="btn btn-primary btn-plus-minus">+</button>
         </div>
         <div class="form-group col-md-12" *ngFor="let author of bibliography.authors">
             <div class="form-group col-md-1">
-                <button type="button" (click)="removeAuthor(author)">-</button>
+                <button type="button" (click)="removeAuthor(author)" class="btn btn-primary btn-plus-minus">-</button>
             </div>
             <div class="form-group col-md-3">
                 <label class="col-xs-4">Name1</label>
                 <div class="col-xs-8">
-                    <input type="text" class="form-control"
-                           [ngModelOptions]="{standalone: true}" [(ngModel)]="author.name1">
+                    <input type="text" class="form-control" name="name1"
+                           [(ngModel)]="author.name1">
                 </div>
             </div>
             <div class="form-group col-md-3">
                 <label class="col-xs-4">Name2</label>
                 <div class="col-xs-8">
-                    <input type="text" class="form-control"
-                           [ngModelOptions]="{standalone: true}" [(ngModel)]="author.name2">
+                    <input type="text" class="form-control" name="name2"
+                           [(ngModel)]="author.name2">
                 </div>
             </div>
             <div class="form-group col-md-3">
                 <label class="col-xs-4">Surname</label>
                 <div class="col-xs-8">
-                    <input type="text" class="form-control"
-                           [ngModelOptions]="{standalone: true}" [(ngModel)]="author.surname">
+                    <input type="text" class="form-control" name="surname"
+                           [(ngModel)]="author.surname">
                 </div>
             </div>
         </div>
         <div class="form-group col-md-12">
             <div class="form-group col-md-2">
-                <label for="publisher">Publisher:</label>
+                <label>Publisher:</label>
             </div>
             <div class="form-group col-md-10">
-                <input type="text" class="form-control" id="publisher"
-                       [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.publisher">
+                <input type="text" class="form-control" name="publisher"
+                       [(ngModel)]="bibliography.publisher">
             </div>
         </div>
         <div class="form-group col-md-12">
             <label>Editors:</label>
-            <button (click)="addEditor()" type="button">Add editor</button>
+            <button (click)="addEditor()" type="button" class="btn btn-primary btn-plus-minus">+</button>
         </div>
         <div class="form-group col-md-12" *ngFor="let editor of bibliography.editors">
             <div class="form-group col-md-1">
-                <button type="button" (click)="removeEditor(editor)">-</button>
+                <button type="button" (click)="removeEditor(editor)" class="btn btn-primary btn-plus-minus">-</button>
             </div>
             <div class="form-group col-md-3">
                 <label class="col-xs-4">Name1</label>
                 <div class="col-xs-8">
-                    <input type="text" class="form-control"
-                           [ngModelOptions]="{standalone: true}" [(ngModel)]="editor.name1">
+                    <input type="text" class="form-control" name="name1"
+                           [(ngModel)]="editor.name1">
                 </div>
             </div>
             <div class="form-group col-md-3">
                 <label class="col-xs-4">Name2</label>
                 <div class="col-xs-8">
-                    <input type="text" class="form-control"
-                           [ngModelOptions]="{standalone: true}" [(ngModel)]="editor.name2">
+                    <input type="text" class="form-control" name="name2"
+                           [(ngModel)]="editor.name2">
                 </div>
             </div>
             <div class="form-group col-md-3">
                 <label class="col-xs-4">Surname</label>
                 <div class="col-xs-8">
-                    <input type="text" class="form-control"
-                           [ngModelOptions]="{standalone: true}" [(ngModel)]="editor.surname">
+                    <input type="text" class="form-control" name="surname"
+                           [(ngModel)]="editor.surname">
                 </div>
             </div>
         </div>
         <div class="form-group col-md-12">
             <div class="form-group col-md-2">
-                <label for="editorType">Editor type:</label>
+                <label>Editor type:</label>
             </div>
             <div class="form-group col-md-10">
-                <input type="text" class="form-control" id="editorType"
-                       [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.editorType">
+                <input type="text" class="form-control" name="editorType"
+                       [(ngModel)]="bibliography.editorType">
             </div>
         </div>
         <div class="form-group col-md-12">
             <div class="form-group col-md-2">
-                <label for="publisherInfo">Publisher info:</label></div>
+                <label>Publisher info:</label></div>
             <div class="form-group col-md-10">
-                <input type="text" class="form-control" id="publisherInfo"
-                       [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.publisherInfo"></div>
+                <input type="text" class="form-control" name="publisherInfo"
+                       [(ngModel)]="bibliography.publisherInfo"></div>
         </div>
         <div class="form-group col-md-12">
             <div class="form-group col-md-2">
-                <label for="year">Year:</label></div>
+                <label>Year:</label></div>
             <div class="form-group col-md-10">
-                <input type="text" class="form-control" id="year"
-                       [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.year"></div>
+                <input type="text" class="form-control" name="year"
+                       [(ngModel)]="bibliography.year"></div>
         </div>
         <div class="form-group col-md-12">
             <div class="form-group col-md-2">
-                <label for="date">Date:</label></div>
+                <label>Date:</label></div>
             <div class="form-group col-md-10">
-                <input type="date" class="form-control" id="date"
-                       [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.date"></div>
+                <input type="date" class="form-control" name="date"
+                       [(ngModel)]="bibliography.date"></div>
         </div>
         <div class="form-group col-md-12">
             <div class="form-group col-md-2">
-                <label for="volume">Volume:</label></div>
+                <label>Volume:</label></div>
             <div class="form-group col-md-10">
-                <input type="text" class="form-control" id="volume"
-                       [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.volume"></div>
+                <input type="text" class="form-control" name="volume"
+                       [(ngModel)]="bibliography.volume"></div>
         </div>
         <div class="form-group col-md-12">
             <div class="form-group col-md-2">
-                <label for="no">No:</label></div>
+                <label>No:</label></div>
             <div class="form-group col-md-10">
-                <input type="text" class="form-control" id="no"
-                       [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.no"></div>
+                <input type="text" class="form-control" name="no"
+                       [(ngModel)]="bibliography.no"></div>
         </div>
         <div class="form-group col-md-12">
             <div class="form-group col-md-2">
-                <label for="page">Page:</label></div>
+                <label>Page:</label></div>
             <div class="form-group col-md-10">
-                <input type="text" class="form-control" id="page"
-                       [ngModelOptions]="{standalone: true}" [(ngModel)]="bibliography.page"></div>
+                <input type="text" class="form-control" name="page"
+                       [(ngModel)]="bibliography.page"></div>
         </div>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>

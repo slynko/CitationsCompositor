@@ -73,16 +73,11 @@ export class ViewComponent {
         return selectedBibliographies;
     }
 
-    callFile(value) {
-        this.fileName = value;
+    getDstuTypes() {
         this._bibliographyService.getDstuTypes(this.fileName)
             .subscribe(
                 data => this.dstuTypes = data,
                 error => this.error = "Something went wrong."
             );
-    }
-    
-    callType(value) {
-        this.dstuType = value;
     }
 }
