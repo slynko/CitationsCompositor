@@ -9,22 +9,13 @@ import {BibliographyService} from '../service/bibliography.service'
 export class ViewComponent {
     constructor(@Inject(BibliographyService) private _bibliographyService:BibliographyService) {
         this._bibliographyService = _bibliographyService;
-        this.optionsMap = [];
     }
 
     ngOnInit() {
+        this.clearAll();
         this.getAllBibliographies();
         this.getAllDstuFiles();
-        this.clearAll();
     }
-
-    private fileName:string;
-    private error:string;
-    private bibliographies:string[];
-    private optionsMap:string[];
-    private selectedBibliographies:string[];
-    private dstuFiles:string[];
-    public composed = false;
 
     getAllDstuFiles() {
         this._bibliographyService.getAllDstuFiles()
@@ -35,8 +26,6 @@ export class ViewComponent {
     }
 
     getAllBibliographies() {
-        this.error = "";
-        this.bibliographies = [];
         this._bibliographyService.getAllBibliographies()
             .subscribe(
                 data => this.bibliographies = data,
@@ -60,6 +49,7 @@ export class ViewComponent {
         this.selectedBibliographies = [];
         this.optionsMap = [];
         this.composed = false;
+        this.error = "";
         this.getAllBibliographies();
     }
 

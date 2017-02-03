@@ -13,18 +13,14 @@ export class EditComponent {
     constructor(@Inject(BibliographyService) private _bibliographyService:BibliographyService,
                 @Inject(Router) private router:Router) {
         this._bibliographyService = _bibliographyService;
+        this.bibliography.authors = [];
+        this.bibliography.editors = [];
     }
 
     public bibliography:Bibliography = new Bibliography();
 
     addAll(bibliographies:string[]) {
-        this._bibliographyService.addAll(bibliographies)
-            .subscribe(
-                res => {
-                },
-                err => {
-                }
-            );
+        this._bibliographyService.addAll(bibliographies);
     }
 
     add($event) {
@@ -32,25 +28,16 @@ export class EditComponent {
             .subscribe(
                 res => {
                     this.router.navigate(['/']);
-                },
-                err => {
-                    this.router.navigate(['/']);
                 }
             );
         $event.preventDefault();
     }
 
     addAuthor() {
-        if (!this.bibliography.authors) {
-            this.bibliography.authors = [];
-        }
         this.bibliography.authors[this.bibliography.authors.length] = new Person();
     }
 
     addEditor() {
-        if (!this.bibliography.editors) {
-            this.bibliography.editors = [];
-        }
         this.bibliography.editors[this.bibliography.editors.length] = new Person();
     }
 

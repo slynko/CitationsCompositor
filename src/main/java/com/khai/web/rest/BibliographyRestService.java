@@ -33,11 +33,10 @@ public class BibliographyRestService {
     /**
      * Get dstu file names.
      *
-     * @return list of dstur file names
+     * @return list of dstu file names
      */
     @GetMapping
     @RequestMapping("/dstu/files")
-    @ResponseStatus(HttpStatus.OK)
     public List<String> getFileNames() {
         List<String> files = new ArrayList<>();
         try (Stream<Path> paths = Files.walk(Paths.get(dstuFolderPath))) {
@@ -54,7 +53,6 @@ public class BibliographyRestService {
 
     @PostMapping
     @RequestMapping("/dstu/types")
-    @ResponseStatus(HttpStatus.OK)
     public List<String> getDstuTypes(@RequestBody File file) {
         // TODO: replace test list with real one
         List<String> types = new ArrayList<>();
@@ -68,7 +66,6 @@ public class BibliographyRestService {
      * @return list of bibliographies
      */
     @GetMapping
-    @ResponseStatus(HttpStatus.OK)
     public List<String> getAll() {
         return bibliographyService.findAll()
                 .stream()
