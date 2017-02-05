@@ -10,6 +10,6 @@ public interface StandardContract {
 
     List<String> getTypes();
 
-    String getCitation(CitationModel citationModel);
+    String getCitation(CitationModel citationModel, String type);
 
 }

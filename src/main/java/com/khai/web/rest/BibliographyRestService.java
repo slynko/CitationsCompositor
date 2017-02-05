@@ -4,6 +4,7 @@ import com.khai.db.model.CitationModel;
 import com.khai.db.service.BibliographyService;
 import com.khai.model.rest.ComposeBibliographiesBody;
 import com.khai.web.model.File;
+import com.khai.xmlnew.StandardManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -58,6 +59,7 @@ public class BibliographyRestService {
         List<String> types = new ArrayList<>();
         types.add("some type");
         return types;
+        //return StandardManager.getInstance().getTypesOfStandard(file.getType());
     }
 
     /**
@@ -108,9 +110,10 @@ public class BibliographyRestService {
     public List<String> getComposedBibliographies(@RequestBody ComposeBibliographiesBody bibliographies) {
         final List<CitationModel> citations = bibliographyService
                 .findByTitles(bibliographies.getBibliographyKeys());
-        //return com.khai.xmlnew.StandardManager.getInstance().makeCitations(bibliographies.getFileName(), citations);
-        return com.khai.xml.StandardManager.getInstance()
-            .makeBibliographies(bibliographies.getFileName(), citations);
+        return com.khai.xmlnew.StandardManager.getInstance().makeCitations(bibliographies.getFileName(),
+                bibliographies.getDstuType(), citations);
+        /*return com.khai.xml.StandardManager.getInstance()
+            .makeBibliographies(bibliographies.getFileName(), citations);*/
     }
 
 }

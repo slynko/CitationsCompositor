@@ -22,11 +22,13 @@ public abstract class BaseStandard implements StandardContract {
     protected Map<String, Separator> separators;
     protected Map<String, MultipartSeparator> multipartSeparatorsBefore;
     protected Map<String, MultipartSeparator> multipartSeparatorsAfter;
+    protected Map<String, List<String>> citations;
 
     public BaseStandard(String standardPath) {
         separators = new HashMap();
         multipartSeparatorsBefore = new HashMap();
         multipartSeparatorsAfter = new HashMap();
+        citations = new HashMap<>();
         initStandard(standardPath);
     }
 
@@ -36,6 +38,7 @@ public abstract class BaseStandard implements StandardContract {
         fillMultipartSeparators(Constants.XmlPathToNode.MULTIPART_SEPARATORS_BEFORE, multipartSeparatorsBefore);
         fillMultipartSeparators(Constants.XmlPathToNode.MULTIPART_SEPARATORS_AFTER, multipartSeparatorsAfter);
         fillCitationParts();
+        fillCitations();
     }
 
     @Override
@@ -102,6 +105,19 @@ public abstract class BaseStandard implements StandardContract {
             multipartSeparator.setValue(builder.toString());
             multipartSeparators.put(multipartSeparator.getName() + multipartSeparator.getType(),
                     multipartSeparator);
+        }
+    }
+
+    private void fillCitations() {
+        final List<Node> citations = xmlDocument.selectNodes(Constants.XmlPathToNode.CITATIONS_CITATION);
+        for (Node nodeCitation : citations) {
+            final String type = nodeCitation.valueOf(Constants.XmlAttribute.TYPE);
+            final List<Node> citationParts = nodeCitation.selectNodes(Constants.XmlNode.STRING);
+            final List<String> parts = new ArrayList<>(citationParts.size());
+            for (Node nodePart : citationParts) {
+                parts.add(nodePart.getStringValue());
+            }
+            this.citations.put(type, parts);
         }
     }
 

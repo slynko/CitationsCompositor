@@ -26,7 +26,9 @@ public class StandardManager {
         return standardManager;
     }
 
-    public List<String> makeCitations(String standardName, List<CitationModel> citations) {
+    public List<String> makeCitations(String standardName,
+                                      String standardType,
+                                      List<CitationModel> citations) {
         StandardContract standard;
         switch (standardName) {
             case Constants.StandardName.DSTU_7_1_2006:
@@ -36,7 +38,20 @@ public class StandardManager {
             default:
                 throw new IllegalArgumentException("There is no implementation of the chosen standard");
         }
-        return getCitations(standard, citations);
+        return getCitations(standard, standardType, citations);
+    }
+
+    public List<String> getTypesOfStandard(String standardName) {
+        StandardContract standard;
+        switch (standardName) {
+            case Constants.StandardName.DSTU_7_1_2006:
+                standard = retrieveStandard(Constants.StandardName.DSTU_7_1_2006,
+                        Constants.StandardPath.DSTU_7_1_2006);
+                break;
+            default:
+                throw new IllegalArgumentException("There is no implementation of the chosen standard");
+        }
+        return standard.getTypes();
     }
 
     private StandardContract retrieveStandard(String name, String path) {
@@ -51,10 +66,12 @@ public class StandardManager {
         return standard;
     }
 
-    private List<String> getCitations(StandardContract standard, List<CitationModel> citations) {
+    private List<String> getCitations(StandardContract standard,
+                                      String type,
+                                      List<CitationModel> citations) {
         final List<String> resultCitations = new ArrayList<>();
         for (CitationModel citation: citations) {
-            final String resultCitation = standard.getCitation(citation);
+            final String resultCitation = standard.getCitation(citation, type);
             resultCitations.add(resultCitation);
         }
         return resultCitations;

@@ -22,6 +22,7 @@ public final class Constants {
         String SURNAME = "surname";
         String MULTIPART_SEPARATOR_BEFORE = "multipart-separator-before";
         String MULTIPART_SEPARATOR_AFTER = "multipart-separator-after";
+        String STRING = "string";
     }
 
     public interface XmlPathToNode {
@@ -46,6 +47,7 @@ public final class Constants {
         String CITATION_PARTS_NO = "/standard/citation-parts/no/field";
         String CITATION_PARTS_PAGES = "/standard/citation-parts/pages/field";
         String CITATION_PARTS_OFFICIAL_DATE = "/standard/citation-parts/official-date/field";
+        String CITATIONS_CITATION = "/standard/citations/citation";
     }
 
     public interface XmlAttribute {

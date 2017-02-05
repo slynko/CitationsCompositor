@@ -170,6 +170,12 @@
             <separator name="dash"/>
             <separator name="space"/>
         </multipart-separator>
+        <multipart-separator name="publisher-name" type="default">
+            <separator name="dot"/>
+            <separator name="space"/>
+            <separator name="colon"/>
+            <separator name="space"/>
+        </multipart-separator>
         <multipart-separator name="publisher" type="default">
             <separator name="slash"/>
             <separator name="slash"/>
@@ -246,7 +252,7 @@
         greater than or equal to - ">=" - "gq";
         less than or equal to    - "<=" - "lq" !-->
         <first-author>
-            <authors condition="lq4" type="default">
+            <authors condition="" type="default">
                 <name1>
                     <multipart-separator-after name="name" type="default"/>
                 </name1>
@@ -406,7 +412,7 @@
         </publisher-city>
         <publisher-name>
             <field type="default">
-                <multipart-separator-before name="type" type="default"/>
+                <multipart-separator-before name="publisher-name" type="default"/>
             </field>
         </publisher-name>
         <publisher>
@@ -448,21 +454,17 @@
     </citation-parts>
     <!-- The example how to create citations of different types -->
     <citations>
-        <citation type="default">
-            <parts length="12">
-                <string>first-author</string>
-                <string>title</string>
-                <string>type</string>
-                <string>authors-after</string>
-                <string>publisher</string>
-                <string>editors</string>
-                <string>publisher-city</string>
-                <string>publisher-name</string>
-                <string>year-date</string>
-                <string>volume</string>
-                <string>no</string>
-                <string>pages</string>
-            </parts>
+        <citation type="book-author">
+            <string>first-author</string>
+            <string>title</string>
+            <string>edition-type</string>
+            <string>type</string>
+            <string>authors-after</string>
+            <string>editors</string>
+            <string>publisher-city</string>
+            <string>publisher-name</string>
+            <string>year-date</string>
+            <string>pages</string>
         </citation>
     </citations>
 </standard>

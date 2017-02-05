@@ -1,6 +1,8 @@
 package com.khai.xmlnew.standard;
 
 import com.khai.db.model.CitationModel;
+import com.khai.db.model.Person;
+import com.khai.utils.TextUtils;
 import com.khai.xmlnew.standard.base.BaseStandard;
 import com.khai.xmlnew.standard.base.Constants;
 import com.khai.xmlnew.standard.model.Authors;
@@ -10,6 +12,7 @@ import com.khai.xmlnew.standard.model.MultipartSeparator;
 import org.dom4j.Node;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +23,17 @@ public class Dstu712006 extends BaseStandard {
     public Dstu712006(String standardPath) {
         super(standardPath);
         citationParts = new CitationParts();
+    }
+
+    @Override
+    public String getCitation(CitationModel citationModel, String type) {
+        //todo change to using of 'type' variable when it will be properly made
+        final List<String> parts = citations.get("book-author");
+        final StringBuilder builder = new StringBuilder();
+        for (String part : parts) {
+            addCitationPart("book-author", part, citationModel, builder);
+        }
+        return builder.toString();
     }
 
     @SuppressWarnings("unchecked")
@@ -59,37 +73,6 @@ public class Dstu712006 extends BaseStandard {
         citationParts.setNo(getField(noNodes));
         citationParts.setPages(getField(pagesNodes));
         citationParts.setOfficialDates(getField(officialDateNodes));
-    }
-
-    @Override
-    public String getCitation(CitationModel citationModel) {
-        final StringBuilder builder = new StringBuilder();
-        //todo hardcode citation's type till type logic will be implemented
-        builder.append(String.format(citationParts.getTitles()
-                .get("default")
-                .getFormattedValue(), citationModel.getTitle()));
-        builder.append(String.format(citationParts.getTypes()
-                .get("default")
-                .getFormattedValue(), citationModel.getType()));
-        builder.append(String.format(citationParts.getPublisherCities()
-                .get("default")
-                .getFormattedValue(), citationModel.getPublisher()));
-        builder.append(String.format(citationParts.getPublisherNames()
-                .get("default")
-                .getFormattedValue(), citationModel.getPublisher()));
-        builder.append(String.format(citationParts.getPublishers()
-                .get("default")
-                .getFormattedValue(), citationModel.getPublisher()));
-        builder.append(String.format(citationParts.getVolume()
-                .get("default")
-                .getFormattedValue(), citationModel.getVolume()));
-        builder.append(String.format(citationParts.getNo()
-                .get("default")
-                .getFormattedValue(), citationModel.getNo()));
-        builder.append(String.format(citationParts.getPages()
-                .get("default")
-                .getFormattedValue(), citationModel.getPage()));
-        return builder.toString();
     }
 
     private Map<String, Field> getField(List<Node> fieldsNodes) {
@@ -168,6 +151,120 @@ public class Dstu712006 extends BaseStandard {
             return name + type;
         }
         return "";
+    }
+
+    private void addCitationPart(String type, String citationPart,
+                                 CitationModel model, StringBuilder builder) {
+        Authors authors;
+        Field value;
+        switch (citationPart) {
+            case "first-author":
+                if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
+                if (model.getAuthors().size() > 4) return;
+                final Person firstAuthor;
+                authors = citationParts.getFirstAuthors().get(type);
+                if (authors == null) {
+                    authors = citationParts.getFirstAuthors().get("default");
+                }
+                firstAuthor = model.getAuthors().iterator().next();
+                builder.append(String.format(authors.getFormattedSurname(), firstAuthor.getSurname()))
+                        .append(String.format(authors.getFormattedName1(), firstAuthor.getName1()))
+                        .append(String.format(authors.getFormattedName2(), firstAuthor.getName2()));
+                break;
+            case "title":
+                if (TextUtils.isEmpty(model.getTitle())) return;
+                value = citationParts.getTitles().get(type);
+                if (value == null) {
+                    value = citationParts.getTitles().get("default");
+                }
+                builder.append(String.format(value.getFormattedValue(), model.getTitle()));
+                break;
+            case "type":
+                if (TextUtils.isEmpty(model.getType())) return;
+                value = citationParts.getTypes().get(type);
+                if (value == null) {
+                    value = citationParts.getTypes().get("default");
+                }
+                builder.append(String.format(value.getFormattedValue(), model.getType()));
+                break;
+            case "authors-after":
+                if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
+                final String authorsType = model.getAuthors().size() > 4
+                        ? "lq4" + type
+                        : "qt4" + type;
+                authors = citationParts.getAuthorsAfter().get(authorsType);
+                if (authors == null) {
+                    authors = citationParts.getAuthorsAfter().get("lq4default");
+                }
+                final Iterator<Person> authorsIterator = model.getAuthors().iterator();
+                do {
+                    final Person person = authorsIterator.next();
+                    builder.append(String.format(authors.getFormattedName1(), person.getName1()))
+                            .append(String.format(authors.getFormattedName2(), person.getName2()))
+                            .append(String.format(authors.getFormattedSurname(), person.getSurname()));
+
+                } while (authorsIterator.hasNext());
+                break;
+            case "publisher":
+                if (TextUtils.isEmpty(model.getPublisher())) return;
+                value = citationParts.getPublishers().get(type);
+                if (value == null) {
+                    value = citationParts.getPublishers().get("default");
+                }
+                builder.append(String.format(value.getFormattedValue(), model.getPublisher()));
+                break;
+            case "editors":
+
+                break;
+            case "publisher-city":
+                if (TextUtils.isEmpty(model.getPublisherInfo())) return;
+                value = citationParts.getPublisherCities().get(type);
+                if (value == null) {
+                    value = citationParts.getPublisherCities().get("default");
+                }
+                builder.append(String.format(value.getFormattedValue(), model.getPublisherInfo()));
+                break;
+            case "publisher-name":
+                if (TextUtils.isEmpty(model.getPublisherInfo())) return;
+                value = citationParts.getPublisherNames().get(type);
+                if (value == null) {
+                    value = citationParts.getPublisherNames().get("default");
+                }
+                builder.append(String.format(value.getFormattedValue(), model.getPublisherInfo()));
+                break;
+            case "year-date":
+                if (TextUtils.isEmpty(model.getYear())) return;
+                value = citationParts.getYearDates().get(type);
+                if (value == null) {
+                    value = citationParts.getYearDates().get("default");
+                }
+                builder.append(String.format(value.getFormattedValue(), model.getYear()));
+                break;
+            case "volume":
+                if (TextUtils.isEmpty(model.getVolume())) return;
+                value = citationParts.getVolume().get(type);
+                if (value == null) {
+                    value = citationParts.getVolume().get("default");
+                }
+                builder.append(String.format(value.getFormattedValue(), model.getVolume()));
+                break;
+            case "no":
+                if (TextUtils.isEmpty(model.getNo())) return;
+                value = citationParts.getNo().get(type);
+                if (value == null) {
+                    value = citationParts.getNo().get("default");
+                }
+                builder.append(String.format(value.getFormattedValue(), model.getNo()));
+                break;
+            case "pages":
+                if (TextUtils.isEmpty(model.getPage())) return;
+                value = citationParts.getPages().get(type);
+                if (value == null) {
+                    value = citationParts.getPages().get("default");
+                }
+                builder.append(String.format(value.getFormattedValue(), model.getPage()));
+                break;
+        }
     }
 
 }
