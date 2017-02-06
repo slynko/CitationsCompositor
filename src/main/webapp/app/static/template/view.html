@@ -1,6 +1,6 @@
 <form name="fileForm" (submit)="getComposedBibliographies($event)">
     <label class="control-label">Dstu file:</label>
-    <select name="file" class="form-control" (change)="getDstuTypes()" [(ngModel)]="fileName" required>
+    <select name="file" class="form-control" [(ngModel)]="fileName" (ngModelChange)="getDstuTypes()" required>
         <option *ngFor="let file of dstuFiles" value="{{file}}">{{file}}</option>
     </select>
     <br/>

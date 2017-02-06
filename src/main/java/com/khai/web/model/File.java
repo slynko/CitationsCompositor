@@ -2,15 +2,15 @@ package com.khai.web.model;
 
 public class File
 {
-  private String type;
+  private String name;
 
-  public String getType()
+  public String getName()
   {
-    return type;
+    return name;
   }
 
-  public void setType(String type)
+  public void setName(String name)
   {
-    this.type = type;
+    this.name = name;
   }
 }
