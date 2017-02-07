@@ -1,5 +1,5 @@
 .main-container {
-    width: 60%;
+    width: 80%;
 }
 
 .page-title {
@@ -15,4 +15,8 @@
 .btn-plus-minus {
     padding: 6px 9px !important;
     line-height: 1 !important;
+}
+
+.form-group {
+    margin-bottom: 10px;
 }

@@ -1,54 +1,211 @@
-<form name="fileForm" (submit)="getComposedBibliographies($event)">
-    <label class="control-label">Dstu file:</label>
-    <select name="file" class="form-control" [(ngModel)]="fileName" (ngModelChange)="getDstuTypes()" required>
-        <option *ngFor="let file of dstuFiles" value="{{file}}">{{file}}</option>
-    </select>
-    <br/>
-    <div *ngIf="dstuTypes">
-        <label class="control-label">Dstu type:</label>
-        <select name="dstuType" class="form-control" [(ngModel)]="dstuType" required>
-            <option *ngFor="let type of dstuTypes" value="{{type}}">{{type}}</option>
-        </select>
+<div class="row">
+    <div class="col-md-8 col-md-push-4">
+        <form (submit)="addBibliography()" #f="ngForm">
+            <div class="form-group">
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-2">
+                        <label>Type:</label>
+                    </div>
+                    <div class="form-group col-md-10">
+                        <input type="text" class="form-control" name="type"
+                               [(ngModel)]="newBibliography.type">
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-2">
+                        <label>Title:</label>
+                    </div>
+                    <div class="form-group col-md-10">
+                        <input type="text" class="form-control" name="title"
+                               [(ngModel)]="newBibliography.title" required>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <label>Authors:</label>
+                    <button (click)="addAuthor()" type="button" class="btn btn-primary btn-plus-minus">+</button>
+                </div>
+                <div class="form-group col-md-12" *ngFor="let author of newBibliography.authors">
+                    <div class="form-group col-md-1">
+                        <button type="button" (click)="removeAuthor(author)" class="btn btn-primary btn-plus-minus">-
+                        </button>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="col-xs-4">Name1</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" name="name1"
+                                   [(ngModel)]="author.name1">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="col-xs-4">Name2</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" name="name2"
+                                   [(ngModel)]="author.name2">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="col-xs-4">Surname</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" name="surname"
+                                   [(ngModel)]="author.surname">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-2">
+                        <label>Publisher:</label>
+                    </div>
+                    <div class="form-group col-md-10">
+                        <input type="text" class="form-control" name="publisher"
+                               [(ngModel)]="newBibliography.publisher">
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <label>Editors:</label>
+                    <button (click)="addEditor()" type="button" class="btn btn-primary btn-plus-minus">+</button>
+                </div>
+                <div class="form-group col-md-12" *ngFor="let editor of newBibliography.editors">
+                    <div class="form-group col-md-1">
+                        <button type="button" (click)="removeEditor(editor)" class="btn btn-primary btn-plus-minus">-
+                        </button>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="col-xs-4">Name1</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" name="name1"
+                                   [(ngModel)]="editor.name1">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="col-xs-4">Name2</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" name="name2"
+                                   [(ngModel)]="editor.name2">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="col-xs-4">Surname</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" name="surname"
+                                   [(ngModel)]="editor.surname">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-2">
+                        <label>Editor type:</label>
+                    </div>
+                    <div class="form-group col-md-10">
+                        <input type="text" class="form-control" name="editorType"
+                               [(ngModel)]="newBibliography.editorType">
+                    </div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-2">
+                        <label>Publisher info:</label></div>
+                    <div class="form-group col-md-10">
+                        <input type="text" class="form-control" name="publisherInfo"
+                               [(ngModel)]="newBibliography.publisherInfo"></div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-2">
+                        <label>Year:</label></div>
+                    <div class="form-group col-md-10">
+                        <input type="text" class="form-control" name="year"
+                               [(ngModel)]="newBibliography.year"></div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-2">
+                        <label>Date:</label></div>
+                    <div class="form-group col-md-10">
+                        <input type="date" class="form-control" name="date"
+                               [(ngModel)]="newBibliography.date"></div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-2">
+                        <label>Volume:</label></div>
+                    <div class="form-group col-md-10">
+                        <input type="text" class="form-control" name="volume"
+                               [(ngModel)]="newBibliography.volume"></div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-2">
+                        <label>No:</label></div>
+                    <div class="form-group col-md-10">
+                        <input type="text" class="form-control" name="no"
+                               [(ngModel)]="newBibliography.no"></div>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="form-group col-md-2">
+                        <label>Page:</label></div>
+                    <div class="form-group col-md-10">
+                        <input type="text" class="form-control" name="page"
+                               [(ngModel)]="newBibliography.page"></div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
-    <br/>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th class="col-md-5">Bibliography</th>
-            <th class="col-md-1">Select to compose</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let bibliography of bibliographies">
-            <td class="col-md-5">{{ bibliography }}</td>
-            <td class="col-md-1"><input type="checkbox" value="{{bibliography}}"
-                                        (change)="updateCheckedOptions(bibliography, $event)"/></td>
-        </tr>
-        </tbody>
-    </table>
-    <button type="submit"
-            class="btn btn-primary">
-        Compose
-    </button>
-    <button type="button" (click)="clearAll()" class="btn btn-default">Clear</button>
-    <p class="bg-danger">{{ error }}</p>
-</form>
-<table class="table" *ngIf="composed">
-    <thead>
-    <tr>
-        <th>Composed bibliography</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="success">
-        <td>
-                <span *ngFor="let bibliography of selectedBibliographies; let i = index;">
+    <div class="col-md-4 col-md-pull-8">
+        <form #f="ngForm">
+            <label class="control-label">Dstu file:</label>
+            <select name="file" class="form-control" [(ngModel)]="dstuSelectedFile" (ngModelChange)="getAllDstuTypes()"
+                    required>
+                <option *ngFor="let file of dstuFiles" value="{{file}}">{{file}}</option>
+            </select>
+            <br/>
+            <div *ngIf="dstuTypes">
+                <label class="control-label">Dstu type:</label>
+                <select name="dstuType" class="form-control" [(ngModel)]="dstuSelectedType" required>
+                    <option *ngFor="let type of dstuTypes" value="{{type}}">{{type}}</option>
+                </select>
+            </div>
+            <br/>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="col-md-5" >Suggested bibliographies</th>
+                    <th class="col-md-1"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let bibliography of existingBibliographies">
+                    <td class="col-md-5">{{ bibliography }}</td>
+                    <td class="col-md-1"><input type="checkbox" value="{{bibliography}}"
+                                                (change)="updateCheckedOptions(bibliography, $event)"/></td>
+                </tr>
+                </tbody>
+            </table>
+            <button type="button" (click)="getComposedBibliographies()" class="btn btn-primary">Compose</button>
+            <button type="button" (click)="initComposeForm()" class="btn btn-default">Refresh</button>
+            <br/>
+            <br/>
+            <div class="alert alert-danger" *ngIf="error && error !== '' ">
+                <strong>An error occurred!</strong> {{ error }}
+            </div>
+
+            <div class="alert alert-success" *ngIf="bibliographyAddedSuccessfully">
+                <strong>Success!</strong> Bibliography added successfully.
+            </div>
+        </form>
+        <table class="table" *ngIf="showComposedBibliographies">
+            <thead>
+            <tr>
+                <th>Composed bibliography</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="success">
+                <td>
+                <span *ngFor="let bibliography of composedBibliographies; let i = index;">
                     <span>
                         {{i + 1}}) {{ bibliography }}
                     </span>
                     <br/>
                 </span>
-        </td>
-    </tr>
-    </tbody>
-</table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

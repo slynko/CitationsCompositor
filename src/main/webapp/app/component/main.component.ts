@@ -9,11 +9,6 @@ export class MainComponent {
     constructor(@Inject(Router) private router:Router) {
     }
 
-    edit():boolean {
-        this.router.navigate(['/edit']);
-        return false;
-    }
-
     view():boolean {
         this.router.navigate(['/view']);
         return false;

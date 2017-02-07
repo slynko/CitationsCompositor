@@ -1,83 +1,134 @@
 import {Component, Inject} from '@angular/core';
-import {BibliographyService} from '../service/bibliography.service'
+import {BibliographyService} from "../service/bibliography.service";
+import {Bibliography} from "../model/Bibliography";
+import {Person} from "../model/Person";
 
 @Component({
-    selector: 'view-component',
+    selector: 'edit-component',
     templateUrl: 'app/static/template/view.html',
     providers: [BibliographyService]
 })
 export class ViewComponent {
-    constructor(@Inject(BibliographyService) private _bibliographyService:BibliographyService) {
-        this._bibliographyService = _bibliographyService;
+    existingBibliographies:string[];
+    composedBibliographies:string[];
+    newBibliography:Bibliography;
+
+    dstuFiles:string[];
+    dstuSelectedFile:string;
+    dstuTypes:string[];
+    dstuSelectedType:string;
+    showComposedBibliographies:boolean;
+    checkboxMap:string[];
+
+    error:string;
+    bibliographyAddedSuccessfully:boolean;
+
+    constructor(@Inject(BibliographyService) private bibliographyService:BibliographyService) {
+        this.bibliographyService = bibliographyService;
     }
 
     ngOnInit() {
-        this.clearAll();
+        this.initPage();
+    }
+
+    initPage() {
+        this.initAddForm();
+        this.initComposeForm();
+    }
+
+    initAddForm() {
+        this.newBibliography = new Bibliography();
+        this.newBibliography.authors = [new Person()];
+        this.newBibliography.editors = [new Person()];
+    }
+
+    initComposeForm() {
         this.getAllBibliographies();
         this.getAllDstuFiles();
+        this.checkboxMap = [];
+        this.showComposedBibliographies = false;
+        this.error = "";
     }
 
     getAllDstuFiles() {
-        this._bibliographyService.getAllDstuFiles()
+        this.bibliographyService.getAllDstuFiles()
             .subscribe(
                 data => this.dstuFiles = data,
                 error => this.error = "Something went wrong."
             );
     }
 
+    getAllDstuTypes() {
+        this.bibliographyService.getDstuTypes(this.dstuSelectedFile)
+            .subscribe(
+                data => this.dstuTypes = data,
+                error => this.error = "Something went wrong."
+            );
+    }
+
     getAllBibliographies() {
-        this._bibliographyService.getAllBibliographies()
+        this.bibliographyService.getAllBibliographies()
             .subscribe(
-                data => this.bibliographies = data,
+                data => this.existingBibliographies = data,
                 error => this.error = "Something went wrong."
             );
-    }
-
-    getComposedBibliographies($event) {
-        this.selectedBibliographies = this.getSelectedBibliographies();
-        this._bibliographyService.getComposedBibliographies(this.selectedBibliographies, this.fileName, this.dstuType)
-            .subscribe(
-                data => this.selectedBibliographies = data,
-                error => this.error = "Something went wrong."
-            );
-        this.composed = this.selectedBibliographies.length > 0;
-        $event.preventDefault();
-    }
-
-    clearAll() {
-        this.bibliographies = [];
-        this.selectedBibliographies = [];
-        this.optionsMap = [];
-        this.composed = false;
-        this.error = "";
-        this.getAllBibliographies();
     }
 
     updateCheckedOptions(bibliography, event) {
-        this.optionsMap[bibliography] = event.target.checked;
+        this.checkboxMap[bibliography] = event.target.checked;
     }
 
-    compose($event) {
-        this.selectedBibliographies = this.getSelectedBibliographies();
-        this.composed = this.selectedBibliographies.length > 0;
-        $event.preventDefault();
+    getComposedBibliographies() {
+        var selectedBibliographies = this.getSelectedBibliographies();
+        this.bibliographyService.getComposedBibliographies(selectedBibliographies, this.dstuSelectedFile, this.dstuSelectedType)
+            .subscribe(
+                data => this.composedBibliographies = data,
+                error => this.error = "Something went wrong."
+            );
+        if (this.composedBibliographies) {
+            this.showComposedBibliographies = this.composedBibliographies.length > 0;
+        }
     }
 
     getSelectedBibliographies():string[] {
         var selectedBibliographies = [];
-        for (var key in this.optionsMap) {
-            if (this.optionsMap.hasOwnProperty(key) && this.optionsMap[key]) {
+        for (var key in this.checkboxMap) {
+            if (this.checkboxMap.hasOwnProperty(key) && this.checkboxMap[key]) {
                 selectedBibliographies.push(key);
             }
         }
         return selectedBibliographies;
     }
 
-    getDstuTypes() {
-        this._bibliographyService.getDstuTypes(this.fileName)
+    addAuthor() {
+        this.newBibliography.authors[this.newBibliography.authors.length] = new Person();
+    }
+
+    addEditor() {
+        this.newBibliography.editors[this.newBibliography.editors.length] = new Person();
+    }
+
+    removeAuthor(author:Person) {
+        this.newBibliography.authors.splice(this.newBibliography.authors.indexOf(author), 1);
+    }
+
+    removeEditor(editor:Person) {
+        this.newBibliography.editors.splice(this.newBibliography.editors.indexOf(editor), 1);
+    }
+
+    addBibliography() {
+        this.bibliographyService.add(this.newBibliography)
             .subscribe(
-                data => this.dstuTypes = data,
-                error => this.error = "Something went wrong."
+                res => {
+                    this.initAddForm();
+                    this.getAllBibliographies();
+                    this.bibliographyAddedSuccessfully = true;
+                    var self = this;
+                    setTimeout(function() {
+                        self.bibliographyAddedSuccessfully = false;
+                    }, 3000);
+
+                }
             );
     }
 }
