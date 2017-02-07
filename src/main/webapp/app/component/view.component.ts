@@ -17,7 +17,6 @@ export class ViewComponent {
     dstuSelectedFile:string;
     dstuTypes:string[];
     dstuSelectedType:string;
-    showComposedBibliographies:boolean;
     checkboxMap:string[];
 
     error:string;
@@ -46,7 +45,6 @@ export class ViewComponent {
         this.getAllBibliographies();
         this.getAllDstuFiles();
         this.checkboxMap = [];
-        this.showComposedBibliographies = false;
         this.error = "";
     }
 
@@ -85,9 +83,6 @@ export class ViewComponent {
                 data => this.composedBibliographies = data,
                 error => this.error = "Something went wrong."
             );
-        if (this.composedBibliographies) {
-            this.showComposedBibliographies = this.composedBibliographies.length > 0;
-        }
     }
 
     getSelectedBibliographies():string[] {

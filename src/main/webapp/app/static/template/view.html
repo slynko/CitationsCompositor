@@ -1,5 +1,48 @@
 <div class="row">
-    <div class="col-md-8 col-md-push-4">
+    <div class="col-md-3">
+        <form #f="ngForm">
+            <label class="control-label">Dstu file:</label>
+            <select name="file" class="form-control" [(ngModel)]="dstuSelectedFile" (ngModelChange)="getAllDstuTypes()"
+                    required>
+                <option *ngFor="let file of dstuFiles" value="{{file}}">{{file}}</option>
+            </select>
+            <br/>
+            <div *ngIf="dstuTypes">
+                <label class="control-label">Dstu type:</label>
+                <select name="dstuType" class="form-control" [(ngModel)]="dstuSelectedType" required>
+                    <option *ngFor="let type of dstuTypes" value="{{type}}">{{type}}</option>
+                </select>
+            </div>
+            <br/>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th class="col-md-5">Suggested bibliographies</th>
+                    <th class="col-md-1"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let bibliography of existingBibliographies">
+                    <td class="col-md-5">{{ bibliography }}</td>
+                    <td class="col-md-1"><input type="checkbox" value="{{bibliography}}"
+                                                (change)="updateCheckedOptions(bibliography, $event)"/></td>
+                </tr>
+                </tbody>
+            </table>
+            <button type="button" (click)="getComposedBibliographies()" class="btn btn-primary">Compose</button>
+            <button type="button" (click)="initComposeForm()" class="btn btn-default">Refresh</button>
+            <br/>
+            <br/>
+            <div class="alert alert-danger" *ngIf="error && error !== '' ">
+                <strong>An error occurred!</strong> {{ error }}
+            </div>
+
+            <div class="alert alert-success" *ngIf="bibliographyAddedSuccessfully">
+                <strong>Success!</strong> Bibliography added successfully.
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
         <form (submit)="addBibliography()" #f="ngForm">
             <div class="form-group">
                 <div class="form-group col-md-12">
@@ -143,66 +186,24 @@
                                [(ngModel)]="newBibliography.page"></div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Add bibliography</button>
         </form>
     </div>
-    <div class="col-md-4 col-md-pull-8">
-        <form #f="ngForm">
-            <label class="control-label">Dstu file:</label>
-            <select name="file" class="form-control" [(ngModel)]="dstuSelectedFile" (ngModelChange)="getAllDstuTypes()"
-                    required>
-                <option *ngFor="let file of dstuFiles" value="{{file}}">{{file}}</option>
-            </select>
-            <br/>
-            <div *ngIf="dstuTypes">
-                <label class="control-label">Dstu type:</label>
-                <select name="dstuType" class="form-control" [(ngModel)]="dstuSelectedType" required>
-                    <option *ngFor="let type of dstuTypes" value="{{type}}">{{type}}</option>
-                </select>
-            </div>
-            <br/>
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th class="col-md-5" >Suggested bibliographies</th>
-                    <th class="col-md-1"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let bibliography of existingBibliographies">
-                    <td class="col-md-5">{{ bibliography }}</td>
-                    <td class="col-md-1"><input type="checkbox" value="{{bibliography}}"
-                                                (change)="updateCheckedOptions(bibliography, $event)"/></td>
-                </tr>
-                </tbody>
-            </table>
-            <button type="button" (click)="getComposedBibliographies()" class="btn btn-primary">Compose</button>
-            <button type="button" (click)="initComposeForm()" class="btn btn-default">Refresh</button>
-            <br/>
-            <br/>
-            <div class="alert alert-danger" *ngIf="error && error !== '' ">
-                <strong>An error occurred!</strong> {{ error }}
-            </div>
-
-            <div class="alert alert-success" *ngIf="bibliographyAddedSuccessfully">
-                <strong>Success!</strong> Bibliography added successfully.
-            </div>
-        </form>
-        <table class="table" *ngIf="showComposedBibliographies">
+    <div class="col-md-3">
+        <table class="table table-bordered">
             <thead>
             <tr>
-                <th>Composed bibliography</th>
+                <th>Composed bibliographies</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="success">
+            <tr>
                 <td>
-                <span *ngFor="let bibliography of composedBibliographies; let i = index;">
-                    <span>
-                        {{i + 1}}) {{ bibliography }}
-                    </span>
-                    <br/>
-                </span>
+                    <ol>
+                        <li *ngFor="let bibliography of composedBibliographies">
+                            {{ bibliography }}
+                        </li>
+                    </ol>
                 </td>
             </tr>
             </tbody>
