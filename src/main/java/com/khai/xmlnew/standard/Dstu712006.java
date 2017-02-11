@@ -104,8 +104,6 @@ public class Dstu712006 extends BaseStandard {
     }
 
     private Map<String, Authors> getAuthors(List<Node> authorsNodes) {
-        //todo resolve issue with 'Authors' name -> review xml structure of authors (see TODO there)
-        //todo implement multipart-separator-after after all authors
         final Map<String, Authors> authorsMap = new HashMap<>();
         String separatorSurname;
         String separatorName1;
@@ -121,6 +119,7 @@ public class Dstu712006 extends BaseStandard {
                     Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
             separatorName2 = getMultipartSeparatorName(node.selectSingleNode(Constants.XmlNode.NAME2),
                     Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
+            String separatorAfterAuthors = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
             authors.setType(type);
             authors.setCondition(condition);
             multipartSeparator = multipartSeparatorsAfter.get(separatorSurname);
@@ -135,7 +134,10 @@ public class Dstu712006 extends BaseStandard {
             authors.setFormattedName2(multipartSeparator != null
                     ? "%s" + multipartSeparator.getValue()
                     : "%s");
-
+            multipartSeparator = multipartSeparatorsAfter.get(separatorAfterAuthors);
+            authors.setFormattedAfter(multipartSeparator != null
+                    ? multipartSeparator.getValue()
+                    : "");
             authorsMap.put(condition + type, authors);
         }
         return authorsMap;
@@ -155,6 +157,7 @@ public class Dstu712006 extends BaseStandard {
 
     private void addCitationPart(String type, String citationPart,
                                  CitationModel model, StringBuilder builder) {
+        //TODO Refactor this method :|
         Authors authors;
         Field value;
         switch (citationPart) {
@@ -189,21 +192,29 @@ public class Dstu712006 extends BaseStandard {
                 break;
             case "authors-after":
                 if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
-                final String authorsType = model.getAuthors().size() > 4
-                        ? "lq4" + type
-                        : "qt4" + type;
+                final String condition = model.getAuthors().size() <= 4 ? "lq4" : "gt4";
+                final String authorsType = condition + type;
                 authors = citationParts.getAuthorsAfter().get(authorsType);
                 if (authors == null) {
-                    authors = citationParts.getAuthorsAfter().get("lq4default");
+                    authors = citationParts.getAuthorsAfter().get(condition + "default");
                 }
                 final Iterator<Person> authorsIterator = model.getAuthors().iterator();
-                do {
+                if (model.getAuthors().size() > 4) {
                     final Person person = authorsIterator.next();
                     builder.append(String.format(authors.getFormattedName1(), person.getName1()))
                             .append(String.format(authors.getFormattedName2(), person.getName2()))
-                            .append(String.format(authors.getFormattedSurname(), person.getSurname()));
-
-                } while (authorsIterator.hasNext());
+                            .append(person.getSurname())
+                            .append(authors.getFormattedAfter());
+                } else {
+                    do {
+                        final Person person = authorsIterator.next();
+                        builder.append(String.format(authors.getFormattedName1(), person.getName1()))
+                                .append(String.format(authors.getFormattedName2(), person.getName2()))
+                                .append(authorsIterator.hasNext()
+                                        ? String.format(authors.getFormattedSurname(), person.getSurname())
+                                        : person.getSurname());
+                    } while (authorsIterator.hasNext());
+                }
                 break;
             case "publisher":
                 if (TextUtils.isEmpty(model.getPublisher())) return;

@@ -110,10 +110,8 @@ public class BibliographyRestService {
     public List<String> getComposedBibliographies(@RequestBody ComposeBibliographiesBody bibliographies) {
         final List<CitationModel> citations = bibliographyService
                 .findByTitles(bibliographies.getBibliographyKeys());
-        return com.khai.xmlnew.StandardManager.getInstance().makeCitations(bibliographies.getFileName(),
+        return StandardManager.getInstance().makeCitations(bibliographies.getFileName(),
                 bibliographies.getDstuType(), citations);
-        /*return com.khai.xml.StandardManager.getInstance()
-            .makeBibliographies(bibliographies.getFileName(), citations);*/
     }
 
 }
