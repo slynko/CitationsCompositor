@@ -96,11 +96,11 @@ export class ViewComponent {
     }
 
     addAuthor() {
-        this.newBibliography.authors[this.newBibliography.authors.length] = new Person();
+        this.newBibliography.authors.push(new Person());
     }
 
     addEditor() {
-        this.newBibliography.editors[this.newBibliography.editors.length] = new Person();
+        this.newBibliography.editors.push(new Person());
     }
 
     removeAuthor(author:Person) {
