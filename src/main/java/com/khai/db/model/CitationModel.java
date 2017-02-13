@@ -3,6 +3,7 @@ package com.khai.db.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,16 +19,23 @@ public class CitationModel {
     private String title;
     @Column(name = "type")
     private String type;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "authors")
-    private Set<Person> authors;
     @Column(name = "publisher")
     private String publisher;
     @Column(name = "editor_type")
     private String editorType;
+
+//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "authors")
+//    private List<Person> authors;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "authors")
+    private Set<Person> authors;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "editors")
-    private Set<Person> editors;
+    private List<Person> editors;
+
     @Column(name = "publisher_info")
     private String publisherInfo;
     @Column(name = "year")
@@ -71,6 +79,14 @@ public class CitationModel {
 
     public void setAuthors(Set<Person> authors) {
         this.authors = authors;
+    }
+
+    public List<Person> getEditors() {
+        return editors;
+    }
+
+    public void setEditors(List<Person> editors) {
+        this.editors = editors;
     }
 
     public String getPublisher() {
@@ -137,13 +153,6 @@ public class CitationModel {
         this.page = page;
     }
 
-    public Set<Person> getEditors() {
-        return editors;
-    }
-
-    public void setEditors(Set<Person> editors) {
-        this.editors = editors;
-    }
 
     @Override
     public String toString() {
