@@ -59,7 +59,8 @@ public class BibliographyRestService {
         List<String> types = new ArrayList<>();
         types.add("some type");
         return types;
-        //return StandardManager.getInstance().getTypesOfStandard(file.getType());
+        //TODO use it for getting types title with their keys
+        //return StandardManager.getInstance().getTypesOfStandard(file.getName());
     }
 
     /**

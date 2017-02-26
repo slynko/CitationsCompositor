@@ -18,7 +18,6 @@ import java.util.Map;
 public abstract class BaseStandard implements StandardContract {
 
     protected Document xmlDocument;
-
     protected Map<String, Separator> separators;
     protected Map<String, MultipartSeparator> multipartSeparatorsBefore;
     protected Map<String, MultipartSeparator> multipartSeparatorsAfter;
@@ -42,12 +41,13 @@ public abstract class BaseStandard implements StandardContract {
     }
 
     @Override
-    public List<String> getTypes() {
-        final List<String> types = new ArrayList<>();
+    public Map<String, String> getTypes() {
+        final Map<String, String> types = new HashMap<>();
         final List<Node> typesNodes = xmlDocument.selectNodes(Constants.XmlPathToNode.TYPES);
         for (Node typeNode : typesNodes) {
+            final String typeName = typeNode.valueOf(Constants.XmlAttribute.NAME);
             final String typeTitle = typeNode.valueOf(Constants.XmlAttribute.TITLE);
-            types.add(typeTitle);
+            types.put(typeName, typeTitle);
         }
         return types;
     }

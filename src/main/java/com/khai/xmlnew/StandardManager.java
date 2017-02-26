@@ -41,7 +41,7 @@ public class StandardManager {
         return getCitations(standard, standardType, citations);
     }
 
-    public List<String> getTypesOfStandard(String standardName) {
+    public Map<String, String> getTypesOfStandard(String standardName) {
         StandardContract standard;
         switch (standardName) {
             case Constants.StandardName.DSTU_7_1_2006:

@@ -2,13 +2,13 @@ package com.khai.xmlnew.standard.base;
 
 import com.khai.db.model.CitationModel;
 
-import java.util.List;
+import java.util.Map;
 
 public interface StandardContract {
 
     void make();
 
-    List<String> getTypes();
+    Map<String, String> getTypes();
 
     String getCitation(CitationModel citationModel, String type);
 
