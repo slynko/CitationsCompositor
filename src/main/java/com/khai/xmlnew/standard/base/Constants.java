@@ -2,14 +2,23 @@ package com.khai.xmlnew.standard.base;
 
 public final class Constants {
 
+    /**
+     * Names of standards
+     */
     public interface StandardName {
         String DSTU_7_1_2006 = "dstu7.1.2006.xml";
     }
 
+    /**
+     * Paths to standard
+     */
     public interface StandardPath {
         String DSTU_7_1_2006 = "standard/dstu7.1.2006.xml";
     }
 
+    /**
+     * Nodes of standards in XML documents
+     */
     public interface XmlNode {
         String NAME = "name";
         String DEFAULT = "default";
@@ -25,6 +34,10 @@ public final class Constants {
         String STRING = "string";
     }
 
+
+    /**
+     * Paths to nodes of standards in XML documents
+     */
     public interface XmlPathToNode {
         String TYPES = "/standard/types/type";
         String SEPARATORS = "/standard/separators/separator";
@@ -50,6 +63,9 @@ public final class Constants {
         String CITATIONS_CITATION = "/standard/citations/citation";
     }
 
+    /**
+     * Names of XML attributes of standards
+     */
     public interface XmlAttribute {
         String TITLE = "@title";
         String NAME = "@name";

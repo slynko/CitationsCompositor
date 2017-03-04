@@ -52,6 +52,10 @@ public abstract class BaseStandard implements StandardContract {
         return types;
     }
 
+    /**
+     * Initiation of standard
+     * @param standardPath chosen path to standard for initiating
+     */
     private void initStandard(String standardPath) {
         final URL path = getClass().getClassLoader().getResource(standardPath);
         if (path == null) {
@@ -66,11 +70,20 @@ public abstract class BaseStandard implements StandardContract {
         }
     }
 
+    /**
+     * Retrieves a string value which is located as the value of single node
+     * @param parentNode parent node of single node where value is
+     * @param nodeName name of single node
+     * @return string value of single node
+     */
     private String getStringOfSingleNode(Node parentNode, String nodeName) {
         final Node singleNode = parentNode.selectSingleNode(nodeName);
         return singleNode != null ? singleNode.getStringValue() : null;
     }
 
+    /**
+     * Fills separators of standard
+     */
     private void fillSeparators() {
         final List<Node> separators = xmlDocument.selectNodes(Constants.XmlPathToNode.SEPARATORS);
         for (Node node : separators) {
@@ -88,12 +101,15 @@ public abstract class BaseStandard implements StandardContract {
         }
     }
 
+
+    /**
+     * Fills multipart separators of standard
+     */
     private void fillMultipartSeparators(String type, Map<String, MultipartSeparator> multipartSeparators) {
         final List<Node> multipartSeparatorsNodes = xmlDocument.selectNodes(type);
         final StringBuilder builder = new StringBuilder();
         for (Node nodeMultipartSeparator : multipartSeparatorsNodes) {
-            final List<Node> separators = nodeMultipartSeparator.selectNodes(
-                    Constants.XmlNode.SEPARATOR);
+            final List<Node> separators = nodeMultipartSeparator.selectNodes(Constants.XmlNode.SEPARATOR);
             builder.setLength(0);
             for (Node nodeSeparator : separators) {
                 final String separatorName = nodeSeparator.valueOf(Constants.XmlAttribute.NAME);
@@ -108,6 +124,10 @@ public abstract class BaseStandard implements StandardContract {
         }
     }
 
+
+    /**
+     * Fills available citation types of standard
+     */
     private void fillCitations() {
         final List<Node> citations = xmlDocument.selectNodes(Constants.XmlPathToNode.CITATIONS_CITATION);
         for (Node nodeCitation : citations) {
@@ -121,6 +141,9 @@ public abstract class BaseStandard implements StandardContract {
         }
     }
 
+    /**
+     * Fills parts of citation for using them after
+     */
     protected abstract void fillCitationParts();
 
 }
