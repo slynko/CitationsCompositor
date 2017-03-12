@@ -28,10 +28,11 @@ public class Dstu712006 extends BaseStandard {
     @Override
     public String getCitation(CitationModel citationModel, String type) {
         //todo change to using of 'type' variable when it will be properly made
-        final List<String> parts = citations.get("book-author");
+        final String tempType = "book-title";
+        final List<String> parts = citations.get(tempType);
         final StringBuilder builder = new StringBuilder();
         for (String part : parts) {
-            addCitationPart("book-author", part, citationModel, builder);
+            addCitationPart(tempType, part, citationModel, builder);
         }
         return builder.toString();
     }
@@ -105,23 +106,30 @@ public class Dstu712006 extends BaseStandard {
 
     private Map<String, Authors> getAuthors(List<Node> authorsNodes) {
         final Map<String, Authors> authorsMap = new HashMap<>();
+        String separatorBeforeAuthors;
         String separatorSurname;
         String separatorName1;
         String separatorName2;
+        String separatorAfterAuthors;
         for (Node node : authorsNodes) {
             final Authors authors = new Authors();
             final String condition = node.valueOf(Constants.XmlAttribute.CONDITION);
             final String type = node.valueOf(Constants.XmlAttribute.TYPE);
             MultipartSeparator multipartSeparator;
+            separatorBeforeAuthors = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_BEFORE);
             separatorSurname = getMultipartSeparatorName(node.selectSingleNode(Constants.XmlNode.SURNAME),
                     Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
             separatorName1 = getMultipartSeparatorName(node.selectSingleNode(Constants.XmlNode.NAME1),
                     Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
             separatorName2 = getMultipartSeparatorName(node.selectSingleNode(Constants.XmlNode.NAME2),
                     Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
-            String separatorAfterAuthors = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
+            separatorAfterAuthors = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
             authors.setType(type);
             authors.setCondition(condition);
+            multipartSeparator = multipartSeparatorsBefore.get(separatorBeforeAuthors);
+            authors.setFormattedBefore(multipartSeparator != null
+                    ? multipartSeparator.getValue()
+                    : "");
             multipartSeparator = multipartSeparatorsAfter.get(separatorSurname);
             authors.setFormattedSurname(multipartSeparator != null
                     ? "%s" + multipartSeparator.getValue()
@@ -190,6 +198,14 @@ public class Dstu712006 extends BaseStandard {
                 }
                 builder.append(String.format(value.getFormattedValue(), model.getType()));
                 break;
+            case "edition-type":
+                if (TextUtils.isEmpty(model.getEditorType())) return;
+                value = citationParts.getEditionTypes().get(type);
+                if (value == null) {
+                    value = citationParts.getEditionTypes().get("default");
+                }
+                builder.append(String.format(value.getFormattedValue(), model.getEditorType()));
+                break;
             case "authors-after":
                 if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
                 final String condition = model.getAuthors().size() <= 4 ? "lq4" : "gt4";
@@ -225,7 +241,31 @@ public class Dstu712006 extends BaseStandard {
                 builder.append(String.format(value.getFormattedValue(), model.getPublisher()));
                 break;
             case "editors":
-
+                if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
+                final String editorsCondition = model.getAuthors().size() <= 4 ? "lq4" : "gt4";
+                final String editorsType = editorsCondition + type;
+                authors = citationParts.getEditors().get(editorsType);
+                if (authors == null) {
+                    authors = citationParts.getEditors().get(editorsCondition + "default");
+                }
+                final Iterator<Person> editorsIterator = model.getEditors().iterator();
+                builder.append(authors.getFormattedBefore());
+                if (model.getEditors().size() > 4) {
+                    final Person person = editorsIterator.next();
+                    builder.append(String.format(authors.getFormattedName1(), person.getName1()))
+                            .append(String.format(authors.getFormattedName2(), person.getName2()))
+                            .append(person.getSurname())
+                            .append(authors.getFormattedAfter());
+                } else {
+                    do {
+                        final Person person = editorsIterator.next();
+                        builder.append(String.format(authors.getFormattedName1(), person.getName1()))
+                                .append(String.format(authors.getFormattedName2(), person.getName2()))
+                                .append(editorsIterator.hasNext()
+                                        ? String.format(authors.getFormattedSurname(), person.getSurname())
+                                        : person.getSurname());
+                    } while (editorsIterator.hasNext());
+                }
                 break;
             case "publisher-city":
                 if (TextUtils.isEmpty(model.getPublisherInfo())) return;

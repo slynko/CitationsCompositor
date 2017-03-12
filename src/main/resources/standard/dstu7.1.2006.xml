@@ -166,6 +166,7 @@
             <separator name="space"/>
         </multipart-separator>
         <multipart-separator name="publisher-city" type="default">
+            <separator name="dot" />
             <separator name="space"/>
             <separator name="dash"/>
             <separator name="space"/>
@@ -198,6 +199,16 @@
             <separator name="space"/>
             <separator name="pages"/>
             <separator name="dot"/>
+            <separator name="space"/>
+        </multipart-separator>
+        <multipart-separator name="editors" type="default">
+            <separator name="space"/>
+            <separator name="semicolon"/>
+            <separator name="space"/>
+        </multipart-separator>
+        <multipart-separator name="editors" type="book-title">
+            <separator name="space"/>
+            <separator name="slash"/>
             <separator name="space"/>
         </multipart-separator>
     </multipart-separators-before>
@@ -291,6 +302,7 @@
         </additional-info>
         <editors>
             <authors condition="lq4" type="default"> <!-- "<=" - "lq" !-->
+                <multipart-separator-before name="editors" type="default"/>
                 <name1 type="default">
                     <multipart-separator-after name="name" type="default"/>
                 </name1>
@@ -302,6 +314,30 @@
                 </surname>
             </authors>
             <authors condition="gt4" type="default"> <!-- ">"  - "gt" !-->
+                <multipart-separator-before name="editors" type="default"/>
+                <name1 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name1>
+                <name2 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name2>
+                <surname type="default"/>
+                <multipart-separator-after name="others" type="default"/>
+            </authors>
+            <authors condition="lq4" type="book-title"> <!-- "<=" - "lq" !-->
+                <multipart-separator-before name="editors" type="book-title"/>
+                <name1 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name1>
+                <name2 type="default">
+                    <multipart-separator-after name="name" type="default"/>
+                </name2>
+                <surname type="default">
+                    <multipart-separator-after name="surname" type="default"/>
+                </surname>
+            </authors>
+            <authors condition="gt4" type="book-title"> <!-- ">"  - "gt" !-->
+                <multipart-separator-before name="editors" type="book-title"/>
                 <name1 type="default">
                     <multipart-separator-after name="name" type="default"/>
                 </name1>
@@ -460,6 +496,16 @@
             <string>edition-type</string>
             <string>type</string>
             <string>authors-after</string>
+            <string>editors</string>
+            <string>publisher-city</string>
+            <string>publisher-name</string>
+            <string>year-date</string>
+            <string>pages</string>
+        </citation>
+        <citation type="book-title">
+            <string>title</string>
+            <string>edition-type</string>
+            <string>type</string>
             <string>editors</string>
             <string>publisher-city</string>
             <string>publisher-name</string>

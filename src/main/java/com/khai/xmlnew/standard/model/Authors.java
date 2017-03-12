@@ -7,6 +7,7 @@ public class Authors {
     private String formattedSurname;
     private String formattedName1;
     private String formattedName2;
+    private String formattedBefore;
     private String formattedAfter;
 
     public String getCondition() {
@@ -47,6 +48,14 @@ public class Authors {
 
     public void setFormattedName2(String formattedName2) {
         this.formattedName2 = formattedName2;
+    }
+
+    public String getFormattedBefore() {
+        return formattedBefore;
+    }
+
+    public void setFormattedBefore(String formattedBefore) {
+        this.formattedBefore = formattedBefore;
     }
 
     public String getFormattedAfter() {
