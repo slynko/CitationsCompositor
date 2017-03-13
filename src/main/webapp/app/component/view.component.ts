@@ -37,8 +37,8 @@ export class ViewComponent {
 
     initAddForm() {
         this.newBibliography = new Bibliography();
-        this.newBibliography.authors = [new Person()];
-        this.newBibliography.editors = [new Person()];
+        this.newBibliography.authors = [];
+        this.newBibliography.editors = [];
     }
 
     initComposeForm() {
