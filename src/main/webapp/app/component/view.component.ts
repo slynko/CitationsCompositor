@@ -15,7 +15,7 @@ export class ViewComponent {
 
     dstuFiles:string[];
     dstuSelectedFile:string;
-    dstuTypes:string[];
+    dstuTypes: Object;
     dstuSelectedType:string;
     checkboxMap:string[];
 
@@ -125,5 +125,9 @@ export class ViewComponent {
 
                 }
             );
+    }
+
+    dstuTypesKeys() {
+        return Object.keys(this.dstuTypes);
     }
 }

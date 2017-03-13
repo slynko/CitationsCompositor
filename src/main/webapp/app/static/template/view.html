@@ -10,7 +10,7 @@
             <div *ngIf="dstuTypes">
                 <label class="control-label">Dstu type:</label>
                 <select name="dstuType" class="form-control" [(ngModel)]="dstuSelectedType" required>
-                    <option *ngFor="let type of dstuTypes" value="{{type}}">{{type}}</option>
+                    <option *ngFor="let typeKey of dstuTypesKeys();" value="{{typeKey}}">{{dstuTypes[typeKey]}}</option>
                 </select>
             </div>
             <br/>

@@ -16,6 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -54,13 +55,9 @@ public class BibliographyRestService {
 
     @PostMapping
     @RequestMapping("/dstu/types")
-    public List<String> getDstuTypes(@RequestBody File file) {
-        // TODO: replace test list with real one
-        List<String> types = new ArrayList<>();
-        types.add("some type");
-        return types;
-        //TODO use it for getting types title with their keys
-        //return StandardManager.getInstance().getTypesOfStandard(file.getName());
+    public Map<String, String> getDstuTypes(@RequestBody File file) {
+        return StandardManager.getInstance()
+                .getTypesOfStandard(file.getName());
     }
 
     /**
