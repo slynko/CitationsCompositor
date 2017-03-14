@@ -28,11 +28,10 @@ public class Dstu712006 extends BaseStandard {
     @Override
     public String getCitation(CitationModel citationModel, String type) {
         //todo change to using of 'type' variable when it will be properly made
-        final String tempType = "book-title";
-        final List<String> parts = citations.get(tempType);
+        final List<String> parts = citations.get(type);
         final StringBuilder builder = new StringBuilder();
         for (String part : parts) {
-            addCitationPart(tempType, part, citationModel, builder);
+            addCitationPart(type, part, citationModel, builder);
         }
         return builder.toString();
     }
