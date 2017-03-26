@@ -1,5 +1,6 @@
 package com.khai.xmlnew.standard.base;
 
+import com.khai.xmlnew.standard.model.Field;
 import com.khai.xmlnew.standard.model.MultipartSeparator;
 import com.khai.xmlnew.standard.model.Separator;
 import org.dom4j.Document;
@@ -54,6 +55,7 @@ public abstract class BaseStandard implements StandardContract {
 
     /**
      * Initiation of standard
+     *
      * @param standardPath chosen path to standard for initiating
      */
     private void initStandard(String standardPath) {
@@ -72,8 +74,9 @@ public abstract class BaseStandard implements StandardContract {
 
     /**
      * Retrieves a string value which is located as the value of single node
+     *
      * @param parentNode parent node of single node where value is
-     * @param nodeName name of single node
+     * @param nodeName   name of single node
      * @return string value of single node
      */
     private String getStringOfSingleNode(Node parentNode, String nodeName) {
@@ -139,6 +142,51 @@ public abstract class BaseStandard implements StandardContract {
             }
             this.citations.put(type, parts);
         }
+    }
+
+    protected String getMultipartSeparatorName(Node parentNode, String multipartSeparatorNodeName) {
+        final String name;
+        final String type;
+        final Node multipartSeparatorNode = parentNode.selectSingleNode(multipartSeparatorNodeName);
+        if (multipartSeparatorNode != null) {
+            name = multipartSeparatorNode.valueOf(Constants.XmlAttribute.NAME);
+            type = multipartSeparatorNode.valueOf(Constants.XmlAttribute.TYPE);
+            return name + type;
+        }
+        return "";
+    }
+
+    /**
+     * Fills citation part of field type with separators
+     * @param fieldsNodes represents citation part of field type
+     * @return
+     */
+    protected Map<String, Field> getField(List<Node> fieldsNodes) {
+        final Map<String, Field> fields = new HashMap<>();
+        final StringBuilder builder = new StringBuilder();
+        String separatorBeforeName;
+        String separatorAfterName;
+        for (Node node : fieldsNodes) {
+            final Field field = new Field();
+            final String type = node.valueOf(Constants.XmlAttribute.TYPE);
+            MultipartSeparator multipartSeparator;
+            builder.setLength(0);
+            separatorBeforeName = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_BEFORE);
+            separatorAfterName = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
+            field.setType(type);
+            multipartSeparator = multipartSeparatorsBefore.get(separatorBeforeName);
+            builder.append(multipartSeparator != null
+                    ? multipartSeparator.getValue()
+                    : "");
+            builder.append("%s");
+            multipartSeparator = multipartSeparatorsAfter.get(separatorAfterName);
+            builder.append(multipartSeparator != null
+                    ? multipartSeparator.getValue()
+                    : "");
+            field.setFormattedValue(builder.toString());
+            fields.put(type, field);
+        }
+        return fields;
     }
 
     /**

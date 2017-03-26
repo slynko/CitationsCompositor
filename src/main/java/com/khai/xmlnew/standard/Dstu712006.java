@@ -27,8 +27,8 @@ public class Dstu712006 extends BaseStandard {
 
     @Override
     public String getCitation(CitationModel citationModel, String type) {
-        //todo change to using of 'type' variable when it will be properly made
         final List<String> parts = citations.get(type);
+        if (parts == null) return "Type that you chose is not supported";
         final StringBuilder builder = new StringBuilder();
         for (String part : parts) {
             addCitationPart(type, part, citationModel, builder);
@@ -39,6 +39,7 @@ public class Dstu712006 extends BaseStandard {
     @SuppressWarnings("unchecked")
     @Override
     protected void fillCitationParts() {
+        //TODO write logic, that all parts will be parsed automatically (maybe Map<String, Map<..,..>)
         final List<Node> firstAuthorNodes = xmlDocument.selectNodes(Constants.XmlPathToNode.CITATION_PARTS_FIRST_AUTHOR);
         final List<Node> titleNodes = xmlDocument.selectNodes(Constants.XmlPathToNode.CITATION_PARTS_TITLE);
         final List<Node> editionTypeNodes = xmlDocument.selectNodes(Constants.XmlPathToNode.CITATION_PARTS_EDITION_TYPE);
@@ -73,34 +74,6 @@ public class Dstu712006 extends BaseStandard {
         citationParts.setNo(getField(noNodes));
         citationParts.setPages(getField(pagesNodes));
         citationParts.setOfficialDates(getField(officialDateNodes));
-    }
-
-    private Map<String, Field> getField(List<Node> fieldsNodes) {
-        final Map<String, Field> fields = new HashMap<>();
-        final StringBuilder builder = new StringBuilder();
-        String separatorBeforeName;
-        String separatorAfterName;
-        for (Node node : fieldsNodes) {
-            final Field field = new Field();
-            final String type = node.valueOf(Constants.XmlAttribute.TYPE);
-            MultipartSeparator multipartSeparator;
-            builder.setLength(0);
-            separatorBeforeName = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_BEFORE);
-            separatorAfterName = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
-            field.setType(type);
-            multipartSeparator = multipartSeparatorsBefore.get(separatorBeforeName);
-            builder.append(multipartSeparator != null
-                    ? multipartSeparator.getValue()
-                    : "");
-            builder.append("%s");
-            multipartSeparator = multipartSeparatorsAfter.get(separatorAfterName);
-            builder.append(multipartSeparator != null
-                    ? multipartSeparator.getValue()
-                    : "");
-            field.setFormattedValue(builder.toString());
-            fields.put(type, field);
-        }
-        return fields;
     }
 
     private Map<String, Authors> getAuthors(List<Node> authorsNodes) {
@@ -150,18 +123,6 @@ public class Dstu712006 extends BaseStandard {
         return authorsMap;
     }
 
-    private String getMultipartSeparatorName(Node parentNode, String multipartSeparatorNodeName) {
-        final String name;
-        final String type;
-        final Node multipartSeparatorNode = parentNode.selectSingleNode(multipartSeparatorNodeName);
-        if (multipartSeparatorNode != null) {
-            name = multipartSeparatorNode.valueOf(Constants.XmlAttribute.NAME);
-            type = multipartSeparatorNode.valueOf(Constants.XmlAttribute.TYPE);
-            return name + type;
-        }
-        return "";
-    }
-
     private void addCitationPart(String type, String citationPart,
                                  CitationModel model, StringBuilder builder) {
         //TODO Refactor this method :|
@@ -169,6 +130,7 @@ public class Dstu712006 extends BaseStandard {
         Field value;
         switch (citationPart) {
             case "first-author":
+                //todo put logic of getting first author from code to xml
                 if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
                 if (model.getAuthors().size() > 4) return;
                 final Person firstAuthor;
@@ -206,6 +168,7 @@ public class Dstu712006 extends BaseStandard {
                 builder.append(String.format(value.getFormattedValue(), model.getEditorType()));
                 break;
             case "authors-after":
+                //todo put logic of amount of authors and logic realted to getting first letter of name/second name to xml
                 if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
                 final String condition = model.getAuthors().size() <= 4 ? "lq4" : "gt4";
                 final String authorsType = condition + type;
@@ -240,6 +203,7 @@ public class Dstu712006 extends BaseStandard {
                 builder.append(String.format(value.getFormattedValue(), model.getPublisher()));
                 break;
             case "editors":
+                //todo put logic of amount of authors and logic realted to getting first letter of name/second name to xml
                 if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
                 final String editorsCondition = model.getAuthors().size() <= 4 ? "lq4" : "gt4";
                 final String editorsType = editorsCondition + type;
