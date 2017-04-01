@@ -1,30 +1,21 @@
 package com.khai.model.xml;
 
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementList;
-
-import java.util.List;
-
 public class Authors {
 
-    @Attribute(name = "no", required = false)
-    private String no;
-    @Attribute(name = "type", required = false)
+    private String condition;
     private String type;
-    @ElementList(name = "author", inline = true, required = false)
-    private List<Author> authors;
-    @Element(name = "editor-type", required = false)
-    private EditorType editorType;
-    @Element(name = "multipart-separator-after", required = false)
-    private MultipartSeparator multipartSeparatorAfter;
+    private String formattedSurname;
+    private String formattedName1;
+    private String formattedName2;
+    private String formattedBefore;
+    private String formattedAfter;
 
-    public String getNo() {
-        return no;
+    public String getCondition() {
+        return condition;
     }
 
-    public void setNo(String no) {
-        this.no = no;
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 
     public String getType() {
@@ -35,27 +26,44 @@ public class Authors {
         this.type = type;
     }
 
-    public List<Author> getAuthors() {
-        return authors;
+    public String getFormattedSurname() {
+        return formattedSurname;
     }
 
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
+    public void setFormattedSurname(String formattedSurname) {
+        this.formattedSurname = formattedSurname;
     }
 
-    public EditorType getEditorType() {
-        return editorType;
+    public String getFormattedName1() {
+        return formattedName1;
     }
 
-    public void setEditorType(EditorType editorType) {
-        this.editorType = editorType;
+    public void setFormattedName1(String formattedName1) {
+        this.formattedName1 = formattedName1;
     }
 
-    public MultipartSeparator getMultipartSeparatorAfter() {
-        return multipartSeparatorAfter;
+    public String getFormattedName2() {
+        return formattedName2;
     }
 
-    public void setMultipartSeparatorAfter(MultipartSeparator multipartSeparatorAfter) {
-        this.multipartSeparatorAfter = multipartSeparatorAfter;
+    public void setFormattedName2(String formattedName2) {
+        this.formattedName2 = formattedName2;
     }
+
+    public String getFormattedBefore() {
+        return formattedBefore;
+    }
+
+    public void setFormattedBefore(String formattedBefore) {
+        this.formattedBefore = formattedBefore;
+    }
+
+    public String getFormattedAfter() {
+        return formattedAfter;
+    }
+
+    public void setFormattedAfter(String formattedAfter) {
+        this.formattedAfter = formattedAfter;
+    }
+
 }

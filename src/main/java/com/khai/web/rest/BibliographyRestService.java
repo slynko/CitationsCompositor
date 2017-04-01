@@ -4,7 +4,7 @@ import com.khai.db.model.CitationModel;
 import com.khai.db.service.BibliographyService;
 import com.khai.model.rest.ComposeBibliographiesBody;
 import com.khai.web.model.File;
-import com.khai.xmlnew.StandardManager;
+import com.khai.xml.StandardManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;

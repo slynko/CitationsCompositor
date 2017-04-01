@@ -1,14 +1,14 @@
-package com.khai.xmlnew.standard;
+package com.khai.xml.standard;
 
 import com.khai.db.model.CitationModel;
 import com.khai.db.model.Person;
 import com.khai.utils.TextUtils;
-import com.khai.xmlnew.standard.base.BaseStandard;
-import com.khai.xmlnew.standard.base.Constants;
-import com.khai.xmlnew.standard.model.Authors;
-import com.khai.xmlnew.standard.model.CitationParts;
-import com.khai.xmlnew.standard.model.Field;
-import com.khai.xmlnew.standard.model.MultipartSeparator;
+import com.khai.xml.standard.base.BaseStandard;
+import com.khai.xml.standard.base.Constants;
+import com.khai.model.xml.Authors;
+import com.khai.model.xml.CitationParts;
+import com.khai.model.xml.Field;
+import com.khai.model.xml.MultipartSeparator;
 import org.dom4j.Node;
 
 import java.util.HashMap;
@@ -76,6 +76,12 @@ public class Dstu712006 extends BaseStandard {
         citationParts.setOfficialDates(getField(officialDateNodes));
     }
 
+    /**
+     * Retrieves and builds {@link Authors} objects for concrete (condition + type) key
+     * @param authorsNodes authors tags, which are described in xml file of standard
+     * @return map of {@link Authors} objects for concrete type,
+     * which are stored under condition+type key
+     */
     private Map<String, Authors> getAuthors(List<Node> authorsNodes) {
         final Map<String, Authors> authorsMap = new HashMap<>();
         String separatorBeforeAuthors;
@@ -123,6 +129,13 @@ public class Dstu712006 extends BaseStandard {
         return authorsMap;
     }
 
+    /**
+     * Adds citation part to result citation string representation
+     * @param type type of citation
+     * @param citationPart citation part which is needed to be added
+     * @param model citation model, from which data for citation part is retrieved
+     * @param builder result citation string representation
+     */
     private void addCitationPart(String type, String citationPart,
                                  CitationModel model, StringBuilder builder) {
         //TODO Refactor this method :|

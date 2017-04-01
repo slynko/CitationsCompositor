@@ -1,4 +1,4 @@
-package com.khai.xmlnew.standard.base;
+package com.khai.xml.standard.base;
 
 public final class Constants {
 

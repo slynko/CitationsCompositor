@@ -1,179 +1,160 @@
 package com.khai.model.xml;
 
-import org.simpleframework.xml.ElementList;
-
-import java.util.List;
+import java.util.Map;
 
 public class CitationParts {
 
-    @ElementList(name = "first-author")
-    private List<Authors> firstAuthors;
-    @ElementList(name = "title")
-    private List<Field> titles;
-    @ElementList(name = "edition-type")
-    private List<Field> editionTypes;
-    @ElementList(name = "type")
-    private List<Field> types;
-    @ElementList(name = "additional-info")
-    private List<Field> additionalInfos;
-    @ElementList(name = "editors")
-    private List<Authors> editors;
-    @ElementList(name = "authors-after")
-    private List<Authors> authorsAfter;
-    @ElementList(name = "directors")
-    private List<Authors> directors;
-    @ElementList(name = "executors")
-    private List<Authors> executors;
-    @ElementList(name = "publisher-city")
-    private List<Field> publisherCities;
-    @ElementList(name = "publisher-name")
-    private List<Field> publisherNames;
-    @ElementList(name = "publisher")
-    private List<Field> publishers;
-    @ElementList(name = "year-date")
-    private List<Field> yearDates;
-    @ElementList(name = "volume")
-    private List<Field> volume;
-    @ElementList(name = "no")
-    private List<Field> no;
-    @ElementList(name = "pages")
-    private List<Field> pages;
-    @ElementList(name = "official-date")
-    private List<Field> officialDates;
+    private Map<String, Authors> firstAuthors;
+    private Map<String, Field> titles;
+    private Map<String, Field> editionTypes;
+    private Map<String, Field> types;
+    private Map<String, Field> additionalInfos;
+    private Map<String, Authors> editors;
+    private Map<String, Authors> authorsAfter;
+    private Map<String, Authors> directors;
+    private Map<String, Authors> executors;
+    private Map<String, Field> publisherCities;
+    private Map<String, Field> publisherNames;
+    private Map<String, Field> publishers;
+    private Map<String, Field> yearDates;
+    private Map<String, Field> volume;
+    private Map<String, Field> no;
+    private Map<String, Field> pages;
+    private Map<String, Field> officialDates;
 
-    public List<Authors> getFirstAuthors() {
+    public Map<String, Authors> getFirstAuthors() {
         return firstAuthors;
     }
 
-    public void setFirstAuthors(List<Authors> firstAuthors) {
+    public void setFirstAuthors(Map<String, Authors> firstAuthors) {
         this.firstAuthors = firstAuthors;
     }
 
-    public List<Field> getTitles() {
+    public Map<String, Field> getTitles() {
         return titles;
     }
 
-    public void setTitles(List<Field> titles) {
+    public void setTitles(Map<String, Field> titles) {
         this.titles = titles;
     }
 
-    public List<Field> getEditionTypes() {
+    public Map<String, Field> getEditionTypes() {
         return editionTypes;
     }
 
-    public void setEditionTypes(List<Field> editionTypes) {
+    public void setEditionTypes(Map<String, Field> editionTypes) {
         this.editionTypes = editionTypes;
     }
 
-    public List<Field> getTypes() {
+    public Map<String, Field> getTypes() {
         return types;
     }
 
-    public void setTypes(List<Field> types) {
+    public void setTypes(Map<String, Field> types) {
         this.types = types;
     }
 
-    public List<Field> getAdditionalInfos() {
+    public Map<String, Field> getAdditionalInfos() {
         return additionalInfos;
     }
 
-    public void setAdditionalInfos(List<Field> additionalInfos) {
+    public void setAdditionalInfos(Map<String, Field> additionalInfos) {
         this.additionalInfos = additionalInfos;
     }
 
-    public List<Authors> getEditors() {
+    public Map<String, Authors> getEditors() {
         return editors;
     }
 
-    public void setEditors(List<Authors> editors) {
+    public void setEditors(Map<String, Authors> editors) {
         this.editors = editors;
     }
 
-    public List<Authors> getAuthorsAfter() {
+    public Map<String, Authors> getAuthorsAfter() {
         return authorsAfter;
     }
 
-    public void setAuthorsAfter(List<Authors> authorsAfter) {
+    public void setAuthorsAfter(Map<String, Authors> authorsAfter) {
         this.authorsAfter = authorsAfter;
     }
 
-    public List<Authors> getDirectors() {
+    public Map<String, Authors> getDirectors() {
         return directors;
     }
 
-    public void setDirectors(List<Authors> directors) {
+    public void setDirectors(Map<String, Authors> directors) {
         this.directors = directors;
     }
 
-    public List<Authors> getExecutors() {
+    public Map<String, Authors> getExecutors() {
         return executors;
     }
 
-    public void setExecutors(List<Authors> executors) {
+    public void setExecutors(Map<String, Authors> executors) {
         this.executors = executors;
     }
 
-    public List<Field> getPublisherCities() {
+    public Map<String, Field> getPublisherCities() {
         return publisherCities;
     }
 
-    public void setPublisherCities(List<Field> publisherCities) {
+    public void setPublisherCities(Map<String, Field> publisherCities) {
         this.publisherCities = publisherCities;
     }
 
-    public List<Field> getPublisherNames() {
+    public Map<String, Field> getPublisherNames() {
         return publisherNames;
     }
 
-    public void setPublisherNames(List<Field> publisherNames) {
+    public void setPublisherNames(Map<String, Field> publisherNames) {
         this.publisherNames = publisherNames;
     }
 
-    public List<Field> getPublishers() {
+    public Map<String, Field> getPublishers() {
         return publishers;
     }
 
-    public void setPublishers(List<Field> publishers) {
+    public void setPublishers(Map<String, Field> publishers) {
         this.publishers = publishers;
     }
 
-    public List<Field> getYearDates() {
+    public Map<String, Field> getYearDates() {
         return yearDates;
     }
 
-    public void setYearDates(List<Field> yearDates) {
+    public void setYearDates(Map<String, Field> yearDates) {
         this.yearDates = yearDates;
     }
 
-    public List<Field> getVolume() {
+    public Map<String, Field> getVolume() {
         return volume;
     }
 
-    public void setVolume(List<Field> volume) {
+    public void setVolume(Map<String, Field> volume) {
         this.volume = volume;
     }
 
-    public List<Field> getNo() {
+    public Map<String, Field> getNo() {
         return no;
     }
 
-    public void setNo(List<Field> no) {
+    public void setNo(Map<String, Field> no) {
         this.no = no;
     }
 
-    public List<Field> getPages() {
+    public Map<String, Field> getPages() {
         return pages;
     }
 
-    public void setPages(List<Field> pages) {
+    public void setPages(Map<String, Field> pages) {
         this.pages = pages;
     }
 
-    public List<Field> getOfficialDates() {
+    public Map<String, Field> getOfficialDates() {
         return officialDates;
     }
 
-    public void setOfficialDates(List<Field> officialDates) {
+    public void setOfficialDates(Map<String, Field> officialDates) {
         this.officialDates = officialDates;
     }
 }

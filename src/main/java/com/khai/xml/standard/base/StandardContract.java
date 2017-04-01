@@ -1,4 +1,4 @@
-package com.khai.xmlnew.standard.base;
+package com.khai.xml.standard.base;
 
 import com.khai.db.model.CitationModel;
 
@@ -21,7 +21,7 @@ public interface StandardContract {
      * Returns string citation based on inputted model and its type
      * @param citationModel citation model which will be converted
      * @param type type of citation
-     * @return string representation of citation model`
+     * @return string representation of citation model
      */
     String getCitation(CitationModel citationModel, String type);
 

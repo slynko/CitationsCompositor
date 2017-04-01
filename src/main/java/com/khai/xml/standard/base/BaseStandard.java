@@ -1,8 +1,9 @@
-package com.khai.xmlnew.standard.base;
+package com.khai.xml.standard.base;
 
-import com.khai.xmlnew.standard.model.Field;
-import com.khai.xmlnew.standard.model.MultipartSeparator;
-import com.khai.xmlnew.standard.model.Separator;
+import com.khai.model.xml.Authors;
+import com.khai.model.xml.Field;
+import com.khai.model.xml.MultipartSeparator;
+import com.khai.model.xml.Separator;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Node;
@@ -144,6 +145,13 @@ public abstract class BaseStandard implements StandardContract {
         }
     }
 
+    /**
+     * Retrieves name of multipart separator (it's constructed with concatenating of name and type)
+     * @param parentNode parent tag in xml {@link Constants.XmlNode},
+     *                   where multipart separator is situated
+     * @param multipartSeparatorNodeName tag of multipart separator in xml {@link Constants.XmlNode}
+     * @return name of multipart separator (concatenation of name and type of multipart separator)
+     */
     protected String getMultipartSeparatorName(Node parentNode, String multipartSeparatorNodeName) {
         final String name;
         final String type;
@@ -159,7 +167,8 @@ public abstract class BaseStandard implements StandardContract {
     /**
      * Fills citation part of field type with separators
      * @param fieldsNodes represents citation part of field type
-     * @return
+     * @return map of {@link Field} objects for concrete type,
+     * which are stored under type keys
      */
     protected Map<String, Field> getField(List<Node> fieldsNodes) {
         final Map<String, Field> fields = new HashMap<>();

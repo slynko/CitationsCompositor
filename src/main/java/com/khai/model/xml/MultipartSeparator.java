@@ -1,41 +1,33 @@
 package com.khai.model.xml;
 
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.ElementList;
-
-import java.util.List;
-
 public class MultipartSeparator {
 
-    @Attribute(name = "name", required = false)
     private String name;
-    @Attribute(name = "type", required = false)
     private String type;
-    @ElementList(inline = true, required = false)
-    private List<Separator> separators;
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String value;
 
     public String getName() {
         return name;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getType() {
         return type;
     }
 
-    public void setSeparators(List<Separator> separators) {
-        this.separators = separators;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public List<Separator> getSeparators() {
-        return separators;
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 
     @Override
@@ -53,7 +45,7 @@ public class MultipartSeparator {
         int result = 17;
         result = 31 * result + name.hashCode();
         result = 31 * result + type.hashCode();
-        result = 31 * result + separators.hashCode();
+        result = 31 * result + value.hashCode();
         return result;
     }
 
