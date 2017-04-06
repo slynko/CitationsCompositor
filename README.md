@@ -2,6 +2,6 @@
 
 Technologies used:
 
-- Spring Boot
+- Spring Boot, Spring Data
 - Angular2
 - Guava, Apache Lang3
