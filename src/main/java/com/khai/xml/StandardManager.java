@@ -24,6 +24,7 @@ public class StandardManager {
 
     /**
      * Returns instance of {@link StandardManager} class
+     *
      * @return new or already created instance of {@link StandardManager}
      */
     public static StandardManager getInstance() {
@@ -36,9 +37,10 @@ public class StandardManager {
     /**
      * Provides built citations in string representation, from passed citation models,
      * with checking and instantiating of existed standards in application
+     *
      * @param standardName name of standard, from which citations are needed
      * @param standardType type of citation from standard
-     * @param citations citation models, which are needed to be built
+     * @param citations    citation models, which are needed to be built
      * @return string representation of made citations
      */
     public List<String> makeCitations(String standardName,
@@ -58,6 +60,7 @@ public class StandardManager {
 
     /**
      * Retrieves types, which chosen standard provides
+     *
      * @param standardName name of standard, from which types should be retrieved
      * @return Types with their internal key representation
      */
@@ -76,6 +79,7 @@ public class StandardManager {
 
     /**
      * Retrieves standard by path
+     *
      * @param name name of standard
      * @param path path to standard in resources/standard/ directory
      * @return representation of concrete Standard
@@ -94,8 +98,9 @@ public class StandardManager {
 
     /**
      * Provides built citations in string representation, from passed citation models
-     * @param standard concrete standard object
-     * @param type type of citation of standard
+     *
+     * @param standard  concrete standard object
+     * @param type      type of citation of standard
      * @param citations citation models, which are needed to be built
      * @return string representation of made citations
      */
@@ -103,7 +108,7 @@ public class StandardManager {
                                       String type,
                                       List<CitationModel> citations) {
         final List<String> resultCitations = new ArrayList<>();
-        for (CitationModel citation: citations) {
+        for (CitationModel citation : citations) {
             final String resultCitation = standard.getCitation(citation, type);
             resultCitations.add(resultCitation);
         }

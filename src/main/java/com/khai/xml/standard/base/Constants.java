@@ -43,23 +43,7 @@ public final class Constants {
         String SEPARATORS = "/standard/separators/separator";
         String MULTIPART_SEPARATORS_BEFORE = "/standard/multipart-separators-before/multipart-separator";
         String MULTIPART_SEPARATORS_AFTER = "/standard/multipart-separators-after/multipart-separator";
-        String CITATION_PARTS_FIRST_AUTHOR = "/standard/citation-parts/first-author/authors";
-        String CITATION_PARTS_TITLE = "/standard/citation-parts/title/field";
-        String CITATION_PARTS_EDITION_TYPE = "/standard/citation-parts/edition-type/field";
-        String CITATION_PARTS_TYPE = "/standard/citation-parts/type/field";
-        String CITATION_PARTS_ADDITIONAL_INFO = "/standard/citation-parts/additional-info/field";
-        String CITATION_PARTS_EDITORS = "/standard/citation-parts/editors/authors";
-        String CITATION_PARTS_AUTHORS_AFTER = "/standard/citation-parts/authors-after/authors";
-        String CITATION_PARTS_DIRECTORS = "/standard/citation-parts/directors/authors";
-        String CITATION_PARTS_EXECUTORS = "/standard/citation-parts/executors/authors";
-        String CITATION_PARTS_PUBLISHER_CITY = "/standard/citation-parts/publisher-city/field";
-        String CITATION_PARTS_PUBLISHER_NAME = "/standard/citation-parts/publisher-name/field";
-        String CITATION_PARTS_PUBLISHER = "/standard/citation-parts/publisher/field";
-        String CITATION_PARTS_YEAR_DATE = "/standard/citation-parts/year-date/field";
-        String CITATION_PARTS_VOLUME = "/standard/citation-parts/volume/field";
-        String CITATION_PARTS_NO = "/standard/citation-parts/no/field";
-        String CITATION_PARTS_PAGES = "/standard/citation-parts/pages/field";
-        String CITATION_PARTS_OFFICIAL_DATE = "/standard/citation-parts/official-date/field";
+        String CITATION_PARTS_PART = "/standard/citation-parts/part";
         String CITATIONS_CITATION = "/standard/citations/citation";
     }
 
@@ -70,6 +54,7 @@ public final class Constants {
         String TITLE = "@title";
         String NAME = "@name";
         String TYPE = "@type";
+        String CONTENT_TYPE = "@contentType";
         String CONDITION = "@condition";
     }
 

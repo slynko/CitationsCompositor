@@ -24,12 +24,14 @@ public abstract class BaseStandard implements StandardContract {
     protected Map<String, MultipartSeparator> multipartSeparatorsBefore;
     protected Map<String, MultipartSeparator> multipartSeparatorsAfter;
     protected Map<String, List<String>> citations;
+    protected Map<String, Map<String, Object>> citationParts;
 
     public BaseStandard(String standardPath) {
         separators = new HashMap();
         multipartSeparatorsBefore = new HashMap();
         multipartSeparatorsAfter = new HashMap();
         citations = new HashMap<>();
+        citationParts = new HashMap<>();
         initStandard(standardPath);
     }
 
@@ -52,6 +54,23 @@ public abstract class BaseStandard implements StandardContract {
             types.put(typeName, typeTitle);
         }
         return types;
+    }
+
+    /**
+     * Retrieves formatted value of citation part
+     * (or default formatted value if citation type for that part doesn't exist)
+     *
+     * @param citationPart name of citation part
+     * @param citationType type of citation
+     * @return formatted value of citation part
+     */
+    protected String getFormattedFieldValue(String citationPart, String citationType) {
+        Field field;
+        field = (Field) citationParts.get(citationPart).get(citationType);
+        if (field == null) {
+            field = (Field) citationParts.get(citationPart).get("default");
+        }
+        return field.getFormattedValue();
     }
 
     /**
@@ -128,6 +147,26 @@ public abstract class BaseStandard implements StandardContract {
         }
     }
 
+    /**
+     * Fills parts of citation for using them after
+     */
+    private void fillCitationParts() {
+        final List<Node> parts = xmlDocument.selectNodes(Constants.XmlPathToNode.CITATION_PARTS_PART);
+        for (Node part : parts) {
+            final String partName = part.valueOf(Constants.XmlAttribute.NAME);
+            final String contentType = part.valueOf(Constants.XmlAttribute.CONTENT_TYPE);
+            switch (contentType) {
+                case "authors":
+                    citationParts.put(partName, getAuthors(part.selectNodes(contentType)));
+                    break;
+                case "field":
+                    citationParts.put(partName, getField(part.selectNodes(contentType)));
+                    break;
+                default:
+                    throw new IllegalArgumentException("Unsupported content type in XML");
+            }
+        }
+    }
 
     /**
      * Fills available citation types of standard
@@ -147,12 +186,13 @@ public abstract class BaseStandard implements StandardContract {
 
     /**
      * Retrieves name of multipart separator (it's constructed with concatenating of name and type)
-     * @param parentNode parent tag in xml {@link Constants.XmlNode},
-     *                   where multipart separator is situated
+     *
+     * @param parentNode                 parent tag in xml {@link Constants.XmlNode},
+     *                                   where multipart separator is situated
      * @param multipartSeparatorNodeName tag of multipart separator in xml {@link Constants.XmlNode}
      * @return name of multipart separator (concatenation of name and type of multipart separator)
      */
-    protected String getMultipartSeparatorName(Node parentNode, String multipartSeparatorNodeName) {
+    private String getMultipartSeparatorName(Node parentNode, String multipartSeparatorNodeName) {
         final String name;
         final String type;
         final Node multipartSeparatorNode = parentNode.selectSingleNode(multipartSeparatorNodeName);
@@ -166,11 +206,12 @@ public abstract class BaseStandard implements StandardContract {
 
     /**
      * Fills citation part of field type with separators
+     *
      * @param fieldsNodes represents citation part of field type
      * @return map of {@link Field} objects for concrete type,
      * which are stored under type keys
      */
-    protected Map<String, Field> getField(List<Node> fieldsNodes) {
+    private Map<String, Field> getField(List<Node> fieldsNodes) {
         final Map<String, Field> fields = new HashMap<>();
         final StringBuilder builder = new StringBuilder();
         String separatorBeforeName;
@@ -199,8 +240,57 @@ public abstract class BaseStandard implements StandardContract {
     }
 
     /**
-     * Fills parts of citation for using them after
+     * Retrieves and builds {@link Authors} objects for concrete (condition + type) key
+     *
+     * @param authorsNodes authors tags, which are described in xml file of standard
+     * @return map of {@link Authors} objects for concrete type,
+     * which are stored under condition+type key
      */
-    protected abstract void fillCitationParts();
+    private Map<String, Authors> getAuthors(List<Node> authorsNodes) {
+        final Map<String, Authors> authorsMap = new HashMap<>();
+        String separatorBeforeAuthors;
+        String separatorSurname;
+        String separatorName1;
+        String separatorName2;
+        String separatorAfterAuthors;
+        for (Node node : authorsNodes) {
+            final Authors authors = new Authors();
+            final String condition = node.valueOf(Constants.XmlAttribute.CONDITION);
+            final String type = node.valueOf(Constants.XmlAttribute.TYPE);
+            MultipartSeparator multipartSeparator;
+            separatorBeforeAuthors = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_BEFORE);
+            separatorSurname = getMultipartSeparatorName(node.selectSingleNode(Constants.XmlNode.SURNAME),
+                    Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
+            separatorName1 = getMultipartSeparatorName(node.selectSingleNode(Constants.XmlNode.NAME1),
+                    Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
+            separatorName2 = getMultipartSeparatorName(node.selectSingleNode(Constants.XmlNode.NAME2),
+                    Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
+            separatorAfterAuthors = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
+            authors.setType(type);
+            authors.setCondition(condition);
+            multipartSeparator = multipartSeparatorsBefore.get(separatorBeforeAuthors);
+            authors.setFormattedBefore(multipartSeparator != null
+                    ? multipartSeparator.getValue()
+                    : "");
+            multipartSeparator = multipartSeparatorsAfter.get(separatorSurname);
+            authors.setFormattedSurname(multipartSeparator != null
+                    ? "%s" + multipartSeparator.getValue()
+                    : "%s");
+            multipartSeparator = multipartSeparatorsAfter.get(separatorName1);
+            authors.setFormattedName1(multipartSeparator != null
+                    ? "%s" + multipartSeparator.getValue()
+                    : "%s");
+            multipartSeparator = multipartSeparatorsAfter.get(separatorName2);
+            authors.setFormattedName2(multipartSeparator != null
+                    ? "%s" + multipartSeparator.getValue()
+                    : "%s");
+            multipartSeparator = multipartSeparatorsAfter.get(separatorAfterAuthors);
+            authors.setFormattedAfter(multipartSeparator != null
+                    ? multipartSeparator.getValue()
+                    : "");
+            authorsMap.put(condition + type, authors);
+        }
+        return authorsMap;
+    }
 
 }

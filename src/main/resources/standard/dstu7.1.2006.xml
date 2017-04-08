@@ -166,7 +166,7 @@
             <separator name="space"/>
         </multipart-separator>
         <multipart-separator name="publisher-city" type="default">
-            <separator name="dot" />
+            <separator name="dot"/>
             <separator name="space"/>
             <separator name="dash"/>
             <separator name="space"/>
@@ -262,7 +262,7 @@
         less than                - "<"  - "lt";
         greater than or equal to - ">=" - "gq";
         less than or equal to    - "<=" - "lq" !-->
-        <first-author>
+        <part name="first-author" contentType="authors">
             <authors condition="" type="default">
                 <name1>
                     <multipart-separator-after name="name" type="default"/>
@@ -274,13 +274,13 @@
                     <multipart-separator-after name="surname" type="default"/>
                 </surname>
             </authors>
-        </first-author>
-        <title>
+        </part>
+        <part name="title" contentType="field">
             <field type="default">
                 <multipart-separator-after name="title" type="default"/>
             </field>
-        </title>
-        <edition-type>
+        </part>
+        <part name="edition-type" contentType="field">
             <field type="default">
                 <multipart-separator-before name="edition-type" type="default"/>
                 <multipart-separator-after name="edition-type" type="default"/>
@@ -289,18 +289,18 @@
                 <multipart-separator-before name="edition-type" type="electronic-resources"/>
                 <multipart-separator-after name="edition-type" type="electronic-resources"/>
             </field>
-        </edition-type>
-        <type>
+        </part>
+        <part name="type" contentType="field">
             <field type="default">
                 <multipart-separator-before name="type" type="default"/>
             </field>
-        </type>
-        <additional-info>
+        </part>
+        <part name="additional-info" contentType="field">
             <field type="default">
                 <multipart-separator-before name="additional-info" type="default"/>
             </field>
-        </additional-info>
-        <editors>
+        </part>
+        <part name="editors" contentType="authors">
             <authors condition="lq4" type="default"> <!-- "<=" - "lq" !-->
                 <multipart-separator-before name="editors" type="default"/>
                 <name1 type="default">
@@ -347,8 +347,8 @@
                 <surname type="default"/>
                 <multipart-separator-after name="others" type="default"/>
             </authors>
-        </editors>
-        <authors-after>
+        </part>
+        <part name="authors-after" contentType="authors">
             <authors condition="lq4" type="default"> <!-- "<=" - "lq" !-->>
                 <name1 type="default">
                     <multipart-separator-after name="name" type="default"/>
@@ -394,8 +394,8 @@
                 </surname>
                 <multipart-separator-after name="others" type="default"/>
             </authors>
-        </authors-after>
-        <directors>
+        </part>
+        <part name="directors" contentType="authors">
             <authors condition="lq4" type="report"> <!-- "<=" - "lq" !-->
                 <name1 type="default">
                     <multipart-separator-after name="name" type="default"/>
@@ -417,8 +417,8 @@
                 <surname type="default"/>
                 <multipart-separator-after name="others" type="default"/>
             </authors>
-        </directors>
-        <executors>
+        </part>
+        <part name="executors" contentType="authors">
             <authors condition="lq4" type="report"> <!-- "<=" - "lq" !-->
                 <name1 type="default">
                     <multipart-separator-after name="name" type="default"/>
@@ -440,39 +440,39 @@
                 <surname type="default"/>
                 <multipart-separator-after name="others" type="default"/>
             </authors>
-        </executors>
-        <publisher-city>
+        </part>
+        <part name="publisher-city" contentType="field">
             <field type="default">
                 <multipart-separator-before name="publisher-city" type="default"/>
             </field>
-        </publisher-city>
-        <publisher-name>
+        </part>
+        <part name="publisher-name" contentType="field">
             <field type="default">
                 <multipart-separator-before name="publisher-name" type="default"/>
             </field>
-        </publisher-name>
-        <publisher>
+        </part>
+        <part name="publisher" contentType="field">
             <field type="default">
                 <multipart-separator-before name="publisher" type="default"/>
                 <multipart-separator-after name="publisher" type="default"/>
             </field>
-        </publisher>
-        <year-date>
+        </part>
+        <part name="year-date" contentType="field">
             <field type="default">
                 <multipart-separator-before name="year-date" type="default"/>
             </field>
-        </year-date>
-        <volume>
+        </part>
+        <part name="volume" contentType="field">
             <field type="default">
                 <multipart-separator-before name="sectionalizer" type="default"/>
             </field>
-        </volume>
-        <no>
+        </part>
+        <part name="no" contentType="field">
             <field type="default">
                 <multipart-separator-before name="sectionalizer" type="default"/>
             </field>
-        </no>
-        <pages>
+        </part>
+        <part name="pages" contentType="field">
             <field type="default">
                 <multipart-separator-before name="sectionalizer" type="default"/>
                 <multipart-separator-after name="pages" type="default"/>
@@ -481,12 +481,12 @@
                 <multipart-separator-before name="pages" type="article"/>
                 <multipart-separator-after name="pages" type="article"/>
             </field>
-        </pages>
-        <official-date>
+        </part>
+        <part name="official-date" contentType="field">
             <field type="default">
                 <multipart-separator-before name="sectionalizer" type="default"/>
             </field>
-        </official-date>
+        </part>
     </citation-parts>
     <!-- The example how to create citations of different types -->
     <citations>
