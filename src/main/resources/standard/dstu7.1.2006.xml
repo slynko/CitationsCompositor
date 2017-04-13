@@ -217,7 +217,7 @@
             <separator name="dot"/>
             <separator name="space"/>
         </multipart-separator>
-        <multipart-separator name="surname" type="default">
+        <multipart-separator name="surname-not-last" type="default">
             <separator name="comma"/>
             <separator name="space"/>
         </multipart-separator>
@@ -348,17 +348,51 @@
                 <multipart-separator-after name="others" type="default"/>
             </authors>
         </part>
+        <!-- TODO EXAMPLE OF REWRITING OF AUTHORS -->
         <part name="authors-after" contentType="authors">
-            <authors condition="lq4" type="default"> <!-- "<=" - "lq" !-->>
-                <name1 type="default">
-                    <multipart-separator-after name="name" type="default"/>
-                </name1>
-                <name2 type="default">
-                    <multipart-separator-after name="name" type="default"/>
-                </name2>
-                <surname type="default">
-                    <multipart-separator-after name="surname" type="default"/>
-                </surname>
+            <authors condition="lq" count="4" type="default"> <!-- "<=" - "lq" !-->>
+                <author>
+                    <name1 len="1" type="default">
+                        <multipart-separator-after name="name" type="default"/>
+                    </name1>
+                    <name2 len="1" type="default">
+                        <multipart-separator-after name="name" type="default"/>
+                    </name2>
+                    <surname type="default">
+                        <multipart-separator-after name="surname-not-last" type="default"/>
+                    </surname>
+                </author>
+                <author>
+                    <name1 len="1" type="default">
+                        <multipart-separator-after name="name" type="default"/>
+                    </name1>
+                    <name2 len="1" type="default">
+                        <multipart-separator-after name="name" type="default"/>
+                    </name2>
+                    <surname type="default">
+                        <multipart-separator-after name="surname-not-last" type="default"/>
+                    </surname>
+                </author>
+                <author>
+                    <name1 len="1" type="default">
+                        <multipart-separator-after name="name" type="default"/>
+                    </name1>
+                    <name2 len="1" type="default">
+                        <multipart-separator-after name="name" type="default"/>
+                    </name2>
+                    <surname type="default">
+                        <multipart-separator-after name="surname-not-last" type="default"/>
+                    </surname>
+                </author>
+                <author>
+                    <name1 len="1" type="default">
+                        <multipart-separator-after name="name" type="default"/>
+                    </name1>
+                    <name2 len="1" type="default">
+                        <multipart-separator-after name="name" type="default"/>
+                    </name2>
+                    <surname type="default"/>
+                </author>
             </authors>
             <authors condition="gt4" type="default"> <!-- ">" - "gt" !-->>
                 <name1 type="default">
