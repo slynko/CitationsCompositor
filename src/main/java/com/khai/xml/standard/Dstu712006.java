@@ -2,11 +2,12 @@ package com.khai.xml.standard;
 
 import com.khai.db.model.CitationModel;
 import com.khai.db.model.Person;
-import com.khai.model.xml.Authors;
+import com.khai.model.xml.AuthorsWrapper;
 import com.khai.utils.TextUtils;
 import com.khai.xml.standard.base.BaseStandard;
+import com.sun.istack.internal.Nullable;
 
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Dstu712006 extends BaseStandard {
@@ -34,25 +35,30 @@ public class Dstu712006 extends BaseStandard {
      * @param model        citation model, from which data for citation part is retrieved
      * @param builder      result citation string representation
      */
+    @SuppressWarnings("unchecked")
     private void addCitationPart(String type, String citationPart,
                                  CitationModel model, StringBuilder builder) {
-        //TODO Refactor this method :|
-        Authors authors;
         String formattedValue;
         switch (citationPart) {
             case "first-author":
-                //todo put logic of getting first author from code to xml
                 if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
-                if (model.getAuthors().size() > 4) return;
-                final Person firstAuthor;
-                authors = (Authors) citationParts.get(citationPart).get(type);
-                if (authors == null) {
-                    authors = (Authors) citationParts.get(citationPart).get("default");
+                final AuthorsWrapper chosenFirstAuthorWrapper = chooseAuthorsWrapper(type, citationPart,
+                        model.getAuthors().size());
+                if (chosenFirstAuthorWrapper == null) return;
+                int firstAuthorsWrapperSize = chosenFirstAuthorWrapper.getAuthors().size();
+                final List<Person> firstAuthorsInModel = new ArrayList<>(model.getAuthors());
+                for (int i = 0; i < firstAuthorsWrapperSize; i++) {
+                    final Person firstAuthor;
+                    if (i == firstAuthorsInModel.size() - 1) {
+                        firstAuthor = firstAuthorsInModel.get(i);
+                        builder.append(String.format(chosenFirstAuthorWrapper.getAuthors().get(firstAuthorsWrapperSize - 1).getFormattedValue(),
+                                firstAuthor.getSurname(), firstAuthor.getName1(), firstAuthor.getName2()));
+                    } else {
+                        firstAuthor = firstAuthorsInModel.get(i);
+                        builder.append(String.format(chosenFirstAuthorWrapper.getAuthors().get(i).getFormattedValue(),
+                                firstAuthor.getSurname(), firstAuthor.getName1(), firstAuthor.getName2()));
+                    }
                 }
-                firstAuthor = model.getAuthors().iterator().next();
-                builder.append(String.format(authors.getFormattedSurname(), firstAuthor.getSurname()))
-                        .append(String.format(authors.getFormattedName1(), firstAuthor.getName1()))
-                        .append(String.format(authors.getFormattedName2(), firstAuthor.getName2()));
                 break;
             case "title":
                 if (TextUtils.isEmpty(model.getTitle())) return;
@@ -70,31 +76,27 @@ public class Dstu712006 extends BaseStandard {
                 builder.append(String.format(formattedValue, model.getEditorType()));
                 break;
             case "authors-after":
-                //todo put logic of amount of authors and logic realted to getting first letter of name/second name to xml
                 if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
-                final String condition = model.getAuthors().size() <= 4 ? "lq4" : "gt4";
-                final String authorsType = condition + type;
-                authors = (Authors) citationParts.get(citationPart).get(authorsType);
-                if (authors == null) {
-                    authors = (Authors) citationParts.get(citationPart).get(condition + "default");
+                final AuthorsWrapper chosenAuthorsAfterWrapper = chooseAuthorsWrapper(type, citationPart,
+                        model.getAuthors().size());
+                if (chosenAuthorsAfterWrapper == null) return;
+                final List<Person> authorsAfterInModel = new ArrayList<>(model.getAuthors());
+                int authorsAfterWrapperSize = chosenAuthorsAfterWrapper.getAuthors().size();
+                builder.append(chosenAuthorsAfterWrapper.getFormattedBefore());
+                for (int i = 0; i < authorsAfterWrapperSize; i++) {
+                    final Person firstAuthor;
+                    if (i == authorsAfterInModel.size() - 1) {
+                        firstAuthor = authorsAfterInModel.get(i);
+                        builder.append(String.format(chosenAuthorsAfterWrapper.getAuthors().get(authorsAfterWrapperSize - 1).getFormattedValue(),
+                                firstAuthor.getName1(), firstAuthor.getName2(), firstAuthor.getSurname()));
+                        break;
+                    } else {
+                        firstAuthor = authorsAfterInModel.get(i);
+                        builder.append(String.format(chosenAuthorsAfterWrapper.getAuthors().get(i).getFormattedValue(),
+                                firstAuthor.getName1(), firstAuthor.getName2(), firstAuthor.getSurname()));
+                    }
                 }
-                final Iterator<Person> authorsIterator = model.getAuthors().iterator();
-                if (model.getAuthors().size() > 4) {
-                    final Person person = authorsIterator.next();
-                    builder.append(String.format(authors.getFormattedName1(), person.getName1()))
-                            .append(String.format(authors.getFormattedName2(), person.getName2()))
-                            .append(person.getSurname())
-                            .append(authors.getFormattedAfter());
-                } else {
-                    do {
-                        final Person person = authorsIterator.next();
-                        builder.append(String.format(authors.getFormattedName1(), person.getName1()))
-                                .append(String.format(authors.getFormattedName2(), person.getName2()))
-                                .append(authorsIterator.hasNext()
-                                        ? String.format(authors.getFormattedSurname(), person.getSurname())
-                                        : person.getSurname());
-                    } while (authorsIterator.hasNext());
-                }
+                builder.append(chosenAuthorsAfterWrapper.getFormattedAfter());
                 break;
             case "publisher":
                 if (TextUtils.isEmpty(model.getPublisher())) return;
@@ -102,32 +104,10 @@ public class Dstu712006 extends BaseStandard {
                 builder.append(String.format(formattedValue, model.getPublisher()));
                 break;
             case "editors":
-                //todo put logic of amount of authors and logic realted to getting first letter of name/second name to xml
-                if (model.getEditors() == null || model.getEditors().isEmpty()) return;
-                final String editorsCondition = model.getAuthors().size() <= 4 ? "lq4" : "gt4";
-                final String editorsType = editorsCondition + type;
-                authors = (Authors) citationParts.get(citationPart).get(editorsType);
-                if (authors == null) {
-                    authors = (Authors) citationParts.get(citationPart).get(editorsCondition + "default");
-                }
-                final Iterator<Person> editorsIterator = model.getEditors().iterator();
-                builder.append(authors.getFormattedBefore());
-                if (model.getEditors().size() > 4) {
-                    final Person person = editorsIterator.next();
-                    builder.append(String.format(authors.getFormattedName1(), person.getName1()))
-                            .append(String.format(authors.getFormattedName2(), person.getName2()))
-                            .append(person.getSurname())
-                            .append(authors.getFormattedAfter());
-                } else {
-                    do {
-                        final Person person = editorsIterator.next();
-                        builder.append(String.format(authors.getFormattedName1(), person.getName1()))
-                                .append(String.format(authors.getFormattedName2(), person.getName2()))
-                                .append(editorsIterator.hasNext()
-                                        ? String.format(authors.getFormattedSurname(), person.getSurname())
-                                        : person.getSurname());
-                    } while (editorsIterator.hasNext());
-                }
+                // TODO: 4/15/2017 do editors like authors-after (do xml too)
+                break;
+            case "directors":
+                // TODO: 4/15/2017 do editors like authors-after (do xml too)
                 break;
             case "publisher-city":
                 if (TextUtils.isEmpty(model.getPublisherInfo())) return;
@@ -160,6 +140,32 @@ public class Dstu712006 extends BaseStandard {
                 builder.append(String.format(formattedValue, model.getPage()));
                 break;
         }
+    }
+
+    @Nullable
+    @SuppressWarnings("unchecked")
+    private AuthorsWrapper chooseAuthorsWrapper(String type, String citationPart, int sizeOfAuthors) {
+        List<AuthorsWrapper> authorsWrappers = (List<AuthorsWrapper>) citationParts.get(citationPart).get(type);
+        if (authorsWrappers == null) {
+            authorsWrappers = (List<AuthorsWrapper>) citationParts.get(citationPart).get("default");
+        }
+        AuthorsWrapper chosenAuthorsWrapper = null;
+        for (AuthorsWrapper authorsWrapper : authorsWrappers) {
+            if (authorsWrapper.getCondition().equals("lq") && sizeOfAuthors <= authorsWrapper.getCount()) {
+                chosenAuthorsWrapper = authorsWrapper;
+                break;
+            } else if (authorsWrapper.getCondition().equals("gt") && sizeOfAuthors > authorsWrapper.getCount()) {
+                chosenAuthorsWrapper = authorsWrapper;
+                break;
+            } else if (authorsWrapper.getCondition().equals("lt") && sizeOfAuthors < authorsWrapper.getCount()) {
+                chosenAuthorsWrapper = authorsWrapper;
+                break;
+            } else if (authorsWrapper.getCondition().equals("gq") && sizeOfAuthors >= authorsWrapper.getCount()) {
+                chosenAuthorsWrapper = authorsWrapper;
+                break;
+            }
+        }
+        return chosenAuthorsWrapper;
     }
 
 }

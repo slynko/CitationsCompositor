@@ -1,9 +1,6 @@
 package com.khai.xml.standard.base;
 
-import com.khai.model.xml.Authors;
-import com.khai.model.xml.Field;
-import com.khai.model.xml.MultipartSeparator;
-import com.khai.model.xml.Separator;
+import com.khai.model.xml.*;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Node;
@@ -156,7 +153,7 @@ public abstract class BaseStandard implements StandardContract {
             final String partName = part.valueOf(Constants.XmlAttribute.NAME);
             final String contentType = part.valueOf(Constants.XmlAttribute.CONTENT_TYPE);
             switch (contentType) {
-                case "authors":
+                case "authors-wrapper":
                     citationParts.put(partName, getAuthors(part.selectNodes(contentType)));
                     break;
                 case "field":
@@ -216,24 +213,34 @@ public abstract class BaseStandard implements StandardContract {
         final StringBuilder builder = new StringBuilder();
         String separatorBeforeName;
         String separatorAfterName;
+        //get all possible fields of different types for current citation part
         for (Node node : fieldsNodes) {
             final Field field = new Field();
             final String type = node.valueOf(Constants.XmlAttribute.TYPE);
             MultipartSeparator multipartSeparator;
+            //clear builder for constructing field with all separators
             builder.setLength(0);
+            //get name of multipart-separator before field value
             separatorBeforeName = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_BEFORE);
+            //get name of multipart-separator after field value
             separatorAfterName = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
             field.setType(type);
+            //search for multipart-separator before field value.
+            //If it exists - than append to builder, otherwise - append empty string
             multipartSeparator = multipartSeparatorsBefore.get(separatorBeforeName);
             builder.append(multipartSeparator != null
                     ? multipartSeparator.getValue()
                     : "");
+            //append to builder '%s' parameter to add a value from ui later
             builder.append("%s");
+            //search for multipart-separator after field value.
+            //If it exists - than append to builder, otherwise - append empty string
             multipartSeparator = multipartSeparatorsAfter.get(separatorAfterName);
             builder.append(multipartSeparator != null
                     ? multipartSeparator.getValue()
                     : "");
             field.setFormattedValue(builder.toString());
+            //put to Map, where type of field is key
             fields.put(type, field);
         }
         return fields;
@@ -246,49 +253,67 @@ public abstract class BaseStandard implements StandardContract {
      * @return map of {@link Authors} objects for concrete type,
      * which are stored under condition+type key
      */
-    private Map<String, Authors> getAuthors(List<Node> authorsNodes) {
-        final Map<String, Authors> authorsMap = new HashMap<>();
+    private Map<String, List<AuthorsWrapper>> getAuthors(List<Node> authorsNodes) {
+        final Map<String, List<AuthorsWrapper>> authorsMap = new HashMap<>();
         String separatorBeforeAuthors;
-        String separatorSurname;
-        String separatorName1;
-        String separatorName2;
         String separatorAfterAuthors;
+        String authorPartSeparator;
+        MultipartSeparator multipartSeparator;
         for (Node node : authorsNodes) {
-            final Authors authors = new Authors();
+            final AuthorsWrapper authorsWrapper = new AuthorsWrapper();
+            final List<Author> authors = new ArrayList<>();
             final String condition = node.valueOf(Constants.XmlAttribute.CONDITION);
             final String type = node.valueOf(Constants.XmlAttribute.TYPE);
-            MultipartSeparator multipartSeparator;
+            final int count = Integer.parseInt(node.valueOf(Constants.XmlAttribute.COUNT));
+            final List<Node> authorNodes = node.selectNodes(Constants.XmlNode.AUTHOR);
+            authorsWrapper.setCondition(condition);
+            authorsWrapper.setType(type);
+            authorsWrapper.setCount(count);
+            //get name of multipart-separator before all authors
             separatorBeforeAuthors = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_BEFORE);
-            separatorSurname = getMultipartSeparatorName(node.selectSingleNode(Constants.XmlNode.SURNAME),
-                    Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
-            separatorName1 = getMultipartSeparatorName(node.selectSingleNode(Constants.XmlNode.NAME1),
-                    Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
-            separatorName2 = getMultipartSeparatorName(node.selectSingleNode(Constants.XmlNode.NAME2),
-                    Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
-            separatorAfterAuthors = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
-            authors.setType(type);
-            authors.setCondition(condition);
+            //search for multipart-separator before all authors
+            //If it exists - than append to builder, otherwise - append empty string
             multipartSeparator = multipartSeparatorsBefore.get(separatorBeforeAuthors);
-            authors.setFormattedBefore(multipartSeparator != null
-                    ? multipartSeparator.getValue()
-                    : "");
-            multipartSeparator = multipartSeparatorsAfter.get(separatorSurname);
-            authors.setFormattedSurname(multipartSeparator != null
-                    ? "%s" + multipartSeparator.getValue()
-                    : "%s");
-            multipartSeparator = multipartSeparatorsAfter.get(separatorName1);
-            authors.setFormattedName1(multipartSeparator != null
-                    ? "%s" + multipartSeparator.getValue()
-                    : "%s");
-            multipartSeparator = multipartSeparatorsAfter.get(separatorName2);
-            authors.setFormattedName2(multipartSeparator != null
-                    ? "%s" + multipartSeparator.getValue()
-                    : "%s");
+            authorsWrapper.setFormattedBefore(multipartSeparator != null ? multipartSeparator.getValue() : "");
+            //get name of multipart-separator after all authors
+            separatorAfterAuthors = getMultipartSeparatorName(node, Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
+            //search for multipart-separator after all authors.
+            //If it exists - than append to builder, otherwise - append empty string
             multipartSeparator = multipartSeparatorsAfter.get(separatorAfterAuthors);
-            authors.setFormattedAfter(multipartSeparator != null
-                    ? multipartSeparator.getValue()
-                    : "");
-            authorsMap.put(condition + type, authors);
+            authorsWrapper.setFormattedAfter(multipartSeparator != null ? multipartSeparator.getValue() : "");
+            //next part build formatted strign of all possible authors in current citation part
+            for (Node authorNode : authorNodes) {
+                final Author author = new Author();
+                final StringBuilder authorBuilder = new StringBuilder();
+                //search for all author-part
+                final List<Node> authorParts = authorNode.selectNodes(Constants.XmlNode.AUTHOR_PART);
+                for (Node authorPart : authorParts) {
+                    //how should be author-part cutted
+                    final int len = Integer.parseInt(authorPart.valueOf(Constants.XmlAttribute.LEN));
+                    //if len of author-part not equal = -1 then append '%.(len)s', otherwise just append '%s' to builder
+                    final String valueLenFormatted = "%" + (len != -1 ? "." + len : "") + "s";
+                    //maybe it's useless, because this multipart-separator used for cases like: 'A. B. Cdefg, [etc]'
+                    // and can be moved to multipart-separator after of AuthorsWrapper
+                    authorPartSeparator = getMultipartSeparatorName(authorPart, Constants.XmlNode.MULTIPART_SEPARATOR_AFTER);
+                    multipartSeparator = multipartSeparatorsAfter.get(authorPartSeparator);
+                    authorBuilder.append(valueLenFormatted);
+                    if (multipartSeparator != null) {
+                        authorBuilder.append(multipartSeparator.getValue());
+                    }
+                }
+                //append formatted author-part value
+                author.setFormattedValue(authorBuilder.toString());
+                authors.add(author);
+            }
+            authorsWrapper.setAuthors(authors);
+            //add authorsWrapper to already existed AuthorsWrappers of type of citation part or create a new one
+            if (authorsMap.get(type) == null) {
+                final List<AuthorsWrapper> authorsWrappers = new ArrayList<>();
+                authorsWrappers.add(authorsWrapper);
+                authorsMap.put(type, authorsWrappers);
+            } else {
+                authorsMap.get(type).add(authorsWrapper);
+            }
         }
         return authorsMap;
     }

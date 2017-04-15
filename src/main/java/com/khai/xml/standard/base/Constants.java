@@ -26,12 +26,11 @@ public final class Constants {
         String UA = "ua";
         String EN = "en";
         String SEPARATOR = "separator";
-        String NAME1 = "name1";
-        String NAME2 = "name2";
-        String SURNAME = "surname";
         String MULTIPART_SEPARATOR_BEFORE = "multipart-separator-before";
         String MULTIPART_SEPARATOR_AFTER = "multipart-separator-after";
         String STRING = "string";
+        String AUTHOR_PART = "author-part";
+        String AUTHOR = "author";
     }
 
 
@@ -56,6 +55,8 @@ public final class Constants {
         String TYPE = "@type";
         String CONTENT_TYPE = "@contentType";
         String CONDITION = "@condition";
+        String COUNT = "@count";
+        String LEN = "@len";
     }
 
 }
