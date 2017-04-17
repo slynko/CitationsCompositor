@@ -2,6 +2,8 @@ package com.khai.xml.standard.base;
 
 public final class Constants {
 
+    private Constants(){}
+
     /**
      * Names of standards
      */
@@ -59,4 +61,29 @@ public final class Constants {
         String LEN = "@len";
     }
 
+    public interface Tags {
+        String FIRST_AUTHOR = "first-author";
+        String TITLE = "title";
+        String TYPE = "type";
+        String EDITION_TYPE = "edition-type";
+        String AUTHORS_AFTER = "authors-after";
+        String PUBLISHER = "publisher";
+        String EDITORS = "editors";
+        String DIRECTORS = "directors";
+        String PUBLISHER_CITY = "publisher-city";
+        String PUBLISHER_NAME = "publisher-name";
+        String YEAR_DATE = "year-date";
+        String VOLUME = "volume";
+        String NO = "no";
+        String PAGES = "pages";
+    }
+
+    public interface Conditions {
+        String EQUAL = "eq";            //equal to                 - "==" - "eq"
+        String NOT_EQUAL = "ne";        //not equal to             - "!=" - "ne"
+        String GREATER_THAN = "gt";     //greater than             - ">"  - "gt"
+        String LESS_THAN = "lt";        //less than                - "<"  - "lt"
+        String GREATER_OR_EQUAL = "gq"; //greater than or equal to - ">=" - "gq"
+        String LESS_OR_EQUAL = "lq";    //less than or equal to    - "<=" - "lq"
+    }
 }

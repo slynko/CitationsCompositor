@@ -5,6 +5,7 @@ import com.khai.db.model.Person;
 import com.khai.model.xml.AuthorsWrapper;
 import com.khai.utils.TextUtils;
 import com.khai.xml.standard.base.BaseStandard;
+import com.khai.xml.standard.base.Constants;
 import com.sun.istack.internal.Nullable;
 
 import java.util.ArrayList;
@@ -38,9 +39,8 @@ public class Dstu712006 extends BaseStandard {
     @SuppressWarnings("unchecked")
     private void addCitationPart(String type, String citationPart,
                                  CitationModel model, StringBuilder builder) {
-        String formattedValue;
         switch (citationPart) {
-            case "first-author":
+            case Constants.Tags.FIRST_AUTHOR:
                 if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
                 final AuthorsWrapper chosenFirstAuthorWrapper = chooseAuthorsWrapper(type, citationPart,
                         model.getAuthors().size());
@@ -60,22 +60,7 @@ public class Dstu712006 extends BaseStandard {
                     }
                 }
                 break;
-            case "title":
-                if (TextUtils.isEmpty(model.getTitle())) return;
-                formattedValue = getFormattedFieldValue(citationPart, type);
-                builder.append(String.format(formattedValue, model.getTitle()));
-                break;
-            case "type":
-                if (TextUtils.isEmpty(model.getType())) return;
-                formattedValue = getFormattedFieldValue(citationPart, type);
-                builder.append(String.format(formattedValue, model.getType()));
-                break;
-            case "edition-type":
-                if (TextUtils.isEmpty(model.getEditorType())) return;
-                formattedValue = getFormattedFieldValue(citationPart, type);
-                builder.append(String.format(formattedValue, model.getEditorType()));
-                break;
-            case "authors-after":
+            case Constants.Tags.AUTHORS_AFTER:
                 if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
                 final AuthorsWrapper chosenAuthorsAfterWrapper = chooseAuthorsWrapper(type, citationPart,
                         model.getAuthors().size());
@@ -98,48 +83,49 @@ public class Dstu712006 extends BaseStandard {
                 }
                 builder.append(chosenAuthorsAfterWrapper.getFormattedAfter());
                 break;
-            case "publisher":
-                if (TextUtils.isEmpty(model.getPublisher())) return;
-                formattedValue = getFormattedFieldValue(citationPart, type);
-                builder.append(String.format(formattedValue, model.getPublisher()));
-                break;
-            case "editors":
+
+            case Constants.Tags.EDITORS:
                 // TODO: 4/15/2017 do editors like authors-after (do xml too)
                 break;
-            case "directors":
+            case Constants.Tags.DIRECTORS:
                 // TODO: 4/15/2017 do editors like authors-after (do xml too)
                 break;
-            case "publisher-city":
-                if (TextUtils.isEmpty(model.getPublisherInfo())) return;
-                formattedValue = getFormattedFieldValue(citationPart, type);
-                builder.append(String.format(formattedValue, model.getPublisherInfo()));
-                break;
-            case "publisher-name":
-                if (TextUtils.isEmpty(model.getPublisherInfo())) return;
-                formattedValue = getFormattedFieldValue(citationPart, type);
-                builder.append(String.format(formattedValue, model.getPublisherInfo()));
-                break;
-            case "year-date":
-                if (TextUtils.isEmpty(model.getYear())) return;
-                formattedValue = getFormattedFieldValue(citationPart, type);
-                builder.append(String.format(formattedValue, model.getYear()));
-                break;
-            case "volume":
-                if (TextUtils.isEmpty(model.getVolume())) return;
-                formattedValue = getFormattedFieldValue(citationPart, type);
-                builder.append(String.format(formattedValue, model.getVolume()));
-                break;
-            case "no":
-                if (TextUtils.isEmpty(model.getNo())) return;
-                formattedValue = getFormattedFieldValue(citationPart, type);
-                builder.append(String.format(formattedValue, model.getNo()));
-                break;
-            case "pages":
-                if (TextUtils.isEmpty(model.getPage())) return;
-                formattedValue = getFormattedFieldValue(citationPart, type);
-                builder.append(String.format(formattedValue, model.getPage()));
-                break;
+            default:
+                parseField(getValueFromModel(citationPart, model), citationPart, builder, type);
         }
+    }
+
+    private String getValueFromModel(String citationPart, CitationModel model) throws IllegalArgumentException {
+        switch (citationPart) {
+            case Constants.Tags.PUBLISHER:
+                return model.getPublisher();
+            case Constants.Tags.TITLE:
+                return model.getTitle();
+            case Constants.Tags.TYPE:
+                return model.getType();
+            case Constants.Tags.EDITION_TYPE:
+                return model.getEditorType();
+            case Constants.Tags.PUBLISHER_CITY:
+                return model.getPublisherInfo();
+            case Constants.Tags.PUBLISHER_NAME:
+                return model.getPublisherInfo();
+            case Constants.Tags.YEAR_DATE:
+                return model.getYear();
+            case Constants.Tags.VOLUME:
+                return model.getVolume();
+            case Constants.Tags.NO:
+                return model.getNo();
+            case Constants.Tags.PAGES:
+                return model.getPage();
+            default:
+                throw new IllegalArgumentException("Illegal citation part " + citationPart);
+        }
+    }
+
+    private void parseField(String value, String citationPart, StringBuilder builder, String type) {
+        if (TextUtils.isEmpty(value)) return;
+        String formattedValue = getFormattedFieldValue(citationPart, type);
+        builder.append(String.format(formattedValue, value));
     }
 
     @Nullable
@@ -149,23 +135,25 @@ public class Dstu712006 extends BaseStandard {
         if (authorsWrappers == null) {
             authorsWrappers = (List<AuthorsWrapper>) citationParts.get(citationPart).get("default");
         }
-        AuthorsWrapper chosenAuthorsWrapper = null;
+        int authorsWrapperCount;
         for (AuthorsWrapper authorsWrapper : authorsWrappers) {
-            if (authorsWrapper.getCondition().equals("lq") && sizeOfAuthors <= authorsWrapper.getCount()) {
-                chosenAuthorsWrapper = authorsWrapper;
-                break;
-            } else if (authorsWrapper.getCondition().equals("gt") && sizeOfAuthors > authorsWrapper.getCount()) {
-                chosenAuthorsWrapper = authorsWrapper;
-                break;
-            } else if (authorsWrapper.getCondition().equals("lt") && sizeOfAuthors < authorsWrapper.getCount()) {
-                chosenAuthorsWrapper = authorsWrapper;
-                break;
-            } else if (authorsWrapper.getCondition().equals("gq") && sizeOfAuthors >= authorsWrapper.getCount()) {
-                chosenAuthorsWrapper = authorsWrapper;
-                break;
+            authorsWrapperCount = authorsWrapper.getCount();
+            switch (authorsWrapper.getCondition()) {
+                case Constants.Conditions.LESS_OR_EQUAL:
+                    if (sizeOfAuthors <= authorsWrapperCount)
+                        return authorsWrapper;
+                case Constants.Conditions.GREATER_THAN:
+                    if (sizeOfAuthors > authorsWrapperCount)
+                        return authorsWrapper;
+                case Constants.Conditions.LESS_THAN:
+                    if (sizeOfAuthors < authorsWrapperCount)
+                        return authorsWrapper;
+                case Constants.Conditions.GREATER_OR_EQUAL:
+                    if (sizeOfAuthors >= authorsWrapperCount)
+                        return authorsWrapper;
             }
         }
-        return chosenAuthorsWrapper;
+        return null;
     }
 
 }
