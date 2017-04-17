@@ -2,6 +2,7 @@ package com.khai.xml.standard;
 
 import com.khai.db.model.CitationModel;
 import com.khai.db.model.Person;
+import com.khai.model.xml.Author;
 import com.khai.model.xml.AuthorsWrapper;
 import com.khai.utils.TextUtils;
 import com.khai.xml.standard.base.BaseStandard;
@@ -10,6 +11,7 @@ import com.sun.istack.internal.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Dstu712006 extends BaseStandard {
 
@@ -62,11 +64,11 @@ public class Dstu712006 extends BaseStandard {
                 break;
             case Constants.Tags.AUTHORS_AFTER:
                 if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
-                final AuthorsWrapper chosenAuthorsAfterWrapper = chooseAuthorsWrapper(type, citationPart,
-                        model.getAuthors().size());
+                final AuthorsWrapper chosenAuthorsAfterWrapper = chooseAuthorsWrapper(type, citationPart, model.getAuthors().size());
                 if (chosenAuthorsAfterWrapper == null) return;
                 final List<Person> authorsAfterInModel = new ArrayList<>(model.getAuthors());
                 int authorsAfterWrapperSize = chosenAuthorsAfterWrapper.getAuthors().size();
+
                 builder.append(chosenAuthorsAfterWrapper.getFormattedBefore());
                 for (int i = 0; i < authorsAfterWrapperSize; i++) {
                     final Person firstAuthor;
@@ -83,15 +85,81 @@ public class Dstu712006 extends BaseStandard {
                 }
                 builder.append(chosenAuthorsAfterWrapper.getFormattedAfter());
                 break;
-
             case Constants.Tags.EDITORS:
-                // TODO: 4/15/2017 do editors like authors-after (do xml too)
+                if (model.getEditors() == null || model.getEditors().isEmpty()) return;
+                final AuthorsWrapper chosenEditorsAfterWrapper = chooseAuthorsWrapper(type, citationPart,
+                        model.getAuthors().size());
+                if (chosenEditorsAfterWrapper == null) return;
+                final List<Person> editorsAfterInModel = new ArrayList<>(model.getEditors());
+                int editorsAfterWrapperSize = chosenEditorsAfterWrapper.getAuthors().size();
+                builder.append(chosenEditorsAfterWrapper.getFormattedBefore());
+
+                for (int i = 0; i < editorsAfterWrapperSize; i++) {
+                    final Person firstAuthor;
+                    if (i == editorsAfterInModel.size() - 1) {
+                        firstAuthor = editorsAfterInModel.get(i);
+                        builder.append(String.format(chosenEditorsAfterWrapper.getAuthors().get(editorsAfterWrapperSize - 1).getFormattedValue(),
+                                firstAuthor.getName1(), firstAuthor.getName2(), firstAuthor.getSurname()));
+                        break;
+                    } else {
+                        firstAuthor = editorsAfterInModel.get(i);
+                        builder.append(String.format(chosenEditorsAfterWrapper.getAuthors().get(i).getFormattedValue(),
+                                firstAuthor.getName1(), firstAuthor.getName2(), firstAuthor.getSurname()));
+                    }
+                }
+                builder.append(chosenEditorsAfterWrapper.getFormattedAfter());
                 break;
             case Constants.Tags.DIRECTORS:
                 // TODO: 4/15/2017 do editors like authors-after (do xml too)
                 break;
             default:
                 parseField(getValueFromModel(citationPart, model), citationPart, builder, type);
+        }
+    }
+
+    private void parseAuthors(String type, String citationPart, CitationModel model, StringBuilder builder) {
+        final Set<Person> bufSet = model.getAuthors();
+        if (bufSet == null || bufSet.isEmpty())
+            return;
+        final AuthorsWrapper authorsWrapper = chooseAuthorsWrapper(type, citationPart, bufSet.size());
+        if (authorsWrapper == null)
+            return;
+        final List<Author> authorList = authorsWrapper.getAuthors();
+        final int authorsCount = authorList.size();
+        switch (citationPart) {
+            case Constants.Tags.AUTHORS_AFTER:
+            case Constants.Tags.EDITORS:
+                builder.append(authorsWrapper.getFormattedBefore());
+                break;
+        }
+        final List<Person> firstAuthorsInModel = new ArrayList<>(bufSet);
+
+        final int lastPosition = firstAuthorsInModel.size() - 1;
+        Person person;
+        String formattedValue;
+        for (int i = 0; i < authorsCount; i++) {
+            person = firstAuthorsInModel.get(i);
+            if (i == lastPosition) {
+                formattedValue = authorList.get(authorsCount - 1).getFormattedValue();
+            } else {
+                formattedValue = authorList.get(i).getFormattedValue();
+            }
+            switch (citationPart) {
+                case Constants.Tags.FIRST_AUTHOR:
+                    builder.append(String.format(formattedValue, person.getSurname(), person.getName1(), person.getName2()));
+                    break;
+                case Constants.Tags.AUTHORS_AFTER:
+                case Constants.Tags.EDITORS:
+                    builder.append(String.format(formattedValue, person.getName1(), person.getName2(), person.getSurname()));
+                    break;
+            }
+        }
+
+        switch (citationPart) {
+            case Constants.Tags.AUTHORS_AFTER:
+            case Constants.Tags.EDITORS:
+                builder.append(authorsWrapper.getFormattedAfter());
+                break;
         }
     }
 

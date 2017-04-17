@@ -26,6 +26,7 @@
         <type name="electronic-resources" title="Электронные ресурсы"/>
         <type name="art-source" title="Изоиздания"/>
     </types>
+
     <separators>
         <separator name="space">
             <default>&#xA0;</default>
@@ -151,6 +152,7 @@
             <en>polyconic</en>
         </separator>
     </separators>
+
     <multipart-separators-before>
         <multipart-separator name="edition-type" type="default">
             <separator name="begin-bracket"/>
@@ -217,6 +219,7 @@
             <separator name="space"/>
         </multipart-separator>
     </multipart-separators-before>
+
     <multipart-separators-after>
         <multipart-separator name="name" type="default">
             <separator name="dot"/>
@@ -257,6 +260,7 @@
             <separator name="dot"/>
         </multipart-separator>
     </multipart-separators-after>
+
     <!--TODO think about duplicate authors for the last author's unique separator of surname-->
     <citation-parts>
         <!-- equal to            - "==" - "eq";
@@ -306,55 +310,124 @@
                 <multipart-separator-before name="additional-info" type="default"/>
             </field>
         </part>
-        <!-- <part name="editors" contentType="authors">
-             <authors condition="lq4" type="default"> &lt;!&ndash; "<=" - "lq" !&ndash;&gt;
-                 <multipart-separator-before name="editors" type="default"/>
-                 <name1 type="default">
-                     <multipart-separator-after name="name" type="default"/>
-                 </name1>
-                 <name2 type="default">
-                     <multipart-separator-after name="name" type="default"/>
-                 </name2>
-                 <surname type="default">
-                     <multipart-separator-after name="surname" type="default"/>
-                 </surname>
-             </authors>
-             <authors condition="gt4" type="default"> &lt;!&ndash; ">"  - "gt" !&ndash;&gt;
-                 <multipart-separator-before name="editors" type="default"/>
-                 <name1 type="default">
-                     <multipart-separator-after name="name" type="default"/>
-                 </name1>
-                 <name2 type="default">
-                     <multipart-separator-after name="name" type="default"/>
-                 </name2>
-                 <surname type="default"/>
-                 <multipart-separator-after name="others" type="default"/>
-             </authors>
-             <authors condition="lq4" type="book-title"> &lt;!&ndash; "<=" - "lq" !&ndash;&gt;
-                 <multipart-separator-before name="editors" type="book-title"/>
-                 <name1 type="default">
-                     <multipart-separator-after name="name" type="default"/>
-                 </name1>
-                 <name2 type="default">
-                     <multipart-separator-after name="name" type="default"/>
-                 </name2>
-                 <surname type="default">
-                     <multipart-separator-after name="surname" type="default"/>
-                 </surname>
-             </authors>
-             <authors condition="gt4" type="book-title"> &lt;!&ndash; ">"  - "gt" !&ndash;&gt;
-                 <multipart-separator-before name="editors" type="book-title"/>
-                 <name1 type="default">
-                     <multipart-separator-after name="name" type="default"/>
-                 </name1>
-                 <name2 type="default">
-                     <multipart-separator-after name="name" type="default"/>
-                 </name2>
-                 <surname type="default"/>
-                 <multipart-separator-after name="others" type="default"/>
-             </authors>
-         </part>-->
-        <!-- TODO EXAMPLE OF REWRITING OF AUTHORS -->
+        <part name="editors" contentType="authors-wrapper">
+            <authors-wrapper condition="lq" count="4" type="default"> <!-- "<=" - "lq" !-->>
+                <multipart-separator-before name="editors" type="default"/>
+                <author>
+                    <author-part len="1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname">
+                        <multipart-separator-after name="surname-not-last" type="default"/>
+                    </author-part>
+                </author>
+                <author>
+                    <author-part len="1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname">
+                        <multipart-separator-after name="surname-not-last" type="default"/>
+                    </author-part>
+                </author>
+                <author>
+                    <author-part len="1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname">
+                        <multipart-separator-after name="surname-not-last" type="default"/>
+                    </author-part>
+                </author>
+                <author>
+                    <author-part len="1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname"/>
+                </author>
+            </authors-wrapper>
+            <authors-wrapper condition="gt" count="4" type="default"> <!-- ">" - "gt" !-->>
+                <multipart-separator-before name="editors" type="default"/>
+                <author>
+                    <author-part len="1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname"/>
+                </author>
+                <multipart-separator-after name="others" type="default"/>
+            </authors-wrapper>
+            <authors-wrapper condition="lq" count="4" type="default"> <!-- "<=" - "lq" !-->>
+                <multipart-separator-before name="editors" type="default"/>
+                <author>
+                    <author-part len="1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname">
+                        <multipart-separator-after name="surname-not-last" type="default"/>
+                    </author-part>
+                </author>
+                <author>
+                    <author-part len="1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname">
+                        <multipart-separator-after name="surname-not-last" type="default"/>
+                    </author-part>
+                </author>
+                <author>
+                    <author-part len="1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname">
+                        <multipart-separator-after name="surname-not-last" type="default"/>
+                    </author-part>
+                </author>
+                <author>
+                    <author-part len="1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname"/>
+                </author>
+            </authors-wrapper>
+            <authors-wrapper condition="gt" count="4" type="default"> <!-- ">" - "gt" !-->>
+                <multipart-separator-before name="editors" type="book-title"/>
+                <author>
+                    <author-part len="1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname"/>
+                </author>
+                <multipart-separator-after name="others" type="book-title"/>
+            </authors-wrapper>
+        </part>
         <part name="authors-after" contentType="authors-wrapper">
             <authors-wrapper condition="lq" count="4" type="default"> <!-- "<=" - "lq" !-->>
                 <multipart-separator-before name="authors-after" type="default"/>
@@ -508,6 +581,7 @@
             </field>
         </part>
     </citation-parts>
+
     <!-- The example how to create citations of different types -->
     <citations>
         <citation type="book-author">
@@ -555,7 +629,7 @@
             <string>pages</string>
         </citation>
         <citation type="monograph">
-            <string>first-author</string>
+            <string>first-author</string>`
             <string>title</string>
             <string>type</string>
             <string>authors-after</string>
