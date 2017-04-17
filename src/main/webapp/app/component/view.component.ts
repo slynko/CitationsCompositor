@@ -80,8 +80,11 @@ export class ViewComponent {
         var selectedBibliographies = this.getSelectedBibliographies();
         this.bibliographyService.getComposedBibliographies(selectedBibliographies, this.dstuSelectedFile, this.dstuSelectedType)
             .subscribe(
-                data => this.composedBibliographies = data,
-                error => this.error = "Something went wrong."
+                data => {
+                    this.composedBibliographies = data;
+                    this.error = "";
+                },
+                error => this.error = "Something went wrong. Please check if you have prefilled all fields"
             );
     }
 
