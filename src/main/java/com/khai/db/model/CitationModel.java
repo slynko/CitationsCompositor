@@ -36,8 +36,11 @@ public class CitationModel {
     @JoinColumn(name = "editors")
     private List<Person> editors;
 
-    @Column(name = "publisher_info")
-    private String publisherInfo;
+    @Column(name = "publisher_name")
+    private String publisherName;
+    @Column(name = "publisher_city")
+    private String publisherCity;
+
     @Column(name = "year")
     private String year;
     @Column(name = "date")
@@ -105,12 +108,20 @@ public class CitationModel {
         this.editorType = editorType;
     }
 
-    public String getPublisherInfo() {
-        return publisherInfo;
+    public String getPublisherName() {
+        return publisherName;
     }
 
-    public void setPublisherInfo(String publisherInfo) {
-        this.publisherInfo = publisherInfo;
+    public void setPublisherName(String publisherName) {
+        this.publisherName = publisherName;
+    }
+
+    public String getPublisherCity() {
+        return publisherCity;
+    }
+
+    public void setPublisherCity(String publisherCity) {
+        this.publisherCity = publisherCity;
     }
 
     public String getYear() {

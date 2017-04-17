@@ -7,7 +7,8 @@ export class Bibliography {
     publisher:string;
     editors:Person[];
     editorType:string;
-    publisherInfo:string;
+    publisherName:string;
+    publisherCity:string;
     year:string;
     date:string;
     volume:string;

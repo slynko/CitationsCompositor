@@ -106,9 +106,9 @@ public class Dstu712006 extends BaseStandard {
             case Constants.Tags.EDITION_TYPE:
                 return model.getEditorType();
             case Constants.Tags.PUBLISHER_CITY:
-                return model.getPublisherInfo();
+                return model.getPublisherCity();
             case Constants.Tags.PUBLISHER_NAME:
-                return model.getPublisherInfo();
+                return model.getPublisherName();
             case Constants.Tags.YEAR_DATE:
                 return model.getYear();
             case Constants.Tags.VOLUME:
