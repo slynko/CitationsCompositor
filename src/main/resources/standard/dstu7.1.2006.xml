@@ -532,5 +532,41 @@
             <string>year-date</string>
             <string>pages</string>
         </citation>
+        <citation type="translate">
+            <string>first-author</string>
+            <string>title</string>
+            <string>edition-type</string>
+            <string>type</string>
+            <string>authors-after</string>
+            <string>publisher-city</string>
+            <string>publisher-name</string>
+            <string>year-date</string>
+            <string>pages</string>
+        </citation>
+        <citation type="methodical">
+            <string>first-author</string>
+            <string>title</string>
+            <string>type</string>
+            <string>authors-after</string>
+            <string>additional-info</string>
+            <string>publisher-city</string>
+            <string>publisher-name</string>
+            <string>year-date</string>
+            <string>pages</string>
+        </citation>
+        <citation type="monograph">
+            <string>first-author</string>
+            <string>title</string>
+            <string>type</string>
+            <string>authors-after</string>
+
+            <!--will be or not-->
+            <string>additional-info</string>
+
+            <string>publisher-city</string>
+            <string>publisher-name</string>
+            <string>year-date</string>
+            <string>pages</string>
+        </citation>
     </citations>
 </standard>
