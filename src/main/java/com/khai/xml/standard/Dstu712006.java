@@ -62,6 +62,7 @@ public class Dstu712006 extends BaseStandard {
                     }
                 }
                 break;
+            case Constants.Tags.AUTHORS_AFTER_FULL_NAME:
             case Constants.Tags.AUTHORS_AFTER:
                 if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
                 final AuthorsWrapper chosenAuthorsAfterWrapper = chooseAuthorsWrapper(type, citationPart, model.getAuthors().size());
@@ -175,6 +176,10 @@ public class Dstu712006 extends BaseStandard {
                 return model.getEditorType();
             case Constants.Tags.PUBLISHER_CITY:
                 return model.getPublisherCity();
+            case Constants.Tags.ADDITIONAL_INFO:
+                return model.getAdditionalInfo();
+            case Constants.Tags.OFFICIAL_DATE:
+                return model.getDate();
             case Constants.Tags.PUBLISHER_NAME:
                 return model.getPublisherName();
             case Constants.Tags.YEAR_DATE:

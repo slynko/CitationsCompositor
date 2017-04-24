@@ -41,6 +41,9 @@ public class CitationModel {
     @Column(name = "publisher_city")
     private String publisherCity;
 
+    @Column(name = "additional_info")
+    private String additionalInfo;
+
     @Column(name = "year")
     private String year;
     @Column(name = "date")
@@ -102,6 +105,14 @@ public class CitationModel {
 
     public String getEditorType() {
         return editorType;
+    }
+
+    public String getAdditionalInfo() {
+        return additionalInfo;
+    }
+
+    public void setAdditionalInfo(String additionalInfo) {
+        this.additionalInfo = additionalInfo;
     }
 
     public void setEditorType(String editorType) {

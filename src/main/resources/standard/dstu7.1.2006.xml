@@ -16,7 +16,7 @@
         <type name="shared-science-works" title="Депонированные научные работы"/>
         <type name="patent-documents" title="Патентные документы"/>
         <type name="industrial-catalogs" title="Промышленные каталоги"/>
-        <type name="official-documents" title="Официальные документы"/>
+        <type name="official-documents" title="Официальные материалы"/>
         <type name="instructional-regulatory-documents" title="Инструктивно нормативная документация "/>
         <type name="state-standardstandards" title="ГОСТы"/>
         <type name="newspapers-articles" title="Статьи из газет"/>
@@ -488,6 +488,67 @@
                 <multipart-separator-after name="others" type="default"/>
             </authors-wrapper>
         </part>
+
+        <part name="authors-after-full-name" contentType="authors-wrapper">
+            <authors-wrapper condition="lq" count="4" type="default"> <!-- "<=" - "lq" !-->>
+                <multipart-separator-before name="authors-after" type="default"/>
+                <author>
+                    <author-part len="-1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname">
+                        <multipart-separator-after name="surname-not-last" type="default"/>
+                    </author-part>
+                </author>
+                <author>
+                    <author-part len="-1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname">
+                        <multipart-separator-after name="surname-not-last" type="default"/>
+                    </author-part>
+                </author>
+                <author>
+                    <author-part len="-1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname">
+                        <multipart-separator-after name="surname-not-last" type="default"/>
+                    </author-part>
+                </author>
+                <author>
+                    <author-part len="-1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname"/>
+                </author>
+            </authors-wrapper>
+            <authors-wrapper condition="gt" count="4" type="default"> <!-- ">" - "gt" !-->>
+                <multipart-separator-before name="authors-after" type="default"/>
+                <author>
+                    <author-part len="-1" type="default" description="name1">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="name2">
+                        <multipart-separator-after name="name" type="default"/>
+                    </author-part>
+                    <author-part len="-1" type="default" description="surname"/>
+                </author>
+                <multipart-separator-after name="others" type="default"/>
+            </authors-wrapper>
+        </part>
         <!--<part name="directors" contentType="authors">
             <authors condition="lq4" type="report"> &lt;!&ndash; "<=" - "lq" !&ndash;&gt;
                 <name1 type="default">
@@ -622,25 +683,101 @@
             <string>title</string>
             <string>type</string>
             <string>authors-after</string>
-            <string>additional-info</string>
+            <!--<string>additional-info</string>-->
             <string>publisher-city</string>
             <string>publisher-name</string>
             <string>year-date</string>
             <string>pages</string>
         </citation>
         <citation type="monograph">
-            <string>first-author</string>`
+            <string>first-author</string>
             <string>title</string>
             <string>type</string>
             <string>authors-after</string>
-
-            <!--will be or not-->
-            <string>additional-info</string>
-
+            <!--<string>additional-info</string>-->
             <string>publisher-city</string>
             <string>publisher-name</string>
             <string>year-date</string>
             <string>pages</string>
         </citation>
+        <citation type="article">
+            <string>first-author</string>
+            <string>title</string>
+            <string>authors-after</string>
+            <string>publisher</string>
+            <string>publisher-city</string>
+            <string>publisher-name</string>
+            <string>year-date</string>
+            <string>no</string>
+            <string>pages</string>
+        </citation>
+        <citation type="magazine-article">
+            <string>first-author</string>
+            <string>title</string>
+            <string>authors-after</string>
+            <string>publisher</string>
+            <string>year-date</string>
+            <string>volume</string>
+            <string>no</string>
+            <string>pages</string>
+        </citation>
+        <citation type="dissertation">
+            <string>first-author</string>
+            <string>title</string>
+            <string>type</string>
+            <string>authors-after-full-name</string>
+            <string>publisher-city</string>
+            <string>publisher-name</string>
+            <string>year-date</string>
+            <string>pages</string>
+        </citation>
+        <citation type="report">
+            <string>title</string>
+            <string>type</string>
+            <string>authors-after</string>
+            <string>publisher-city</string>
+            <string>publisher-name</string>
+            <string>year-date</string>
+            <string>pages</string>
+        </citation>
+        <citation type="shared-science-works">
+            <string>first-author</string>
+            <string>title</string>
+            <string>authors-after</string>
+            <string>publisher-city</string>
+            <string>publisher-name</string>
+            <string>year-date</string>
+            <string>pages</string>
+        </citation>
+        <citation type="industrial-catalogs">
+            <string>title</string>
+            <string>type</string>
+            <!--<string>additional-info</string>-->
+            <string>publisher-city</string>
+            <string>publisher-name</string>
+            <string>year-date</string>
+            <string>pages</string>
+        </citation>
+        <citation type="official-documents">
+            <string>title</string>
+            <string>type</string>
+            <string>publisher</string>
+            <string>publisher-city</string>
+            <string>publisher-name</string>
+            <string>year-date</string>
+            <string>no</string>
+            <string>pages</string>
+        </citation>
+        <citation type="newspapers-articles">
+            <string>first-author</string>
+            <string>title</string>
+            <string>authors-after</string>
+            <string>publisher</string>
+            <string>year-date</string>
+            <string>official-date</string>
+            <string>pages</string>
+        </citation>
+
+
     </citations>
 </standard>

@@ -67,6 +67,7 @@ public final class Constants {
         String TYPE = "type";
         String EDITION_TYPE = "edition-type";
         String AUTHORS_AFTER = "authors-after";
+        String AUTHORS_AFTER_FULL_NAME = "authors-after-full-name";
         String PUBLISHER = "publisher";
         String EDITORS = "editors";
         String DIRECTORS = "directors";
@@ -76,6 +77,7 @@ public final class Constants {
         String VOLUME = "volume";
         String NO = "no";
         String PAGES = "pages";
+        String ADDITIONAL_INFO = "additional-info";
     }
 
     public interface Conditions {
