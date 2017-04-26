@@ -46,6 +46,9 @@ public class Dstu712006 extends BaseStandard {
                 if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
                 final AuthorsWrapper chosenFirstAuthorWrapper = chooseAuthorsWrapper(type, citationPart,
                         model.getAuthors().size());
+                if (model.getAuthors().size() >= 4){
+                    break;
+                }
                 if (chosenFirstAuthorWrapper == null) return;
                 int firstAuthorsWrapperSize = chosenFirstAuthorWrapper.getAuthors().size();
                 final List<Person> firstAuthorsInModel = new ArrayList<>(model.getAuthors());
