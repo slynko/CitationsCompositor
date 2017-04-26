@@ -78,6 +78,7 @@ public final class Constants {
         String NO = "no";
         String PAGES = "pages";
         String ADDITIONAL_INFO = "additional-info";
+        String OFICIAL_DATE = "official-date";
     }
 
     public interface Conditions {

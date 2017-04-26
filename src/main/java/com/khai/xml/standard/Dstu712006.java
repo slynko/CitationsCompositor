@@ -178,7 +178,7 @@ public class Dstu712006 extends BaseStandard {
                 return model.getPublisherCity();
             case Constants.Tags.ADDITIONAL_INFO:
                 return model.getAdditionalInfo();
-            case Constants.Tags.OFFICIAL_DATE:
+            case Constants.Tags.OFICIAL_DATE:
                 return model.getDate();
             case Constants.Tags.PUBLISHER_NAME:
                 return model.getPublisherName();
