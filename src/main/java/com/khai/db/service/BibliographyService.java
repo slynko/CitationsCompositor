@@ -18,7 +18,7 @@ public interface BibliographyService {
 
     Page<CitationModel> findAll(PageRequest pageRequest);
 
-    int countAll();
+    long countAll();
     /**
      * Save all bibliographies.
      * @param bibliographies to save

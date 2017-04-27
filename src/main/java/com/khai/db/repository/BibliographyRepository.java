@@ -10,6 +10,4 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 public interface BibliographyRepository extends PagingAndSortingRepository<CitationModel, Long> {
     CitationModel findByTitle(String title);
-    @Query(value = "SELECT COUNT(*) FROM table_name", nativeQuery = true)
-    int countAll();
 }

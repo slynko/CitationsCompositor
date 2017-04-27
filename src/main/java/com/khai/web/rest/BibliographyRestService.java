@@ -88,8 +88,8 @@ public class BibliographyRestService {
     }
 
     @GetMapping("/pages/amount")
-    public int getPagesNumber() {
-        return bibliographyService.findAll().size() / PAGE_SIZE + 1;
+    public long getPagesNumber() {
+        return bibliographyService.countAll() / PAGE_SIZE + 1;
     }
 
     /**

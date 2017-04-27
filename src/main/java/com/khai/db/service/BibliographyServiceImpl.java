@@ -32,8 +32,8 @@ public class BibliographyServiceImpl implements BibliographyService {
         return bibliographyRepository.findAll(pageRequest);
     }
 
-    public int countAll() {
-        return bibliographyRepository.countAll();
+    public long countAll() {
+        return bibliographyRepository.count();
     }
 
     /**
