@@ -70,7 +70,7 @@ export class ViewComponent {
     }
 
     nextPage() {
-        if (this.pageNumber < this.pagesAmount.length) {
+        if (this.pageNumber < this.pagesAmount.length - 1) {
             this.pageNumber++;
         }
         this.updatePage(this.pageNumber);
