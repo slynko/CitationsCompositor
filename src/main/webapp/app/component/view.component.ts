@@ -142,7 +142,7 @@ export class ViewComponent {
     removeEditor(editor: Person) {
         this.newBibliography.editors.splice(this.newBibliography.editors.indexOf(editor), 1);
     }
-composedBibliographies
+
     addBibliography() {
         this.bibliographyService.add(this.newBibliography)
             .subscribe(
