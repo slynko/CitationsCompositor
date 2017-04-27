@@ -13,9 +13,7 @@ import java.util.Set;
 public class CitationModel {
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
-    @Column(name = "id", length = 6, nullable = false)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     @Column(name = "title")
     private String title;

@@ -1,0 +1,16 @@
+INSERT INTO citation(title, type, publisher) VALUES ('Title1', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title2', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title3', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title4', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title5', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title6', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title7', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title8', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title9', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title10', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title11', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title12', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title13', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title14', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title15', 'Type', 'Publisher');
+INSERT INTO citation(title, type, publisher) VALUES ('Title16', 'Type', 'Publisher');

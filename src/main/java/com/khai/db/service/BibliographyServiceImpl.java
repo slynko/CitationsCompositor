@@ -4,6 +4,8 @@ import com.google.common.collect.Lists;
 import com.khai.db.model.CitationModel;
 import com.khai.db.repository.BibliographyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,6 +26,14 @@ public class BibliographyServiceImpl implements BibliographyService {
     @Override
     public List<CitationModel> findAll() {
         return Lists.newArrayList(bibliographyRepository.findAll());
+    }
+
+    public Page<CitationModel> findAll(PageRequest pageRequest) {
+        return bibliographyRepository.findAll(pageRequest);
+    }
+
+    public int countAll() {
+        return bibliographyRepository.countAll();
     }
 
     /**

@@ -1,6 +1,8 @@
 package com.khai.db.service;
 
 import com.khai.db.model.CitationModel;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -14,6 +16,9 @@ public interface BibliographyService {
      */
     List<CitationModel> findAll();
 
+    Page<CitationModel> findAll(PageRequest pageRequest);
+
+    int countAll();
     /**
      * Save all bibliographies.
      * @param bibliographies to save

@@ -9,20 +9,22 @@ import {Person} from "../model/Person";
     providers: [BibliographyService]
 })
 export class ViewComponent {
-    existingBibliographies:string[];
-    composedBibliographies:string[];
-    newBibliography:Bibliography;
+    existingBibliographies: string[];
+    composedBibliographies: string[];
+    newBibliography: Bibliography;
 
-    dstuFiles:string[];
-    dstuSelectedFile:string;
+    dstuFiles: string[];
+    dstuSelectedFile: string;
     dstuTypes: Object;
-    dstuSelectedType:string;
-    checkboxMap:string[];
+    dstuSelectedType: string;
+    checkboxMap: string[];
+    pagesAmount: number[];
+    pageNumber: number;
 
-    error:string;
-    bibliographyAddedSuccessfully:boolean;
+    error: string;
+    bibliographyAddedSuccessfully: boolean;
 
-    constructor(@Inject(BibliographyService) private bibliographyService:BibliographyService) {
+    constructor(@Inject(BibliographyService) private bibliographyService: BibliographyService) {
         this.bibliographyService = bibliographyService;
     }
 
@@ -33,6 +35,7 @@ export class ViewComponent {
     initPage() {
         this.initAddForm();
         this.initComposeForm();
+
     }
 
     initAddForm() {
@@ -42,10 +45,44 @@ export class ViewComponent {
     }
 
     initComposeForm() {
-        this.getAllBibliographies();
+        this.getPagesNumber();
+        if (!this.pagesAmount || this.pagesAmount <= 1) {
+            this.updatePage(0);
+        }
         this.getAllDstuFiles();
         this.checkboxMap = [];
         this.error = "";
+    }
+
+    getPagesNumber() {
+        this.bibliographyService.getPagesNumber()
+            .subscribe(
+                data => this.pagesAmount = Array(data).fill().map((x, i) => i),
+                error => this.error = "Something went wrong."
+            );
+    }
+
+    previousPage() {
+        if (this.pageNumber > 0) {
+            this.pageNumber--;
+        }
+        this.updatePage(this.pageNumber);
+    }
+
+    nextPage() {
+        if (this.pageNumber < this.pagesAmount.length) {
+            this.pageNumber++;
+        }
+        this.updatePage(this.pageNumber);
+    }
+
+    updatePage(pageNumber: number) {
+        this.pageNumber = pageNumber;
+        this.bibliographyService.getPage(pageNumber)
+            .subscribe(
+                data => this.existingBibliographies = data,
+                error => this.error = "Something went wrong."
+            );
     }
 
     getAllDstuFiles() {
@@ -60,14 +97,6 @@ export class ViewComponent {
         this.bibliographyService.getDstuTypes(this.dstuSelectedFile)
             .subscribe(
                 data => this.dstuTypes = data,
-                error => this.error = "Something went wrong."
-            );
-    }
-
-    getAllBibliographies() {
-        this.bibliographyService.getAllBibliographies()
-            .subscribe(
-                data => this.existingBibliographies = data,
                 error => this.error = "Something went wrong."
             );
     }
@@ -88,7 +117,7 @@ export class ViewComponent {
             );
     }
 
-    getSelectedBibliographies():string[] {
+    getSelectedBibliographies(): string[] {
         var selectedBibliographies = [];
         for (var key in this.checkboxMap) {
             if (this.checkboxMap.hasOwnProperty(key) && this.checkboxMap[key]) {
@@ -106,14 +135,14 @@ export class ViewComponent {
         this.newBibliography.editors.push(new Person());
     }
 
-    removeAuthor(author:Person) {
+    removeAuthor(author: Person) {
         this.newBibliography.authors.splice(this.newBibliography.authors.indexOf(author), 1);
     }
 
-    removeEditor(editor:Person) {
+    removeEditor(editor: Person) {
         this.newBibliography.editors.splice(this.newBibliography.editors.indexOf(editor), 1);
     }
-
+composedBibliographies
     addBibliography() {
         this.bibliographyService.add(this.newBibliography)
             .subscribe(
@@ -122,7 +151,7 @@ export class ViewComponent {
                     this.getAllBibliographies();
                     this.bibliographyAddedSuccessfully = true;
                     var self = this;
-                    setTimeout(function() {
+                    setTimeout(function () {
                         self.bibliographyAddedSuccessfully = false;
                     }, 3000);
 
@@ -132,5 +161,9 @@ export class ViewComponent {
 
     dstuTypesKeys() {
         return Object.keys(this.dstuTypes);
+    }
+
+    isChosen(bibliography): boolean {
+        return this.checkboxMap[bibliography] != undefined;
     }
 }

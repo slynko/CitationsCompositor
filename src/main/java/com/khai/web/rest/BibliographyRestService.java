@@ -7,6 +7,8 @@ import com.khai.web.model.File;
 import com.khai.xml.StandardManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +28,8 @@ import java.util.stream.Stream;
 @RestController
 @RequestMapping("rest/bibliographies")
 public class BibliographyRestService {
+
+    private static int PAGE_SIZE = 10;
 
     @Value("${dstu.files.folder.path}")
     private String dstuFolderPath;
@@ -71,6 +75,21 @@ public class BibliographyRestService {
                 .stream()
                 .map(Object::toString)
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping
+    @RequestMapping("/pages/{pageNumber}")
+    public List<String> getPage(@PathVariable int pageNumber) {
+         return bibliographyService.findAll(new PageRequest(pageNumber, PAGE_SIZE))
+                 .getContent()
+                 .stream()
+                 .map(Object::toString)
+                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("/pages/amount")
+    public int getPagesNumber() {
+        return bibliographyService.findAll().size() / PAGE_SIZE + 1;
     }
 
     /**

@@ -51,4 +51,15 @@ export class BibliographyService {
             .map(res => res.json());
     }
 
+    getPage(pageNumber:number):Observable<string[]> {
+        //noinspection TypeScriptUnresolvedFunction
+        return this.http.get(this.endpoint_url + "/pages/" + pageNumber)
+            .map(res => res.json());
+    }
+
+    getPagesNumber(): Observable<number> {
+        return this.http.get(this.endpoint_url + "/pages/amount")
+            .map(res => res.json());
+
+    }
 }
