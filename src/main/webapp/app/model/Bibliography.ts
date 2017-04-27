@@ -9,6 +9,8 @@ export class Bibliography {
     editorType:string;
     publisherName:string;
     publisherCity:string;
+    additionalInfo:string;
+    editorInfo:string;
     year:string;
     date:string;
     volume:string;
