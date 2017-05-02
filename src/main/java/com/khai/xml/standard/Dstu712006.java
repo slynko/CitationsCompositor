@@ -46,9 +46,6 @@ public class Dstu712006 extends BaseStandard {
                 if (model.getAuthors() == null || model.getAuthors().isEmpty()) return;
                 final AuthorsWrapper chosenFirstAuthorWrapper = chooseAuthorsWrapper(type, citationPart,
                         model.getAuthors().size());
-                if (model.getAuthors().size() >= 4){
-                    break;
-                }
                 if (chosenFirstAuthorWrapper == null) return;
                 int firstAuthorsWrapperSize = chosenFirstAuthorWrapper.getAuthors().size();
                 final List<Person> firstAuthorsInModel = new ArrayList<>(model.getAuthors());
@@ -218,15 +215,19 @@ public class Dstu712006 extends BaseStandard {
                 case Constants.Conditions.LESS_OR_EQUAL:
                     if (sizeOfAuthors <= authorsWrapperCount)
                         return authorsWrapper;
+                    break;
                 case Constants.Conditions.GREATER_THAN:
                     if (sizeOfAuthors > authorsWrapperCount)
                         return authorsWrapper;
+                    break;
                 case Constants.Conditions.LESS_THAN:
                     if (sizeOfAuthors < authorsWrapperCount)
                         return authorsWrapper;
+                    break;
                 case Constants.Conditions.GREATER_OR_EQUAL:
                     if (sizeOfAuthors >= authorsWrapperCount)
                         return authorsWrapper;
+                    break;
             }
         }
         return null;
